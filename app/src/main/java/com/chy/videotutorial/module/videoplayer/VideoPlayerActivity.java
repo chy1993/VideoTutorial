@@ -583,9 +583,9 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
     }
 
 
-//    @Override
-//    public boolean onTrackballEvent(MotionEvent ev) {
-//        setPlayProgress();
-//        return false;
-//    }
+    @Override
+    public boolean onTrackballEvent(MotionEvent ev) {
+        setPlayProgress();
+        return false;
+    }
 }
