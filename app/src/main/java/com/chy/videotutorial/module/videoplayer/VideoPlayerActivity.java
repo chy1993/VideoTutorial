@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,8 +31,6 @@ import java.io.File;
 public class VideoPlayerActivity extends AppCompatActivity implements UniversalVideoView.VideoViewCallback,
         UniversalMediaController.PlayPrevNextListener{
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;            //运行时权限
-    public static final int SETPATH = 1;
-
     private static final String VIDEO_LOCAL_URL = "/sdcard/Download/1.mp4";        //默认播放的视频路径
     private static final String SEEK_POSITION_KEY = "SEEK_POSITION_KEY";
 
@@ -199,27 +196,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         });
 
         initVolume(mAVolumeSeekBar);
-
-        //音量控制的seekbar
-        mAVolumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-                //系统音量和媒体音量同时更新
-                audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, progress, 0);
-                audioManager.setStreamVolume(3, progress, 0);//  3 代表  AudioManager.STREAM_MUSIC
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
     }
 
 
@@ -271,6 +247,28 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  //获取当前值
         seekBar.setProgress(currentVolume);// 当前的媒体音量
         myRegisterReceiver();//注册同步更新的广播
+
+
+        //音量控制的seekbar
+        mAVolumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                //系统音量和媒体音量同时更新
+                audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, progress, 0);
+                audioManager.setStreamVolume(3, progress, 0);//  3 代表  AudioManager.STREAM_MUSIC
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     /**
@@ -296,7 +294,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
      * 设置播放路径
      */
     void setVideoPath(String path){
-
         //关于权限
         if (ContextCompat.checkSelfPermission(VideoPlayerActivity.this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -308,10 +305,8 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         } else {
             mVideoView.setVideoPath(path);
             mCurrentFilePosition = getFilePosition(files, getNameFormPath(path));
-
             mVideoView.requestFocus();
         }
-
     }
 
 
@@ -407,21 +402,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         return "/sdcard/Download/" + fileName;
     }
 
-    /**
-     * titleBar切换
-     * @param show
-     */
-    private void switchTitleBar(boolean show) {
-        android.support.v7.app.ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            if (show) {
-                supportActionBar.show();
-            } else {
-                supportActionBar.hide();
-            }
-        }
-    }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -453,8 +433,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             mVideoLayout.setLayoutParams(layoutParams);
             mStartButton.setVisibility(View.VISIBLE);
         }
-
-        switchTitleBar(!isFullscreen);
     }
 
     @Override
@@ -553,10 +531,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
                         msg = obtainMessage(UniversalMediaController.SHOW_PROGRESS);
                         sendMessageDelayed(msg, 1000 - (pos % 1000));
                     }
-                    break;
-                case SETPATH:
-//                    setVideoPath();
-
                     break;
             }
         }
