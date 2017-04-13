@@ -14,6 +14,7 @@ import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -580,4 +581,11 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             mVolumeReceiver = null;
         }
     }
+
+
+//    @Override
+//    public boolean onTrackballEvent(MotionEvent ev) {
+//        setPlayProgress();
+//        return false;
+//    }
 }
