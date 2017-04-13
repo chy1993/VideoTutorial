@@ -7,8 +7,6 @@ import java.util.LinkedList;
 
 /**
  * 应用程序Activity管理类：用于Activity管理和应用程序退出
- *
- * Created by 丁飞 on 2015年04月13日.
  */
 public class AppManager {
     private LinkedList<Activity> mActivityList = null;

@@ -7,8 +7,6 @@ import android.util.Log;
 
 /**
  * 日志打印工具类
- *
- * Created by 丁飞 on 2016/1/12.
  */
 public class LogUtils {
 	private String tag = "KLSW";
