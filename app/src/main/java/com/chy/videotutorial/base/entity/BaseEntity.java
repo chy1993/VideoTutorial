@@ -3,7 +3,7 @@ package com.chy.videotutorial.base.entity;
 import java.io.Serializable;
 
 /**
- * Created by 丁飞 on 2016/1/7.
+ * 实体类的基类
  */
 public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;

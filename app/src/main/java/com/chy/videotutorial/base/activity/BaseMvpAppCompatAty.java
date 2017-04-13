@@ -6,7 +6,7 @@ import com.chy.videotutorial.base.mvp.BasePresenter;
 
 
 /**
- * Created by 丁飞 on 16/10/7.
+ * Activity绑定Presenter的基类
  */
 public abstract class BaseMvpAppCompatAty<P extends BasePresenter> extends BaseAppCompatActivity {
     protected P mPresenter;

@@ -79,12 +79,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void setTitle(String strTitle, boolean showHome){
-        setTitle(strTitle);
-        getSupportActionBar().setDisplayShowHomeEnabled(showHome);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(showHome);
-    }
-
     public void startActivitySlide(Intent intent) {
         super.startActivity(intent);
         overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);

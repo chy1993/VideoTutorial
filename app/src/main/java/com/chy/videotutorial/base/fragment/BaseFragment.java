@@ -11,9 +11,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * Fragment基类：1、加入了友盟的页面统计功能；
- *
- * Created by 丁飞 on 2016/1/7.
+ * Fragment基类
  */
 public abstract class BaseFragment extends Fragment {
 
@@ -68,7 +66,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        ButterKnife.unbind(this);
     }
 
     @Override
