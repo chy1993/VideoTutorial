@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
+import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
 
@@ -24,6 +25,7 @@ public class MainActivity extends BaseAppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"11111",Toast.LENGTH_SHORT).show();
+                VideoPlayerActivity.navigationToActivity(MainActivity.this);
             }
         });
     }

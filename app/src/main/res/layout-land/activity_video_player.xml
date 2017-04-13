@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_player"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/player_bg"
+    tools:context="com.chy.videotutorial.module.videoplayer.VideoPlayerActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/video_layout"
+            android:layout_width="800dp"
+            android:layout_height="455dp"
+            android:layout_centerInParent="true"
+            android:background="@android:color/black">
+
+            <com.universalvideoview.UniversalVideoView
+                android:id="@+id/videoView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                app:uvv_autoRotation="false"
+                app:uvv_fitXY="true" />
+
+            <com.universalvideoview.UniversalMediaController
+                android:id="@+id/media_controller"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                app:uvv_scalable="true" />
+
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/control_layout"
+            android:layout_width="800dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/video_layout"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/rlPlayController"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/aprev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/max_left" />
+
+                <ImageButton
+                    android:id="@+id/aturn_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/aprev"
+                    android:background="@mipmap/max_play" />
+
+                <ImageButton
+                    android:id="@+id/anext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/aturn_button"
+                    android:background="@mipmap/max_right" />
+
+            </RelativeLayout>
+
+
+            <ImageButton
+                android:id="@+id/ascale_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/max_fullscreen"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
+
+
+            <LinearLayout
+                android:id="@+id/allVolume"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@id/ascale_button">
+
+                <ImageView
+                    android:id="@+id/aivVolume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#e5e5e7"
+                    android:src="@mipmap/max_volume_bg" />
+
+                <SeekBar
+                    android:id="@+id/asbVolumeSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:background="#e5e5e7" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/allReplayAndStop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/allVolume"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/areplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/max_replay" />
+
+
+                <ImageButton
+                    android:id="@+id/astop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/max_stop" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/allController"
+                android:layout_width="fill_parent"
+                android:layout_height="39dp"
+                android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@id/allReplayAndStop"
+                android:layout_toRightOf="@id/rlPlayController"
+                android:background="#e5e5e7"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/ahas_played"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:text="00:00"
+                    android:textColor="#0000ff" />
+
+                <TextView
+                    android:id="@+id/aduration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@id/ahas_played"
+                    android:text="/00:00"
+                    android:textColor="#0000ff" />
+
+                <SeekBar
+                    android:id="@+id/aseekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:indeterminateDrawable="@drawable/uvv_star_play_progress_seek"
+                    android:maxHeight="2dp"
+                    android:minHeight="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:progressDrawable="@drawable/uvv_star_play_progress_seek"
+                    android:thumb="@drawable/uvv_seek_dot"
+                    android:thumbOffset="10dip" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#00ff00"
+        android:text="开始播放"
+        android:visibility="visible" />
+
+</RelativeLayout>

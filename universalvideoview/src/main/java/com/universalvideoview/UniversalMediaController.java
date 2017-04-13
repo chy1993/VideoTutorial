@@ -99,6 +99,8 @@ public class UniversalMediaController extends FrameLayout {
     public  AudioManager audiomanage;               //音量控制
     private int maxVolume, currentVolume;           //音量最大值与当前值
 
+    MyVolumeReceiver  mVolumeReceiver;
+
     public UniversalMediaController(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
@@ -275,6 +277,7 @@ public class UniversalMediaController extends FrameLayout {
     public void show(int timeout) {
         //非全屏状态下不显示控制条
         if (!mIsFullScreen){
+//            unMyRegisterReceiver();
             return;
         }
 
@@ -823,10 +826,6 @@ public class UniversalMediaController extends FrameLayout {
         mTitle.setText(titile);
     }
 
-//    public void setFullscreenEnabled(boolean enabled) {
-//        mFullscreenEnabled = enabled;
-//        mScaleButton.setVisibility(mIsFullScreen ? VISIBLE : GONE);
-//    }
 
 
     public void setOnErrorView(int resId) {
@@ -907,10 +906,21 @@ public class UniversalMediaController extends FrameLayout {
      * 注册当音量发生变化时接收的广播
      */
     private void myRegisterReceiver(){
-        MyVolumeReceiver  mVolumeReceiver = new MyVolumeReceiver() ;
+        mVolumeReceiver = new MyVolumeReceiver() ;
         IntentFilter filter = new IntentFilter() ;
         filter.addAction("android.media.VOLUME_CHANGED_ACTION") ;
         mContext.registerReceiver(mVolumeReceiver, filter) ;
+    }
+
+
+    /**
+     * 取消注册当音量发生变化时接收的广播
+     */
+    public void unMyRegisterReceiver(){
+        if (mVolumeReceiver != null){
+            mContext.unregisterReceiver(mVolumeReceiver);
+            mVolumeReceiver = null;
+        }
     }
 
     /**
