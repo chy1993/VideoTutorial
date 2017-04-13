@@ -1,15 +1,35 @@
 package com.chy.videotutorial.module.main.view;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+
+public class MainActivity extends BaseAppCompatActivity {
+    @BindView(R.id.button)
+    Button button;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"11111",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    protected void initDataAfterView() {
+
     }
 }

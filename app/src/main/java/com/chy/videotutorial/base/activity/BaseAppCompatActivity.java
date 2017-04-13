@@ -13,6 +13,7 @@ import com.chy.videotutorial.Utils.AppUtils;
 
 import butterknife.ButterKnife;
 
+
 /**
  * 所有AppCompatActivity的基类，默认实现了创建时被添加到管理队列，销毁是移出队列的处理
  *
