@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ import com.universalvideoview.UniversalVideoView;
 import java.io.File;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class VideoPlayerActivity extends BaseAppCompatActivity implements UniversalVideoView.VideoViewCallback,
         UniversalMediaController.PlayPrevNextListener{
@@ -75,6 +77,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @BindView(R.id.tvTitle)
     TextView mNoFullScreenTitle;
+
+    @BindView(R.id.ivClosePlayer)
+    ImageView mClosePlayer;
 
 
     MyVolumeReceiver mVolumeReceiver;
@@ -285,6 +290,12 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
             }
         });
+    }
+
+
+    @OnClick(R.id.ivClosePlayer)
+    void onClosePlayer(){
+        showToast("111111111!");
     }
 
     /**
