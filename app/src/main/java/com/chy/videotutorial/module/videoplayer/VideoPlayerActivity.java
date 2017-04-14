@@ -295,6 +295,12 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @OnClick(R.id.ivClosePlayer)
     void onClosePlayer(){
+        mMediaController.mPlayer.closePlayer();
+        mMediaController.mPlayer = null;
+        mMediaController = null;
+
+        this.finish();
+
         showToast("111111111!");
     }
 
