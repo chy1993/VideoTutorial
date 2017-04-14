@@ -15,8 +15,8 @@
 
         <FrameLayout
             android:id="@+id/video_layout"
-            android:layout_width="800dp"
-            android:layout_height="455dp"
+            android:layout_width="600dp"
+            android:layout_height="350dp"
             android:layout_centerInParent="true"
             android:background="@android:color/black">
 
@@ -39,7 +39,7 @@
 
         <RelativeLayout
             android:id="@+id/control_layout"
-            android:layout_width="800dp"
+            android:layout_width="600dp"
             android:layout_height="50dp"
             android:layout_below="@id/video_layout"
             android:layout_centerInParent="true"
@@ -164,7 +164,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:indeterminateDrawable="@drawable/uvv_star_play_progress_seek"
                     android:maxHeight="2dp"
                     android:minHeight="2dp"
