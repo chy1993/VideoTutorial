@@ -11,7 +11,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <FrameLayout
             android:id="@+id/video_layout"
@@ -40,7 +42,7 @@
         <RelativeLayout
             android:id="@+id/control_layout"
             android:layout_width="600dp"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
             android:layout_below="@id/video_layout"
             android:layout_centerInParent="true"
             android:gravity="center_vertical">
@@ -87,22 +89,27 @@
             <LinearLayout
                 android:id="@+id/allVolume"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
+                android:background="#dcddde"
+                android:layout_height="39dp"
                 android:layout_toLeftOf="@id/ascale_button">
 
                 <ImageView
                     android:id="@+id/aivVolume"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#e5e5e7"
+                    android:background="#dcddde"
                     android:src="@mipmap/max_volume_bg" />
 
                 <SeekBar
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/asbVolumeSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="39dp"
-                    android:background="#e5e5e7" />
+                    android:layout_height="wrap_content"
+                    android:maxHeight="2dp"
+                    android:minHeight="2dp"
+                    android:progressDrawable="@drawable/uvv_star_play_progress_seek"
+                    android:thumb="@drawable/uvv_seek_dot"
+                    />
 
 
             </LinearLayout>
@@ -136,7 +143,7 @@
                 android:layout_height="39dp"
                 android:layout_toLeftOf="@id/allReplayAndStop"
                 android:layout_toRightOf="@id/rlPlayController"
-                android:background="#e5e5e7"
+                android:background="#dcddde"
                 android:gravity="center_horizontal">
 
                 <TextView
@@ -159,6 +166,7 @@
                     android:textColor="#0000ff" />
 
                 <SeekBar
+                    android:background="@mipmap/max_slider_bg"
                     android:layout_centerInParent="true"
                     android:id="@+id/aseekbar"
                     android:layout_width="match_parent"
