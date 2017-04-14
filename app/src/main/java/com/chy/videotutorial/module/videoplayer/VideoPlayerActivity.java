@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 
 import com.chy.videotutorial.R;
@@ -29,7 +30,9 @@ import com.universalvideoview.UniversalVideoView;
 
 import java.io.File;
 
-public class VideoPlayerActivity extends AppCompatActivity implements UniversalVideoView.VideoViewCallback,
+import butterknife.BindView;
+
+public class VideoPlayerActivity extends BaseAppCompatActivity implements UniversalVideoView.VideoViewCallback,
         UniversalMediaController.PlayPrevNextListener{
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;            //运行时权限
     private static final String VIDEO_LOCAL_URL = "/sdcard/Download/1.mp4";        //默认播放的视频路径
@@ -41,8 +44,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
 
     Button mStartButton;                                             //开始播放按钮
     View mVideoLayout;                                               //整个播放器与控制器的父布局
-
-
 
     private int mSeekPosition;                                       //视频播放到的位置
     private int cachedHeight;                                        //播放视频部分的高度
@@ -57,7 +58,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
 
     private int maxVolume, currentVolume;           //音量最大值与当前值
 
-
     ImageButton mAPrevButton;
     ImageButton mATurnButton;
     ImageButton mANextButton;
@@ -66,6 +66,12 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
     ImageButton mAStopButton;
     SeekBar     mAVolumeSeekBar;
     ImageButton mAScaleButton;
+
+    @BindView(R.id.ahas_played)
+    TextView mCurrentTiem;
+
+    @BindView(R.id.duration)
+    TextView mEndTime;
 
 
     MyVolumeReceiver mVolumeReceiver;
@@ -76,18 +82,22 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
     }
 
 
-
+    @Override
+    protected int getLayoutResID() {
+        return R.layout.activity_video_player;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_player);
-
+    protected void initView() {
         //获取该目录下所有文件名集合
         files = getFiles("/sdcard/Download");
         initVideoView();
         initController();
         setVideoAreaSize();
+    }
+
+    @Override
+    protected void initDataAfterView() {
 
     }
 
@@ -120,7 +130,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             public void onClick(View v) {
                 mMediaController.mTurnButton.performClick();
 
-                //再点击按钮的时候做判断 如果是播放发消息更新
+                //点击按钮的时候做判断 如果是播放发消息更新
                 if (mMediaController.mPlayer.isPlaying()){
                     mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
                 }
@@ -182,9 +192,9 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
                 }
                 if (change) {
                     mMediaController.mPlayer.seekTo(newPosition);
-//                    if (mMediaController.mCurrentTime != null) {
-//                        mMediaController.mCurrentTime.setText(mMediaController.stringForTime(newPosition));
-//                    }
+                    if (mCurrentTiem != null) {
+                        mCurrentTiem.setText(mMediaController.stringForTime(newPosition));
+                    }
                 }
                 mDragging = false;
 
@@ -229,12 +239,13 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         });
 
 
-//        //视频播放完成时的回调
-//        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//            }
-//        });
+        //视频播放完成时的回调
+        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mHandler.removeMessages(UniversalMediaController.SHOW_PROGRESS);
+            }
+        });
     }
 
 
@@ -333,10 +344,10 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             mAPlaySeekBar.setSecondaryProgress(percent * 10);
         }
 
-//        if (mMediaController.mEndTime != null)
-//            mMediaController.mEndTime.setText(mMediaController.stringForTime(duration));
-//        if (mMediaController.mCurrentTime != null)
-//            mMediaController.mCurrentTime.setText(mMediaController.stringForTime(position));
+        if (mEndTime != null)
+           mEndTime.setText(mMediaController.stringForTime(duration));
+        if (mCurrentTiem != null)
+            mCurrentTiem.setText(mMediaController.stringForTime(position));
 
         return position;
     }
@@ -469,6 +480,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             mVideoView.start();
             mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
 
+            mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
     }
@@ -482,6 +494,8 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             setVideoPath(path);
             mVideoView.start();
             mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
+
+            mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
     }
@@ -490,8 +504,17 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
     public void rePlay() {
         String path = getPlayPath(getFileName(files,mCurrentFilePosition));
         setVideoPath(path);
+
+        if (mSeekPosition > 0) {
+            mVideoView.seekTo(mSeekPosition);
+        }
+
         mVideoView.start();
+
+//        boolean d = mMediaController.mPlayer.isPlaying();
+
         mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
+        mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
     }
 
@@ -520,7 +543,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
         }
     }
 
-
     public Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -528,7 +550,11 @@ public class VideoPlayerActivity extends AppCompatActivity implements UniversalV
             switch (msg.what) {
                 case UniversalMediaController.SHOW_PROGRESS:
                     pos = setPlayProgress();
-                    if (!mDragging && mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
+//                    boolean a = !mDragging;
+//                    boolean b  =   mMediaController.mPlayer != null ;
+//                    boolean c = mMediaController.mPlayer.isPlaying();
+                    // TODO: 2017/4/14  删除  && mMediaController.mPlayer.isPlaying()
+                    if (!mDragging && mMediaController.mPlayer != null) {
                         msg = obtainMessage(UniversalMediaController.SHOW_PROGRESS);
                         sendMessageDelayed(msg, 1000 - (pos % 1000));
                     }
