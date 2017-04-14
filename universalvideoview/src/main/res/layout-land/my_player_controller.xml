@@ -170,6 +170,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:background="@drawable/fullscreen_slider_bg"
             android:id="@+id/llController"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -199,19 +200,17 @@
                 android:textColor="#0000ff" />
 
             <SeekBar
-                android:background="@drawable/fullscreen_slider_bg"
+
                 android:id="@+id/seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:indeterminateDrawable="@drawable/uvv_star_play_progress_seek"
-                android:maxHeight="2dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:maxHeight="9dp"
                 android:minHeight="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:progressDrawable="@drawable/uvv_star_play_progress_seek"
-                android:thumb="@drawable/uvv_seek_dot"
+                android:paddingLeft="29dp"
+                android:paddingRight="29dp"
+                android:progressDrawable="@drawable/fullscreen_uvv_star_play_progress_seek"
+                android:thumb="@drawable/fullscreen_handle"
                 android:thumbOffset="10dip" />
 
 
