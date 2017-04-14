@@ -27,14 +27,6 @@
 
 
 
-        <ImageView
-            android:layout_marginTop="55dp"
-            android:layout_marginRight="195dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/ivClosePlayer"
-            android:src="@mipmap/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
 
 
@@ -63,6 +55,16 @@
                 app:uvv_scalable="true" />
 
         </FrameLayout>
+
+        <ImageView
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="200dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/ivClosePlayer"
+            android:src="@mipmap/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
 
         <RelativeLayout
