@@ -429,7 +429,7 @@ public class UniversalMediaController extends FrameLayout {
 
     public void reset() {
         mCurrentTime.setText("00:00");
-        mEndTime.setText("00:00");
+        mEndTime.setText("/00:00");
         mProgress.setProgress(0);
         mTurnButton.setImageResource(R.drawable.uvv_player_player_btn);
         setVisibility(View.VISIBLE);
@@ -456,7 +456,7 @@ public class UniversalMediaController extends FrameLayout {
         }
 
         if (mEndTime != null)
-            mEndTime.setText(stringForTime(duration));
+            mEndTime.setText("/" + stringForTime(duration));
         if (mCurrentTime != null)
             mCurrentTime.setText(stringForTime(position));
 

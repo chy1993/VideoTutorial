@@ -193,6 +193,6 @@
         android:layout_centerHorizontal="true"
         android:background="#00ff00"
         android:text="开始播放"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
 </RelativeLayout>

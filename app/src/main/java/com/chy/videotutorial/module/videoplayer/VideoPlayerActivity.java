@@ -70,7 +70,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     @BindView(R.id.ahas_played)
     TextView mCurrentTiem;
 
-    @BindView(R.id.duration)
+    @BindView(R.id.aduration)
     TextView mEndTime;
 
 
@@ -345,7 +345,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         }
 
         if (mEndTime != null)
-           mEndTime.setText(mMediaController.stringForTime(duration));
+            mEndTime.setText("/" + mMediaController.stringForTime(duration));
         if (mCurrentTiem != null)
             mCurrentTiem.setText(mMediaController.stringForTime(position));
 
