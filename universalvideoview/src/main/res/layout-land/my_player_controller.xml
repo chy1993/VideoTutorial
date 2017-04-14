@@ -88,23 +88,21 @@
                 android:id="@+id/prev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fullscreen_left_press"
-             />
+                android:background="@drawable/fullscreen_left_press" />
 
             <ImageButton
-                android:layout_toRightOf="@id/prev"
                 android:id="@+id/turn_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fullscreen_play_press"
-                />
+                android:layout_toRightOf="@id/prev"
+                android:background="@drawable/fullscreen_play_press" />
+
             <ImageButton
-                android:background="@drawable/fullscreen_right_press"
-                android:layout_toRightOf="@id/turn_button"
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               />
+                android:layout_toRightOf="@id/turn_button"
+                android:background="@drawable/fullscreen_right_press" />
 
         </RelativeLayout>
 
@@ -119,66 +117,75 @@
             android:background="@drawable/fullscreen_maxsize_press"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            android:visibility="visible"
-           />
+            android:visibility="visible" />
 
 
         <LinearLayout
             android:id="@+id/llVolume"
-            android:layout_toLeftOf="@id/scale_button"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_width="100dp"
-            android:layout_height="match_parent">
+            android:layout_toLeftOf="@id/scale_button">
+
             <ImageView
                 android:id="@+id/ivVolume"
-                android:background="@drawable/fullscreen_volume_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/fullscreen_volume_icon" />
 
-            <SeekBar
-                android:id="@+id/sbVolumeSlider"
-                android:background="@drawable/fullscreen_volume_slider_bg"
-                android:layout_gravity="center"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/fullscreen_volume_slider_bg">
 
+                <SeekBar
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/sbVolumeSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:maxHeight="5dp"
+                    android:progressDrawable="@drawable/fullscreen_uvv_star_play_progress_seek"
+                    android:thumb="@drawable/fullscreen_handle" />
+
+            </RelativeLayout>
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_toLeftOf="@id/llVolume"
             android:id="@+id/llReplayAndStop"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/llVolume"
+            android:orientation="horizontal">
 
             <ImageButton
-                android:background="@drawable/fullscreen_replay_press"
                 android:id="@+id/replay"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:background="@drawable/fullscreen_replay_press" />
 
 
             <ImageButton
-                android:background="@drawable/fullscreen_stop_press"
                 android:id="@+id/stop"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:background="@drawable/fullscreen_stop_press" />
 
 
         </LinearLayout>
 
         <RelativeLayout
-            android:background="@drawable/fullscreen_slider_bg"
             android:id="@+id/llController"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_vertical"
             android:layout_toLeftOf="@id/llReplayAndStop"
             android:layout_toRightOf="@id/llplay"
-            android:gravity="center_horizontal"
-           >
+            android:background="@drawable/fullscreen_slider_bg"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/has_played"
@@ -190,12 +197,12 @@
                 android:textColor="#0000ff" />
 
             <TextView
-                android:layout_toRightOf="@id/has_played"
                 android:id="@+id/duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="10dp"
+                android:layout_toRightOf="@id/has_played"
                 android:text="/00:00"
                 android:textColor="#0000ff" />
 
