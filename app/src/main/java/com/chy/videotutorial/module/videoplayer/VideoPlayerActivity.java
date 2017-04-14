@@ -73,6 +73,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     @BindView(R.id.aduration)
     TextView mEndTime;
 
+    @BindView(R.id.tvTitle)
+    TextView mNoFullScreenTitle;
+
 
     MyVolumeReceiver mVolumeReceiver;
 
@@ -234,6 +237,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 }
                 mVideoView.start();
                 mMediaController.setTitle("1.mp4");
+                mNoFullScreenTitle.setText("1.mp4");
                 mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
             }
         });
@@ -437,13 +441,14 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
             mVideoLayout.setLayoutParams(layoutParams);
             mStartButton.setVisibility(View.GONE);
-
+            mNoFullScreenTitle.setVisibility(View.GONE);
         } else {
             ViewGroup.LayoutParams layoutParams = mVideoLayout.getLayoutParams();
             layoutParams.width = this.cacheWidth;
             layoutParams.height = this.cachedHeight;
             mVideoLayout.setLayoutParams(layoutParams);
             mStartButton.setVisibility(View.VISIBLE);
+            mNoFullScreenTitle.setVisibility(View.VISIBLE);
         }
     }
 
@@ -479,7 +484,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             setVideoPath(path);
             mVideoView.start();
             mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
-
+            mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
@@ -494,7 +499,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             setVideoPath(path);
             mVideoView.start();
             mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
-
+            mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
@@ -514,6 +519,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 //        boolean d = mMediaController.mPlayer.isPlaying();
 
         mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
+        mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
     }

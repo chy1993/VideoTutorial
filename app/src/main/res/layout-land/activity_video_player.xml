@@ -15,12 +15,38 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/tvTitle"
+            android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true"
+            android:text="11111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <ImageView
+            android:layout_marginTop="55dp"
+            android:layout_marginRight="195dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/ivClosePlayer"
+            android:src="@mipmap/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
         <FrameLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/tvTitle"
             android:id="@+id/video_layout"
             android:layout_width="600dp"
             android:layout_height="350dp"
             android:layout_centerInParent="true"
             android:background="@android:color/black">
+
 
             <com.universalvideoview.UniversalVideoView
                 android:id="@+id/videoView"
