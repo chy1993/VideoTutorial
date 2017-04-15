@@ -142,6 +142,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 if (mMediaController.mPlayer.isPlaying()){
                     mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
                 }
+                updatePausePlay();
             }
          });
 
@@ -467,6 +468,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mStartButton.setVisibility(View.VISIBLE);
             mNoFullScreenTitle.setVisibility(View.VISIBLE);
             mClosePlayer.setVisibility(View.VISIBLE);
+
+            //切位非全屏时 要更新的按钮状态
+            updatePausePlay();
         }
     }
 
@@ -637,5 +641,17 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     public boolean onTrackballEvent(MotionEvent ev) {
         setPlayProgress();
         return false;
+    }
+
+
+    /**
+     * 播放暂停按钮状态的切换
+     */
+    public void updatePausePlay() {
+        if (mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
+            mATurnButton.setImageResource(R.mipmap.max_play);
+        } else {
+            mATurnButton.setImageResource(R.mipmap.max_pause);
+        }
     }
 }
