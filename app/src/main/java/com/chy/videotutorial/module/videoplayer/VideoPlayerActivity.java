@@ -222,6 +222,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 setPlayProgress();
 
                 mMediaController.updatePausePlay();
+                updatePausePlay();
 
                 mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
             }
@@ -257,6 +258,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 mMediaController.setTitle("1.mp4");
                 mNoFullScreenTitle.setText("1.mp4");
                 mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
+
+                updatePausePlay();
             }
         });
 
@@ -524,6 +527,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
+        updatePausePlay();
+
+
     }
 
     @Override
@@ -540,6 +546,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
+
+        updatePausePlay();
 
     }
 
@@ -562,6 +570,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
+        updatePausePlay();
     }
 
 
