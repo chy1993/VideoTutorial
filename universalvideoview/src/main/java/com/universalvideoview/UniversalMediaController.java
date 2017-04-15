@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -86,6 +87,8 @@ public class UniversalMediaController extends FrameLayout {
 
     private View mBackButton;           // 返回按钮
 
+    private ImageView mPlayerStopView;  //播放结束 或者停止播放时展示的view
+
     private ViewGroup loadingLayout;
 
     private ViewGroup errorLayout;
@@ -154,6 +157,8 @@ public class UniversalMediaController extends FrameLayout {
 
         mReplayButton = (ImageButton) v.findViewById(R.id.replay);
         mStopButton = (ImageButton) v.findViewById(R.id.stop);
+
+        mPlayerStopView = (ImageView) v.findViewById(R.id.ivPlayerStop);
 
         if (mTurnButton != null) {
             mTurnButton.requestFocus();
@@ -355,7 +360,7 @@ public class UniversalMediaController extends FrameLayout {
                     showCenterView(R.id.loading_layout);
                     break;
                 case SHOW_COMPLETE: //7
-                    showCenterView(R.id.center_play_btn);
+                    showCenterView(R.id.ivPlayerStop);
                     break;
                 case SHOW_ERROR: //5
                     show();
@@ -387,8 +392,10 @@ public class UniversalMediaController extends FrameLayout {
                 errorLayout.setVisibility(GONE);
             }
         } else if (resId == R.id.center_play_btn) {
+            // TODO: 2017/4/15 暂时做的处理是让中央播放按钮完全隐藏 后期再将其删除
+
             if (mCenterPlayButton.getVisibility() != VISIBLE) {
-                mCenterPlayButton.setVisibility(VISIBLE);
+                mCenterPlayButton.setVisibility(GONE);
             }
             if (loadingLayout.getVisibility() == VISIBLE) {
                 loadingLayout.setVisibility(GONE);
@@ -400,6 +407,23 @@ public class UniversalMediaController extends FrameLayout {
         } else if (resId == R.id.error_layout) {
             if (errorLayout.getVisibility() != VISIBLE) {
                 errorLayout.setVisibility(VISIBLE);
+            }
+            if (mCenterPlayButton.getVisibility() == VISIBLE) {
+                mCenterPlayButton.setVisibility(GONE);
+            }
+            if (loadingLayout.getVisibility() == VISIBLE) {
+                loadingLayout.setVisibility(GONE);
+            }
+
+        }else if (resId == R.id.ivPlayerStop){
+            //新添加的播放结束或者停止播放时的显示界面
+
+            if (mPlayerStopView.getVisibility() != VISIBLE){
+                mPlayerStopView.setVisibility(VISIBLE);
+            }
+
+            if (errorLayout.getVisibility() == VISIBLE) {
+                errorLayout.setVisibility(GONE);
             }
             if (mCenterPlayButton.getVisibility() == VISIBLE) {
                 mCenterPlayButton.setVisibility(GONE);
@@ -424,6 +448,10 @@ public class UniversalMediaController extends FrameLayout {
         }
         if (loadingLayout.getVisibility() == VISIBLE) {
             loadingLayout.setVisibility(GONE);
+        }
+
+        if (mPlayerStopView.getVisibility() == VISIBLE){
+            mPlayerStopView.setVisibility(GONE);
         }
     }
 
@@ -618,6 +646,8 @@ public class UniversalMediaController extends FrameLayout {
                 updateBackButton();
                 mPlayer.setFullscreen(false);
             }
+
+            mPlayerStopView.setVisibility(VISIBLE);
 
         }
     };
