@@ -612,6 +612,13 @@ public class UniversalMediaController extends FrameLayout {
                 mPlayer.closePlayer();
             }
 
+            if (mIsFullScreen) {
+                mIsFullScreen = false;
+                updateScaleButton();
+                updateBackButton();
+                mPlayer.setFullscreen(false);
+            }
+
         }
     };
 
@@ -652,10 +659,10 @@ public class UniversalMediaController extends FrameLayout {
      */
     public void updatePausePlay() {
         if (mPlayer != null && mPlayer.isPlaying()) {
-            mTurnButton.setImageResource(R.drawable.fullscreen_play_press);
+            mTurnButton.setImageResource(R.drawable.fullscreen_pause_press);
             hideCenterView();
         } else {
-            mTurnButton.setImageResource(R.drawable.fullscreen_pause_press);
+            mTurnButton.setImageResource(R.drawable.fullscreen_play_press);
             showCenterView(R.id.center_play_btn);
         }
     }

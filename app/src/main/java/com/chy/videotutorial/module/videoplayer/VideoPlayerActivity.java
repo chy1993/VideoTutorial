@@ -469,7 +469,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mNoFullScreenTitle.setVisibility(View.VISIBLE);
             mClosePlayer.setVisibility(View.VISIBLE);
 
-            //切位非全屏时 要更新的按钮状态
+            //切为非全屏时 要更新暂停按钮的按钮状态
             updatePausePlay();
         }
     }
@@ -649,9 +649,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      */
     public void updatePausePlay() {
         if (mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
-            mATurnButton.setImageResource(R.mipmap.max_play);
-        } else {
             mATurnButton.setImageResource(R.mipmap.max_pause);
+        } else {
+            mATurnButton.setImageResource(R.mipmap.max_play);
         }
     }
 }
