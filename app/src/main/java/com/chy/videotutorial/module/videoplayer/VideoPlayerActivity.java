@@ -295,9 +295,10 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @OnClick(R.id.ivClosePlayer)
     void onClosePlayer(){
+        mHandler.removeMessages(UniversalMediaController.SHOW_PROGRESS);
+        mVideoView.closePlayer();
         mMediaController.mPlayer.closePlayer();
         mMediaController.mPlayer = null;
-        mMediaController = null;
 
         this.finish();
 
@@ -312,10 +313,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             @Override
             public void run() {
                  cacheWidth = mVideoLayout.getWidth();
-//                cachedHeight = (int) (width * 405f / 720f);
                 cachedHeight = mVideoLayout.getHeight();
                 ViewGroup.LayoutParams videoLayoutParams = mVideoLayout.getLayoutParams();
-//                videoLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 videoLayoutParams.width = cacheWidth;
                 videoLayoutParams.height = cachedHeight;
                 mVideoLayout.setLayoutParams(videoLayoutParams);
@@ -459,6 +458,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mVideoLayout.setLayoutParams(layoutParams);
             mStartButton.setVisibility(View.GONE);
             mNoFullScreenTitle.setVisibility(View.GONE);
+            mClosePlayer.setVisibility(View.GONE);
         } else {
             ViewGroup.LayoutParams layoutParams = mVideoLayout.getLayoutParams();
             layoutParams.width = this.cacheWidth;
@@ -466,6 +466,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mVideoLayout.setLayoutParams(layoutParams);
             mStartButton.setVisibility(View.VISIBLE);
             mNoFullScreenTitle.setVisibility(View.VISIBLE);
+            mClosePlayer.setVisibility(View.VISIBLE);
         }
     }
 
