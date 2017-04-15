@@ -47,7 +47,7 @@ public class UniversalMediaController extends FrameLayout {
 
     private boolean mScalable = false;
     private boolean mIsFullScreen = false;
-//    private boolean mFullscreenEnabled = false;
+    public boolean mFullscreenEnabled = true;                     //是否可以全屏
 
 
     public static final int sDefaultTimeout = 3000;               //默认的延迟时间
@@ -160,6 +160,12 @@ public class UniversalMediaController extends FrameLayout {
 
         mPlayerStopView = (ImageView) v.findViewById(R.id.ivPlayerStop);
 
+        //添加 停止播放时展示的图片的监听
+        if (mPlayerStopView != null){
+            mPlayerStopView.setOnClickListener(mReplayListener);
+        }
+
+        //添加暂停播放按钮的监听
         if (mTurnButton != null) {
             mTurnButton.requestFocus();
             mTurnButton.setOnClickListener(mPauseListener);
@@ -416,8 +422,9 @@ public class UniversalMediaController extends FrameLayout {
             }
 
         }else if (resId == R.id.ivPlayerStop){
-            //新添加的播放结束或者停止播放时的显示界面
+            hide();
 
+            //新添加的播放结束或者停止播放时的显示界面
             if (mPlayerStopView.getVisibility() != VISIBLE){
                 mPlayerStopView.setVisibility(VISIBLE);
             }
@@ -622,7 +629,7 @@ public class UniversalMediaController extends FrameLayout {
 
         @Override
         public void onClick(View v) {
-//            Toast.makeText(mContext,"重新播放",Toast.LENGTH_SHORT).show();
+
             if (mPlayPrevNextListener!=null){
                 mPlayPrevNextListener.rePlay();
             }
@@ -647,7 +654,8 @@ public class UniversalMediaController extends FrameLayout {
                 mPlayer.setFullscreen(false);
             }
 
-            mPlayerStopView.setVisibility(VISIBLE);
+            showCenterView(R.id.ivPlayerStop);
+            mFullscreenEnabled = false;
 
         }
     };
@@ -853,6 +861,14 @@ public class UniversalMediaController extends FrameLayout {
 
     public void showComplete() {
         mHandler.sendEmptyMessage(SHOW_COMPLETE);
+        if (mIsFullScreen) {
+            mIsFullScreen = false;
+            updateScaleButton();
+            updateBackButton();
+            mPlayer.setFullscreen(false);
+        }
+
+        mFullscreenEnabled = false;
     }
 
     public void hideComplete() {

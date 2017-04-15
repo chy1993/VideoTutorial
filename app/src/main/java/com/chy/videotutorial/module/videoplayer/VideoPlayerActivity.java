@@ -167,6 +167,10 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mAScaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!mMediaController.mFullscreenEnabled){
+                    return;
+                }
+
                 mMediaController.mScaleButton.performClick();
             }
         });
@@ -497,6 +501,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @Override
     public void prev() {
+        mMediaController.mFullscreenEnabled = true;
+
         String path;
 
         if (mCurrentFilePosition > 0){
@@ -514,6 +520,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @Override
     public void next() {
+        mMediaController.mFullscreenEnabled = true;
+
         String path;
         if (mCurrentFilePosition < files.length-1){
             mCurrentFilePosition = mCurrentFilePosition +1;
@@ -529,6 +537,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @Override
     public void rePlay() {
+        mMediaController.mFullscreenEnabled = true;
+
         String path = getPlayPath(getFileName(files,mCurrentFilePosition));
         setVideoPath(path);
 
