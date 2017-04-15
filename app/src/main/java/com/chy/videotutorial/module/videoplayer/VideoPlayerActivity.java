@@ -122,6 +122,14 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mAVolumeSeekBar = (SeekBar) findViewById(R.id.asbVolumeSlider);
         mAScaleButton = (ImageButton) findViewById(R.id.ascale_button);
 
+        //停止播放
+        mAStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMediaController.mStopButton.performClick();
+            }
+        });
+
 
         //播放前一首
         mAPrevButton.setOnClickListener(new View.OnClickListener() {

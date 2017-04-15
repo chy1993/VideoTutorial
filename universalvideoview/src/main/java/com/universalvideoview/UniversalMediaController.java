@@ -641,7 +641,6 @@ public class UniversalMediaController extends FrameLayout {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(mContext,"结束播放",Toast.LENGTH_SHORT).show();
 
             if (mPlayer != null) {
                 mPlayer.closePlayer();
