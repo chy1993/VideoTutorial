@@ -195,12 +195,11 @@
                     android:textColor="#666666" />
 
                 <SeekBar
-                    android:background="@mipmap/max_slider_bg"
                     android:layout_centerInParent="true"
                     android:id="@+id/aseekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxHeight="2dp"
+                    android:maxHeight="5dp"
                     android:minHeight="2dp"
                     android:progressDrawable="@drawable/uvv_star_play_progress_seek"
                     android:thumb="@drawable/uvv_seek_dot"
