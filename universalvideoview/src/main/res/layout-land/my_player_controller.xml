@@ -83,8 +83,10 @@
         android:id="@+id/control_layout"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:gravity="center_vertical"
         android:layout_alignParentBottom="true"
-        android:gravity="center_vertical">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:id="@+id/llplay"
@@ -94,20 +96,20 @@
             <ImageButton
                 android:id="@+id/prev"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/fullscreen_left_press" />
 
             <ImageButton
                 android:id="@+id/turn_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_toRightOf="@id/prev"
                 android:background="@drawable/fullscreen_play_press" />
 
             <ImageButton
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_toRightOf="@id/turn_button"
                 android:background="@drawable/fullscreen_right_press" />
 
@@ -117,7 +119,7 @@
         <ImageButton
             android:id="@+id/scale_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="3dp"
@@ -171,14 +173,14 @@
             <ImageButton
                 android:id="@+id/replay"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/fullscreen_replay_press" />
 
 
             <ImageButton
                 android:id="@+id/stop"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/fullscreen_stop_press" />
 
 
@@ -192,26 +194,28 @@
             android:layout_toLeftOf="@id/llReplayAndStop"
             android:layout_toRightOf="@id/llplay"
             android:background="@drawable/fullscreen_slider_bg"
-            android:gravity="center_horizontal">
+           >
 
             <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="11sp"
+                android:layout_toLeftOf="@+id/duration"
                 android:id="@+id/has_played"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
                 android:text="00:00"
-                android:textColor="#0000ff" />
+                android:textColor="#63B8FF" />
 
             <TextView
+                android:layout_marginTop="3dp"
+                android:textSize="11sp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
                 android:id="@+id/duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:layout_toRightOf="@id/has_played"
                 android:text="/00:00"
-                android:textColor="#0000ff" />
+                android:textColor="#63B8FF" />
 
             <SeekBar
 
@@ -221,8 +225,8 @@
                 android:layout_centerVertical="true"
                 android:maxHeight="9dp"
                 android:minHeight="2dp"
-                android:paddingLeft="29dp"
-                android:paddingRight="29dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:progressDrawable="@drawable/fullscreen_uvv_star_play_progress_seek"
                 android:thumb="@drawable/fullscreen_handle"
                 android:thumbOffset="10dip" />
