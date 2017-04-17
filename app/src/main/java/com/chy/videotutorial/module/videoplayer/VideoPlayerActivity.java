@@ -13,13 +13,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -527,7 +527,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-        updatePausePlay();
+//        updatePausePlay();
+        mATurnButton.setImageResource(R.mipmap.max_pause);
 
 
     }
@@ -547,7 +548,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-        updatePausePlay();
+//        updatePausePlay();
+        mATurnButton.setImageResource(R.mipmap.max_pause);
 
     }
 
@@ -570,7 +572,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-        updatePausePlay();
+//        updatePausePlay();
+        mATurnButton.setImageResource(R.mipmap.max_pause);
     }
 
 
