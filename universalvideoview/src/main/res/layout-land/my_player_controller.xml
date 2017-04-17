@@ -97,21 +97,21 @@
                 android:id="@+id/prev"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/fullscreen_left_press" />
+                android:background="@drawable/f_left_selector_theme_btn" />
 
             <ImageButton
                 android:id="@+id/turn_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/prev"
-                android:background="@drawable/fullscreen_play_press" />
+                android:background="@drawable/f_play_selector_theme_btn" />
 
             <ImageButton
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/turn_button"
-                android:background="@drawable/fullscreen_right_press" />
+                android:background="@drawable/f_right_selector_theme_btn" />
 
         </RelativeLayout>
 
@@ -123,7 +123,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="3dp"
-            android:background="@drawable/fullscreen_maxsize_press"
+            android:background="@drawable/f_fullscreen_selector_theme_btn"
             android:padding="10dp"
             android:scaleType="fitCenter"
             android:visibility="visible" />
@@ -181,7 +181,7 @@
                 android:id="@+id/stop"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/fullscreen_stop_press" />
+                android:background="@drawable/f_stop_selector_theme_btn" />
 
 
         </LinearLayout>
