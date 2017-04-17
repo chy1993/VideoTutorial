@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aprev"
-                    android:background="@mipmap/max_play" />
+                    android:background="@drawable/play_selector_theme_btn" />
 
                 <ImageButton
                     android:id="@+id/anext"

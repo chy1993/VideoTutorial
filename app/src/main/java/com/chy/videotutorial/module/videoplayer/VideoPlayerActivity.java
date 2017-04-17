@@ -687,9 +687,13 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      */
     public void updatePausePlay() {
         if (mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
-            mATurnButton.setImageResource(R.mipmap.max_pause);
+//            mATurnButton.setImageResource(R.mipmap.max_pause);
+            mATurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
+//            mATurnButton.setBackgroundResource(R.drawable.play_selector_theme_btn);
+
         } else {
-            mATurnButton.setImageResource(R.mipmap.max_play);
+//            mATurnButton.setImageResource(R.mipmap.max_play);
+            mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
         }
     }
 }
