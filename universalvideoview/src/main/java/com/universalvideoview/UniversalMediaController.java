@@ -695,11 +695,21 @@ public class UniversalMediaController extends FrameLayout {
      * 播放暂停按钮状态的切换
      */
     public void updatePausePlay() {
+//        if (mPlayer != null && mPlayer.isPlaying()) {
+//            mTurnButton.setImageResource(R.drawable.fullscreen_pause_press);
+//            hideCenterView();
+//        } else {
+//            mTurnButton.setImageResource(R.drawable.fullscreen_play_press);
+//            showCenterView(R.id.center_play_btn);
+//        }
+
         if (mPlayer != null && mPlayer.isPlaying()) {
-            mTurnButton.setImageResource(R.drawable.fullscreen_pause_press);
+//            mTurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+            mTurnButton.setBackgroundResource(R.drawable.f_pause_selector_theme_btn);
             hideCenterView();
         } else {
-            mTurnButton.setImageResource(R.drawable.fullscreen_play_press);
+//            mTurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
+            mTurnButton.setBackgroundResource(R.drawable.f_play_selector_theme_btn);
             showCenterView(R.id.center_play_btn);
         }
     }
