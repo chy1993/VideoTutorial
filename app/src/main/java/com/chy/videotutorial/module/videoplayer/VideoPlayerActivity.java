@@ -530,8 +530,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-        updatePausePlay();
-//        mATurnButton.setImageResource(R.mipmap.max_pause);
+//        updatePausePlay();
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
 
 
     }
@@ -551,8 +551,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-        updatePausePlay();
-//        mATurnButton.setImageResource(R.mipmap.max_pause);
+//        updatePausePlay();
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
 
     }
 
@@ -574,8 +574,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-        updatePausePlay();
-//        mATurnButton.setImageResource(R.mipmap.max_pause);
+//        updatePausePlay();
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
 
 
 //        playMode
