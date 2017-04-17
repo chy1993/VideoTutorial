@@ -60,6 +60,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     private int maxVolume, currentVolume;           //音量最大值与当前值
 
+    private int playMode;                           //播放模式    0播放完展示结束 1单曲循环播放 2随机播放 3列表循环播放
+
+
     ImageButton mAPrevButton;
     ImageButton mATurnButton;
     ImageButton mANextButton;
@@ -566,7 +569,6 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
         mVideoView.start();
 
-//        boolean d = mMediaController.mPlayer.isPlaying();
 
         mMediaController.setTitle(getFileName(files,mCurrentFilePosition));
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
@@ -574,6 +576,12 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
 //        updatePausePlay();
         mATurnButton.setImageResource(R.mipmap.max_pause);
+
+
+//        playMode
+
+
+
     }
 
 

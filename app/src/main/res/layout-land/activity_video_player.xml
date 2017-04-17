@@ -70,7 +70,7 @@
         <RelativeLayout
             android:id="@+id/control_layout"
             android:layout_width="600dp"
-            android:layout_height="52dp"
+            android:layout_height="40dp"
             android:layout_below="@id/video_layout"
             android:layout_centerInParent="true"
             android:gravity="center_vertical">
@@ -83,20 +83,20 @@
                 <ImageButton
                     android:id="@+id/aprev"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@mipmap/max_left" />
 
                 <ImageButton
                     android:id="@+id/aturn_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aprev"
                     android:background="@mipmap/max_play" />
 
                 <ImageButton
                     android:id="@+id/anext"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aturn_button"
                     android:background="@mipmap/max_right" />
 
@@ -106,7 +106,7 @@
             <ImageButton
                 android:id="@+id/ascale_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:background="@mipmap/max_fullscreen"
                 android:padding="10dp"
@@ -118,13 +118,13 @@
                 android:id="@+id/allVolume"
                 android:layout_width="100dp"
                 android:background="#dcddde"
-                android:layout_height="39dp"
+                android:layout_height="40dp"
                 android:layout_toLeftOf="@id/ascale_button">
 
                 <ImageView
                     android:id="@+id/aivVolume"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="#dcddde"
                     android:src="@mipmap/max_volume_bg" />
 
@@ -152,14 +152,14 @@
                 <ImageButton
                     android:id="@+id/areplay"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@mipmap/max_replay" />
 
 
                 <ImageButton
                     android:id="@+id/astop"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@mipmap/max_stop" />
 
 
@@ -168,30 +168,31 @@
             <RelativeLayout
                 android:id="@+id/allController"
                 android:layout_width="fill_parent"
-                android:layout_height="39dp"
+                android:layout_height="40dp"
                 android:layout_toLeftOf="@id/allReplayAndStop"
                 android:layout_toRightOf="@id/rlPlayController"
                 android:background="#dcddde"
                 android:gravity="center_horizontal">
 
                 <TextView
+                    android:textSize="10sp"
+                    android:layout_toLeftOf="@+id/aduration"
                     android:id="@+id/ahas_played"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="00:00"
-                    android:textColor="#0000ff" />
+                    android:textColor="#666666" />
 
                 <TextView
+                    android:textSize="10sp"
+                    android:paddingRight="20dp"
                     android:id="@+id/aduration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:layout_toRightOf="@id/ahas_played"
                     android:text="/00:00"
-                    android:textColor="#0000ff" />
+                    android:textColor="#666666" />
 
                 <SeekBar
                     android:background="@mipmap/max_slider_bg"
