@@ -530,8 +530,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-//        updatePausePlay();
-        mATurnButton.setImageResource(R.mipmap.max_pause);
+        updatePausePlay();
+//        mATurnButton.setImageResource(R.mipmap.max_pause);
 
 
     }
@@ -551,8 +551,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
         }
 
-//        updatePausePlay();
-        mATurnButton.setImageResource(R.mipmap.max_pause);
+        updatePausePlay();
+//        mATurnButton.setImageResource(R.mipmap.max_pause);
 
     }
 
@@ -574,8 +574,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-//        updatePausePlay();
-        mATurnButton.setImageResource(R.mipmap.max_pause);
+        updatePausePlay();
+//        mATurnButton.setImageResource(R.mipmap.max_pause);
 
 
 //        playMode
@@ -687,13 +687,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      */
     public void updatePausePlay() {
         if (mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
-//            mATurnButton.setImageResource(R.mipmap.max_pause);
-            mATurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
-//            mATurnButton.setBackgroundResource(R.drawable.play_selector_theme_btn);
-
-        } else {
-//            mATurnButton.setImageResource(R.mipmap.max_play);
             mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+        } else {
+            mATurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
         }
     }
 }

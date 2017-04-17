@@ -774,7 +774,9 @@ public class UniversalVideoView extends SurfaceView
 
     @Override
     public boolean isPlaying() {
-        return isInPlaybackState() && mMediaPlayer.isPlaying();
+//        return isInPlaybackState() && mMediaPlayer.isPlaying();
+        // TODO: 2017/4/17 减少判断条件
+        return mMediaPlayer.isPlaying();
     }
 
     @Override
