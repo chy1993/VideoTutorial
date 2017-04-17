@@ -12,31 +12,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
 
         <TextView
-            android:textColor="#ffffff"
             android:id="@+id/tvTitle"
-            android:layout_marginTop="45dp"
-            android:layout_centerHorizontal="true"
-            android:text="11111"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-
-
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:text="11111"
+            android:textColor="#ffffff" />
 
 
         <FrameLayout
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/tvTitle"
             android:id="@+id/video_layout"
             android:layout_width="600dp"
             android:layout_height="350dp"
+            android:layout_below="@id/tvTitle"
             android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
             android:background="@android:color/black">
 
 
@@ -57,14 +53,13 @@
         </FrameLayout>
 
         <ImageView
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="200dp"
-            android:layout_alignParentRight="true"
             android:id="@+id/ivClosePlayer"
-            android:src="@mipmap/close"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="200dp"
+            android:layout_marginTop="60dp"
+            android:src="@mipmap/close" />
 
 
         <RelativeLayout
@@ -117,9 +112,9 @@
             <LinearLayout
                 android:id="@+id/allVolume"
                 android:layout_width="100dp"
-                android:background="#dcddde"
                 android:layout_height="40dp"
-                android:layout_toLeftOf="@id/ascale_button">
+                android:layout_toLeftOf="@id/ascale_button"
+                android:background="#dcddde">
 
                 <ImageView
                     android:id="@+id/aivVolume"
@@ -129,15 +124,14 @@
                     android:src="@mipmap/max_volume_bg" />
 
                 <SeekBar
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/asbVolumeSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:maxHeight="2dp"
                     android:minHeight="2dp"
                     android:progressDrawable="@drawable/uvv_star_play_progress_seek"
-                    android:thumb="@drawable/uvv_seek_dot"
-                    />
+                    android:thumb="@drawable/uvv_seek_dot" />
 
 
             </LinearLayout>
@@ -175,30 +169,30 @@
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:textSize="10sp"
-                    android:layout_toLeftOf="@+id/aduration"
                     android:id="@+id/ahas_played"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/aduration"
                     android:text="00:00"
-                    android:textColor="#666666" />
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
 
                 <TextView
-                    android:textSize="10sp"
-                    android:paddingRight="20dp"
                     android:id="@+id/aduration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
+                    android:paddingRight="20dp"
                     android:text="/00:00"
-                    android:textColor="#666666" />
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
 
                 <SeekBar
-                    android:layout_centerInParent="true"
                     android:id="@+id/aseekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:maxHeight="5dp"
                     android:minHeight="2dp"
                     android:progressDrawable="@drawable/uvv_star_play_progress_seek"
