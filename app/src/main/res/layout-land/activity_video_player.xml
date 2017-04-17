@@ -79,7 +79,7 @@
                     android:id="@+id/aprev"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@mipmap/max_left" />
+                    android:background="@drawable/left_selector_theme_btn" />
 
                 <ImageButton
                     android:id="@+id/aturn_button"
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aturn_button"
-                    android:background="@mipmap/max_right" />
+                    android:background="@drawable/right_selector_theme_btn" />
 
             </RelativeLayout>
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:background="@mipmap/max_fullscreen"
+                android:background="@drawable/fullscreen_selector_theme_btn"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
@@ -154,7 +154,7 @@
                     android:id="@+id/astop"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@mipmap/max_stop" />
+                    android:background="@drawable/stop_selector_theme_btn" />
 
 
             </LinearLayout>
