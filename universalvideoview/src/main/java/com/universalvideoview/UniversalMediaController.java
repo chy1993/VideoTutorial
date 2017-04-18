@@ -909,15 +909,18 @@ public class UniversalMediaController extends FrameLayout {
     }
 
     public void showComplete() {
-        mHandler.sendEmptyMessage(SHOW_COMPLETE);
-        if (mIsFullScreen) {
-            mIsFullScreen = false;
-            updateScaleButton();
-            updateBackButton();
-            mPlayer.setFullscreen(false);
+        if (mPlayMode == 0){
+            mHandler.sendEmptyMessage(SHOW_COMPLETE);
+            if (mIsFullScreen) {
+                mIsFullScreen = false;
+                updateScaleButton();
+                updateBackButton();
+                mPlayer.setFullscreen(false);
+            }
+
+            mFullscreenEnabled = false;
         }
 
-        mFullscreenEnabled = false;
     }
 
     public void hideComplete() {
