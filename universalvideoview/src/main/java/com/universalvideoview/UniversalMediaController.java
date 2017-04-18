@@ -49,6 +49,7 @@ public class UniversalMediaController extends FrameLayout {
     private boolean mIsFullScreen = false;
     public boolean mFullscreenEnabled = true;                     //是否可以全屏
 
+    public int mPlayMode = 0;                           //播放模式    0播放完展示结束 1单曲循环播放 2随机播放 3列表循环播放
 
     public static final int sDefaultTimeout = 3000;               //默认的延迟时间
 
@@ -162,7 +163,7 @@ public class UniversalMediaController extends FrameLayout {
 
         //添加 停止播放时展示的图片的监听
         if (mPlayerStopView != null){
-            mPlayerStopView.setOnClickListener(mReplayListener);
+            mPlayerStopView.setOnClickListener(mStopViewListener);
         }
 
         //添加暂停播放按钮的监听
@@ -622,17 +623,36 @@ public class UniversalMediaController extends FrameLayout {
         }
     };
 
-    //重新播放
+    //播放模式选择的监听
     private View.OnClickListener mReplayListener = new View.OnClickListener(){
 
         @Override
         public void onClick(View v) {
 
+            if (mPlayMode == 0){
+                mPlayMode = 1;
+            }else if (mPlayMode == 1){
+                mPlayMode = 2;
+            }else if (mPlayMode == 2){
+                mPlayMode = 3;
+            }else if (mPlayMode == 3){
+                mPlayMode = 0;
+            }
+
+            updatePlayModeButton();
+        }
+    };
+
+
+    private View.OnClickListener mStopViewListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
             if (mPlayPrevNextListener!=null){
                 mPlayPrevNextListener.rePlay();
             }
         }
-    };
+};
+
 
     //停止播放
     private View.OnClickListener mStopListener = new View.OnClickListener(){
@@ -722,6 +742,27 @@ public class UniversalMediaController extends FrameLayout {
 //            mScaleButton.setImageResource(R.drawable.fullscreen_maxsize_press);
         }
     }
+
+    /**
+     * 更新全屏切换的按钮
+     */
+    void updatePlayModeButton() {
+      if (mPlayMode == 0){
+          Toast.makeText(mContext,"停止画面", Toast.LENGTH_SHORT).show();
+      }else if (mPlayMode == 1){
+          Toast.makeText(mContext,"单曲循环", Toast.LENGTH_SHORT).show();
+      }else if (mPlayMode == 2){
+          Toast.makeText(mContext,"随机播放", Toast.LENGTH_SHORT).show();
+      }else if (mPlayMode == 3){
+          Toast.makeText(mContext,"列表循环", Toast.LENGTH_SHORT).show();
+      }else {
+          Toast.makeText(mContext,"播放模式出错", Toast.LENGTH_SHORT).show();
+      }
+
+
+    }
+
+
 
     /**
      * 全屏按钮与返回按钮的状态切换

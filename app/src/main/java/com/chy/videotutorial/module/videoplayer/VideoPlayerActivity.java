@@ -60,7 +60,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     private int maxVolume, currentVolume;           //音量最大值与当前值
 
-    private int playMode;                           //播放模式    0播放完展示结束 1单曲循环播放 2随机播放 3列表循环播放
+    public int mPlayMode;                           //播放模式    0播放完展示结束 1单曲循环播放 2随机播放 3列表循环播放
 
 
     ImageButton mAPrevButton;
