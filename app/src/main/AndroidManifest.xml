@@ -17,11 +17,13 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoBar">
-        <activity android:name=".module.main.view.MainActivity">
+        <activity android:name=".module.main.view.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <!--<data android:host="AuthActivity" android:scheme="com.chy.videotutorial" />-->
             </intent-filter>
         </activity>
 
