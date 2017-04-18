@@ -152,6 +152,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 //点击按钮的时候做判断 如果是播放发消息更新
                 if (mMediaController.mPlayer.isPlaying()){
                     mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
+                }else {
+                    mHandler.removeMessages(UniversalMediaController.SHOW_PROGRESS);
                 }
                 updatePausePlay();
             }
