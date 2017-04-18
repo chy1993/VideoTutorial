@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.chy.videotutorial.R;
@@ -59,8 +60,6 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     boolean mDragging = false;                                       //进度条是否拖动
 
     private int maxVolume, currentVolume;           //音量最大值与当前值
-
-    public int mPlayMode;                           //播放模式    0播放完展示结束 1单曲循环播放 2随机播放 3列表循环播放
 
 
     ImageButton mAPrevButton;
@@ -171,7 +170,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mAPeplayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rePlay();
+                reModePlay();
             }
         });
 
@@ -274,6 +273,29 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             @Override
             public void onCompletion(MediaPlayer mp) {
                 mHandler.removeMessages(UniversalMediaController.SHOW_PROGRESS);
+//                showToast(mMediaController.mPlayMode+"");
+                if (mMediaController.mPlayMode == 0){
+                    //不做处理 默认就是停止播放
+                }else if (mMediaController.mPlayMode == 1){
+                    //单曲循环
+                    rePlay();
+                }else if (mMediaController.mPlayMode == 2){
+                    //随机播放
+                    int r = (int) (Math.random()*files.length);
+                    modeRandom(r);
+
+                }else if (mMediaController.mPlayMode == 3){
+                    //列表循环
+                    if (mCurrentFilePosition == files.length-1){
+                        modeRandom(0);
+                    }else {
+                       next();
+                    }
+
+                }else {
+                    //不做处理
+                }
+
             }
         });
     }
@@ -575,14 +597,45 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-//        updatePausePlay();
         mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
 
-
-//        playMode
-
+    }
 
 
+    private void reModePlay(){
+        if (mMediaController.mPlayMode == 0){
+            mMediaController.mPlayMode = 1;
+        }else if (mMediaController.mPlayMode == 1){
+            mMediaController.mPlayMode = 2;
+        }else if (mMediaController.mPlayMode == 2){
+            mMediaController.mPlayMode = 3;
+        }else if (mMediaController.mPlayMode == 3){
+            mMediaController.mPlayMode = 0;
+        }
+
+        updatePlayModeButton();
+    }
+
+
+    //播放随机
+    private void modeRandom(int position){
+        mMediaController.mFullscreenEnabled = true;
+
+        String path = getPlayPath(getFileName(files,position));
+        setVideoPath(path);
+
+        if (mSeekPosition > 0) {
+            mVideoView.seekTo(mSeekPosition);
+        }
+
+        mVideoView.start();
+
+
+        mMediaController.setTitle(getFileName(files,position));
+        mNoFullScreenTitle.setText(getFileName(files,position));
+        mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
+
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
     }
 
 
@@ -692,5 +745,24 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         } else {
             mATurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
         }
+    }
+
+
+    /**
+     * 更新全屏切换的按钮
+     */
+    void updatePlayModeButton() {
+        if (mMediaController.mPlayMode == 0){
+            Toast.makeText(this,"停止画面", Toast.LENGTH_SHORT).show();
+        }else if (mMediaController.mPlayMode == 1){
+            Toast.makeText(this,"单曲循环", Toast.LENGTH_SHORT).show();
+        }else if (mMediaController.mPlayMode == 2){
+            Toast.makeText(this,"随机播放", Toast.LENGTH_SHORT).show();
+        }else if (mMediaController.mPlayMode == 3){
+            Toast.makeText(this,"列表循环", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this,"播放模式出错", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
