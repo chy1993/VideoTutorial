@@ -226,9 +226,6 @@ public class UniversalMediaController extends FrameLayout {
         View volumeBar = v.findViewById(R.id.sbVolumeSlider);
         mVolumeSeekbar = (SeekBar) volumeBar;
         initVolume(mVolumeSeekbar);
-        mVolumeSeekbar.setOnSeekBarChangeListener(mVolumeSeekListener);
-        mVolumeSeekbar.setMax(100);
-
 
 
         mEndTime = (TextView) v.findViewById(R.id.duration);
@@ -241,10 +238,12 @@ public class UniversalMediaController extends FrameLayout {
 
     private void initVolume(SeekBar seekBar){
         AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);//获取媒体系统服务
-        seekBar.setMax(maxVolume); //设置最大音量
+        maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  //获取当前值
+        seekBar.setMax(maxVolume); //设置最大音量
         seekBar.setProgress(currentVolume);// 当前的媒体音量
         myRegisterReceiver();//注册同步更新的广播
+        seekBar.setOnSeekBarChangeListener(mVolumeSeekListener);
     }
 
 
@@ -288,7 +287,6 @@ public class UniversalMediaController extends FrameLayout {
     public void show(int timeout) {
         //非全屏状态下不显示控制条
         if (!mIsFullScreen){
-//            unMyRegisterReceiver();
             return;
         }
 
@@ -821,7 +819,8 @@ public class UniversalMediaController extends FrameLayout {
             AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
             //系统音量和媒体音量同时更新
             audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, progress, 0);
-            audioManager.setStreamVolume(3, progress, 0);//  3 代表  AudioManager.STREAM_MUSIC
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+
         }
 
         @Override
@@ -986,7 +985,7 @@ public class UniversalMediaController extends FrameLayout {
     }
 
     /**
-     * 处理音量变化时的界面显示
+     * 处理系统音量变化时的界面显示
      * @author long
      */
     private class MyVolumeReceiver extends BroadcastReceiver {
@@ -996,6 +995,7 @@ public class UniversalMediaController extends FrameLayout {
             if(intent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")){
                 AudioManager mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
                 int currVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC) ;// 当前的媒体音量
+//                int currVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM) ;// 当前的媒体音量
                 mVolumeSeekbar.setProgress(currVolume);
             }
         }

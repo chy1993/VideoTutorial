@@ -283,8 +283,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      */
     private void initVolume(SeekBar seekBar){
         AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);//获取媒体系统服务
-        seekBar.setMax(100); //设置最大音量
+        maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  //获取当前值
+        seekBar.setMax(maxVolume); //设置最大音量
         seekBar.setProgress(currentVolume);// 当前的媒体音量
         myRegisterReceiver();//注册同步更新的广播
 
@@ -296,7 +297,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
                 //系统音量和媒体音量同时更新
                 audioManager.setStreamVolume(AudioManager.STREAM_SYSTEM, progress, 0);
-                audioManager.setStreamVolume(3, progress, 0);//  3 代表  AudioManager.STREAM_MUSIC
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
             }
 
             @Override
@@ -320,8 +321,6 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mMediaController.mPlayer = null;
 
         this.finish();
-
-        showToast("111111111!");
     }
 
     /**
@@ -675,11 +674,11 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     }
 
 
-    @Override
-    public boolean onTrackballEvent(MotionEvent ev) {
-        setPlayProgress();
-        return false;
-    }
+//    @Override
+//    public boolean onTrackballEvent(MotionEvent ev) {
+//        setPlayProgress();
+//        return false;
+//    }
 
 
     /**
