@@ -33,7 +33,7 @@
             android:layout_height="350dp"
             android:layout_below="@id/tvTitle"
             android:layout_centerInParent="true"
-            android:background="@drawable/player_shape_theme">
+            android:background="@drawable/videoplayer_player_shape_theme">
 
 
             <com.universalvideoview.UniversalVideoView
@@ -79,21 +79,21 @@
                     android:id="@+id/aprev"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@drawable/left_selector_theme_btn" />
+                    android:background="@drawable/videoplayer_left_selector_theme_btn" />
 
                 <ImageButton
                     android:id="@+id/aturn_button"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aprev"
-                    android:background="@drawable/play_selector_theme_btn" />
+                    android:background="@drawable/videoplayer_play_selector_theme_btn" />
 
                 <ImageButton
                     android:id="@+id/anext"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/aturn_button"
-                    android:background="@drawable/right_selector_theme_btn" />
+                    android:background="@drawable/videoplayer_right_selector_theme_btn" />
 
             </RelativeLayout>
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/fullscreen_selector_theme_btn"
+                android:background="@drawable/videoplayer_fullscreen_selector_theme_btn"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
@@ -154,7 +154,7 @@
                     android:id="@+id/astop"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@drawable/stop_selector_theme_btn" />
+                    android:background="@drawable/videoplayer_stop_selector_theme_btn" />
 
 
             </LinearLayout>

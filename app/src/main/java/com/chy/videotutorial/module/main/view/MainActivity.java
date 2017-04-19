@@ -1,5 +1,6 @@
 package com.chy.videotutorial.module.main.view;
 
+import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import butterknife.BindView;
 public class MainActivity extends BaseAppCompatActivity {
     @BindView(R.id.button)
     Button button;
+
 
     @Override
     protected int getLayoutResID() {

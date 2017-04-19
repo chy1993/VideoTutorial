@@ -13,14 +13,73 @@
         android:layout_centerInParent="true"
         android:text="点我" />
 
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tbVideoType"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="77dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:layout_alignParentEnd="true">
+
+        <ImageButton
+
+            android:id="@+id/ibLeft"
+            android:background="@drawable/videotype_selector_btn_left"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <RadioGroup
+            android:id="@+id/rgVideoType"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbAbc"
+                android:button="@null"
+                android:background="@drawable/videotype_selector_radiobutton_abc"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+            <RadioButton
+                android:id="@+id/rbGrading"
+                android:button="@null"
+                android:background="@drawable/videotype_selector_radiobutton_grading"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+            <RadioButton
+                android:id="@+id/rbWorld"
+                android:button="@null"
+                android:background="@drawable/videotype_selector_radiobutton_wrold"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+            <RadioButton
+                android:id="@+id/rbOnline"
+                android:button="@null"
+                android:background="@drawable/videotype_selector_radiobutton_online"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+        </RadioGroup>
+
+
+
+        <ImageButton
+            android:id="@+id/ibRight"
+            android:background="@drawable/videotype_selector_btn_right"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <ImageButton
+            android:id="@+id/ibSearch"
+            android:background="@drawable/videotype_selector_btn_search"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

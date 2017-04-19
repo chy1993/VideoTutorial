@@ -13,13 +13,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -554,7 +552,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         }
 
 //        updatePausePlay();
-        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_pause_selector_theme_btn) );
 
 
     }
@@ -575,7 +573,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         }
 
 //        updatePausePlay();
-        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_pause_selector_theme_btn) );
 
     }
 
@@ -597,7 +595,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,mCurrentFilePosition));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_pause_selector_theme_btn) );
 
     }
 
@@ -635,7 +633,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mNoFullScreenTitle.setText(getFileName(files,position));
         mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
-        mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+        mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_pause_selector_theme_btn) );
     }
 
 
@@ -741,9 +739,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      */
     public void updatePausePlay() {
         if (mMediaController.mPlayer != null && mMediaController.mPlayer.isPlaying()) {
-            mATurnButton.setBackground(getResources().getDrawable(R.drawable.pause_selector_theme_btn) );
+            mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_pause_selector_theme_btn) );
         } else {
-            mATurnButton.setBackground(getResources().getDrawable(R.drawable.play_selector_theme_btn) );
+            mATurnButton.setBackground(getResources().getDrawable(R.drawable.videoplayer_play_selector_theme_btn) );
         }
     }
 
