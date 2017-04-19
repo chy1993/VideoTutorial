@@ -10,10 +10,6 @@ import com.chy.videotutorial.R;
 
 public class CourseTitleFragment extends Fragment {
 
-
-    public CourseTitleFragment() {
-    }
-
     public static CourseTitleFragment newInstance() {
         CourseTitleFragment fragment = new CourseTitleFragment();
         return fragment;
@@ -29,5 +25,6 @@ public class CourseTitleFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.main_fragment_course_title, container, false);
     }
+
 
 }
