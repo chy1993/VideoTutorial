@@ -24,7 +24,6 @@ public class MainActivity extends BaseAppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"11111",Toast.LENGTH_SHORT).show();
                 VideoPlayerActivity.navigationToActivity(MainActivity.this);
             }
         });
