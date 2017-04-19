@@ -39,6 +39,7 @@
             <RadioButton
                 android:id="@+id/rbAbc"
                 android:button="@null"
+                android:checked="true"
                 android:background="@drawable/videotype_selector_radiobutton_abc"
                 android:layout_width="120dp"
                 android:layout_height="60dp" />
@@ -82,10 +83,13 @@
 
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/vpVideoType"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="225dp"
         android:background="#ff00ff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignStart="@+id/llVideoTypeTab" />
+   />
 
 
 </RelativeLayout>
