@@ -82,13 +82,12 @@
     </LinearLayout>
 
 
-    <android.support.v4.view.ViewPager
+    <com.chy.videotutorial.MyWiew.NoSlideViewPager
         android:id="@+id/vpVideoType"
         android:layout_marginTop="105dp"
         android:layout_marginLeft="225dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-   />
+        android:layout_height="match_parent" />
 
 
 </RelativeLayout>

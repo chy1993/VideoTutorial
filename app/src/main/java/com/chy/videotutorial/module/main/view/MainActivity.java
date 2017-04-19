@@ -1,5 +1,6 @@
 package com.chy.videotutorial.module.main.view;
 
+import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
+import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
@@ -30,7 +32,7 @@ public class MainActivity extends BaseAppCompatActivity {
     RadioGroup mVideoTypeRadioGroup;
 
     @BindView(R.id.vpVideoType)
-    ViewPager mVideoTypeViewPager;
+    NoSlideViewPager mVideoTypeViewPager;
 
     private ViewTypeViewPagerAdapter mAdapter;
 
@@ -44,6 +46,8 @@ public class MainActivity extends BaseAppCompatActivity {
     protected void initView() {
 
         initViewPager();
+        initRadioGroup();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,5 +67,33 @@ public class MainActivity extends BaseAppCompatActivity {
         mAdapter = new ViewTypeViewPagerAdapter(fragmentManager,this);
         mVideoTypeViewPager.setAdapter(mAdapter);
         mVideoTypeViewPager.setCurrentItem(0);
+    }
+
+    private void initRadioGroup(){
+        mVideoTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case R.id.rbAbc:
+                        mVideoTypeViewPager.setCurrentItem(0);
+                        break;
+                    case R.id.rbGrading:
+                        mVideoTypeViewPager.setCurrentItem(1);
+                        break;
+                    case R.id.rbWorld:
+                        mVideoTypeViewPager.setCurrentItem(2);
+                        break;
+                    case R.id.rbOnline:
+                        mVideoTypeViewPager.setCurrentItem(3);
+                        break;
+                    default:
+                        mVideoTypeViewPager.setCurrentItem(0);
+                        break;
+
+                }
+
+
+            }
+        });
     }
 }
