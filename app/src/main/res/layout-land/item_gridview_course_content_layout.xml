@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@mipmap/course_content_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+<TextView
+    android:textSize="13sp"
+    android:id="@+id/tvCourseContent"
+    android:text="第一课"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="16dp" />
+
+</RelativeLayout>

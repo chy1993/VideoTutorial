@@ -14,7 +14,12 @@ public class CourseTitleFragment extends BaseFragment {
     @BindView(R.id.gvCourseTitle)
     GridView mCourseTitleGridView;
 
-    private CourseTitleGridViewAdapter mAdapter;
+    @BindView(R.id.gvCourseContent)
+    GridView mCourseContentGridView;
+
+    private CourseTitleGridViewAdapter mCourseTitleGridViewAdapter;
+
+    private CourseContentGridViewAdapter mCourseContentGridViewAdapter;
 
     public static CourseTitleFragment newInstance() {
         CourseTitleFragment fragment = new CourseTitleFragment();
@@ -29,7 +34,7 @@ public class CourseTitleFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        initGridView();
+        initCourseTitleGridView();
     }
 
     @Override
@@ -37,17 +42,47 @@ public class CourseTitleFragment extends BaseFragment {
 
     }
 
-    private void initGridView(){
-        mAdapter = new CourseTitleGridViewAdapter(getActivity());
-        mCourseTitleGridView.setAdapter(mAdapter);
+    private void initCourseTitleGridView(){
+        mCourseTitleGridViewAdapter = new CourseTitleGridViewAdapter(getActivity());
+        mCourseTitleGridView.setAdapter(mCourseTitleGridViewAdapter);
         mCourseTitleGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0 ){
                     showToast("我被点击了");
+                    showCourseContentGridView();
+                    initCourseContentGridView();
+
                 }
             }
         });
     }
+
+
+    private void initCourseContentGridView(){
+        mCourseContentGridViewAdapter = new CourseContentGridViewAdapter(getActivity());
+        mCourseContentGridView.setAdapter(mCourseContentGridViewAdapter);
+        mCourseContentGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0 ){
+                    showToast("1");
+                }
+            }
+        });
+    }
+
+
+    private void showCourseContentGridView(){
+        mCourseTitleGridView.setVisibility(View.GONE);
+        mCourseContentGridView.setVisibility(View.VISIBLE);
+    }
+
+
+    private void showCourseTitleGridView(){
+        mCourseTitleGridView.setVisibility(View.VISIBLE);
+        mCourseContentGridView.setVisibility(View.GONE);
+    }
+
 
 }
