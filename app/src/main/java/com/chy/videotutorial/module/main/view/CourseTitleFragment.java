@@ -1,6 +1,8 @@
 package com.chy.videotutorial.module.main.view;
 
 
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.chy.videotutorial.R;
@@ -27,9 +29,7 @@ public class CourseTitleFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        mAdapter = new CourseTitleGridViewAdapter(getActivity());
-        mCourseTitleGridView.setAdapter(mAdapter);
-
+        initGridView();
     }
 
     @Override
@@ -37,6 +37,17 @@ public class CourseTitleFragment extends BaseFragment {
 
     }
 
-
+    private void initGridView(){
+        mAdapter = new CourseTitleGridViewAdapter(getActivity());
+        mCourseTitleGridView.setAdapter(mAdapter);
+        mCourseTitleGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0 ){
+                    showToast("我被点击了");
+                }
+            }
+        });
+    }
 
 }
