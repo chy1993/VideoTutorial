@@ -16,8 +16,8 @@ import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 import butterknife.BindView;
 
 public class MainActivity extends BaseAppCompatActivity {
-    @BindView(R.id.button)
-    Button button;
+    @BindView(R.id.ibBack)
+    ImageButton mBack;
 
     @BindView(R.id.ibLeft)
     ImageButton mLeft;
@@ -48,10 +48,10 @@ public class MainActivity extends BaseAppCompatActivity {
         initViewPager();
         initRadioGroup();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VideoPlayerActivity.navigationToActivity(MainActivity.this);
+                finish();
             }
         });
     }
@@ -66,6 +66,7 @@ public class MainActivity extends BaseAppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         mAdapter = new ViewTypeViewPagerAdapter(fragmentManager,this);
         mVideoTypeViewPager.setAdapter(mAdapter);
+        mVideoTypeViewPager.setOffscreenPageLimit(3);
         mVideoTypeViewPager.setCurrentItem(0);
     }
 
@@ -91,8 +92,6 @@ public class MainActivity extends BaseAppCompatActivity {
                         break;
 
                 }
-
-
             }
         });
     }

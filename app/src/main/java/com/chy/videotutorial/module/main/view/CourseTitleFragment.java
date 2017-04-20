@@ -6,7 +6,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.base.fragment.BaseFragment;
+import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
 
@@ -49,7 +51,6 @@ public class CourseTitleFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0 ){
-                    showToast("我被点击了");
                     showCourseContentGridView();
                     initCourseContentGridView();
 
@@ -66,19 +67,24 @@ public class CourseTitleFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0 ){
-                    showToast("1");
+                    VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
                 }
             }
         });
     }
 
 
+    /**
+     * 显示课程具体内容的gridview
+     */
     private void showCourseContentGridView(){
         mCourseTitleGridView.setVisibility(View.GONE);
         mCourseContentGridView.setVisibility(View.VISIBLE);
     }
 
-
+    /**
+     * 显示课程标题的gridview
+     */
     private void showCourseTitleGridView(){
         mCourseTitleGridView.setVisibility(View.VISIBLE);
         mCourseContentGridView.setVisibility(View.GONE);

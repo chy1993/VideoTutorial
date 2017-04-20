@@ -9,90 +9,88 @@
 
     <LinearLayout
         android:id="@+id/llVideoTypeTab"
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="77dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true">
+        android:layout_marginEnd="77dp"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
 
         <ImageButton
 
             android:id="@+id/ibLeft"
-            android:background="@drawable/videotype_selector_btn_left"
             android:layout_width="60dp"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:background="@drawable/videotype_selector_btn_left" />
 
         <RadioGroup
             android:id="@+id/rgVideoType"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rbAbc"
-                android:button="@null"
-                android:checked="true"
-                android:background="@drawable/videotype_selector_radiobutton_abc"
                 android:layout_width="120dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/videotype_selector_radiobutton_abc"
+                android:button="@null"
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/rbGrading"
-                android:button="@null"
-                android:background="@drawable/videotype_selector_radiobutton_grading"
                 android:layout_width="120dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/videotype_selector_radiobutton_grading"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/rbWorld"
-                android:button="@null"
-                android:background="@drawable/videotype_selector_radiobutton_wrold"
                 android:layout_width="120dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/videotype_selector_radiobutton_wrold"
+                android:button="@null" />
 
             <RadioButton
                 android:id="@+id/rbOnline"
-                android:button="@null"
-                android:background="@drawable/videotype_selector_radiobutton_online"
                 android:layout_width="120dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/videotype_selector_radiobutton_online"
+                android:button="@null" />
 
         </RadioGroup>
 
         <ImageButton
             android:id="@+id/ibRight"
-            android:background="@drawable/videotype_selector_btn_right"
             android:layout_width="60dp"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:background="@drawable/videotype_selector_btn_right" />
 
         <ImageButton
             android:id="@+id/ibSearch"
-            android:background="@drawable/videotype_selector_btn_search"
             android:layout_width="60dp"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:background="@drawable/videotype_selector_btn_search" />
 
     </LinearLayout>
 
 
     <com.chy.videotutorial.MyWiew.NoSlideViewPager
         android:id="@+id/vpVideoType"
-        android:layout_marginTop="105dp"
-        android:layout_marginLeft="225dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="105dp" />
 
 
-
-
-    <Button
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/button"
+    <ImageButton
+        android:id="@+id/ibBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点我" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/common_home" />
 </RelativeLayout>
