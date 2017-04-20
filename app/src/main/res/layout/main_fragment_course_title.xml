@@ -5,7 +5,9 @@
     tools:context="com.chy.videotutorial.module.main.view.CourseTitleFragment">
 
      <GridView
-         android:columnWidth="100dp"
+         android:layout_marginRight="30dp"
+         android:layout_marginLeft="30dp"
+         android:columnWidth="80dp"
          android:layout_marginTop="30dp"
          android:id="@+id/gvCourseTitle"
          android:numColumns="3"
