@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@mipmap/course_title_bg"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 <TextView
     android:textSize="15sp"
@@ -10,9 +10,6 @@
     android:text="认识钢琴"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginStart="118dp"
-    android:layout_marginTop="86dp" />
+    />
 
 </RelativeLayout>

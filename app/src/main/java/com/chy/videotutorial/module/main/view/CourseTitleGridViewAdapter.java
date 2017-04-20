@@ -1,11 +1,13 @@
 package com.chy.videotutorial.module.main.view;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chy.videotutorial.R;
 
@@ -16,10 +18,10 @@ import com.chy.videotutorial.R;
 public class CourseTitleGridViewAdapter extends BaseAdapter {
     //上下文对象
     private Context mContext;
-    //图片数组
-    private Integer[] imgs = {
-
-    };
+//    //图片数组
+//    private Integer[] imgs = {
+//
+//    };
     CourseTitleGridViewAdapter(Context context){
         this.mContext = context;
     }
@@ -42,18 +44,25 @@ public class CourseTitleGridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) {
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(75, 75));//设置ImageView对象布局
-            imageView.setAdjustViewBounds(false);//设置边界对齐
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);//设置刻度的类型
-            imageView.setPadding(8, 8, 8, 8);//设置间距
+        ViewHolder viewHolder;
+        if (convertView == null)
+        {
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            convertView = inflater.inflate(R.layout.item_gridview_course_title_layout, null);
+            viewHolder = new ViewHolder();
+            viewHolder.mCourseTitle = (TextView) convertView.findViewById(R.id.tvCourseTitle);
+            convertView.setTag(viewHolder);
+        } else
+        {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        else {
-            imageView = (ImageView) convertView;
-        }
-        imageView.setImageResource(R.mipmap.course_title_bg);//为ImageView设置图片资源
-        return imageView;
+        viewHolder.mCourseTitle.setText("课程" + position );
+        return convertView;
+
+    }
+
+    class ViewHolder
+    {
+        public TextView mCourseTitle;
     }
 }

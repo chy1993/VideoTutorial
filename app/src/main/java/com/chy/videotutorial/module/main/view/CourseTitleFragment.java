@@ -1,8 +1,6 @@
 package com.chy.videotutorial.module.main.view;
 
 
-import android.content.Intent;
-import android.view.View;
 import android.widget.GridView;
 
 import com.chy.videotutorial.R;
