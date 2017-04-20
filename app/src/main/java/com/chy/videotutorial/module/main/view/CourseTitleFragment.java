@@ -1,30 +1,44 @@
 package com.chy.videotutorial.module.main.view;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.fragment.BaseFragment;
 
-public class CourseTitleFragment extends Fragment {
+import butterknife.BindView;
+
+public class CourseTitleFragment extends BaseFragment {
+    @BindView(R.id.gvCourseTitle)
+    GridView mCourseTitleGridView;
+
+    private CourseTitleGridViewAdapter mAdapter;
 
     public static CourseTitleFragment newInstance() {
         CourseTitleFragment fragment = new CourseTitleFragment();
+
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutResID() {
+        return R.layout.main_fragment_course_title;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment_course_title, container, false);
+    protected void initView() {
+        mAdapter = new CourseTitleGridViewAdapter(getActivity());
+        mCourseTitleGridView.setAdapter(mAdapter);
+
     }
+
+    @Override
+    protected void initDataAfterView() {
+
+    }
+
 
 
 }

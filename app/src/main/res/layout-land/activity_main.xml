@@ -6,12 +6,6 @@
     android:background="@mipmap/background"
     tools:context="com.chy.videotutorial.module.main.view.MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="点我" />
 
     <LinearLayout
         android:id="@+id/llVideoTypeTab"
@@ -90,4 +84,15 @@
         android:layout_height="match_parent" />
 
 
+
+
+    <Button
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点我" />
 </RelativeLayout>

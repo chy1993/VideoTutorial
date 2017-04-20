@@ -20,7 +20,14 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return CourseTitleFragment.newInstance();
+        if (position==0) {
+            return CourseTitleFragment.newInstance();
+        }else if (position==3) {
+            return OnlineTitleFragment.newInstance();
+        } else {
+            return CourseTitleFragment.newInstance();
+        }
+//        return CourseTitleFragment.newInstance();
     }
 
     @Override

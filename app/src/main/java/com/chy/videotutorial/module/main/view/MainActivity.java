@@ -75,19 +75,19 @@ public class MainActivity extends BaseAppCompatActivity {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId){
                     case R.id.rbAbc:
-                        mVideoTypeViewPager.setCurrentItem(0);
+                        mVideoTypeViewPager.setCurrentItem(0,false);
                         break;
                     case R.id.rbGrading:
-                        mVideoTypeViewPager.setCurrentItem(1);
+                        mVideoTypeViewPager.setCurrentItem(1,false);
                         break;
                     case R.id.rbWorld:
-                        mVideoTypeViewPager.setCurrentItem(2);
+                        mVideoTypeViewPager.setCurrentItem(2,false);
                         break;
                     case R.id.rbOnline:
-                        mVideoTypeViewPager.setCurrentItem(3);
+                        mVideoTypeViewPager.setCurrentItem(3,false);
                         break;
                     default:
-                        mVideoTypeViewPager.setCurrentItem(0);
+                        mVideoTypeViewPager.setCurrentItem(0,false);
                         break;
 
                 }
