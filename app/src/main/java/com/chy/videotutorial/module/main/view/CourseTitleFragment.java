@@ -7,12 +7,12 @@ import android.widget.GridView;
 
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
-import com.chy.videotutorial.base.fragment.BaseFragment;
+import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
 
-public class CourseTitleFragment extends BaseFragment {
+public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment.OnGridViewChangeListener> {
     @BindView(R.id.gvCourseTitle)
     GridView mCourseTitleGridView;
 
@@ -22,6 +22,14 @@ public class CourseTitleFragment extends BaseFragment {
     private CourseTitleGridViewAdapter mCourseTitleGridViewAdapter;
 
     private CourseContentGridViewAdapter mCourseContentGridViewAdapter;
+
+    /**
+     * 当GridView切换时为Activity提供的回调接口
+     */
+    interface OnGridViewChangeListener{
+        void updateBackButton();
+    }
+
 
     public static CourseTitleFragment newInstance() {
         CourseTitleFragment fragment = new CourseTitleFragment();
@@ -44,6 +52,10 @@ public class CourseTitleFragment extends BaseFragment {
 
     }
 
+
+    /**
+     * 初始化课程标题的GirdView
+     */
     private void initCourseTitleGridView(){
         mCourseTitleGridViewAdapter = new CourseTitleGridViewAdapter(getActivity());
         mCourseTitleGridView.setAdapter(mCourseTitleGridViewAdapter);
@@ -54,12 +66,15 @@ public class CourseTitleFragment extends BaseFragment {
                     showCourseContentGridView();
                     initCourseContentGridView();
 
+                    mListener.updateBackButton();
                 }
             }
         });
     }
 
-
+    /**
+     * 初始化课程内容的GirdView
+     */
     private void initCourseContentGridView(){
         mCourseContentGridViewAdapter = new CourseContentGridViewAdapter(getActivity());
         mCourseContentGridView.setAdapter(mCourseContentGridViewAdapter);
@@ -69,6 +84,8 @@ public class CourseTitleFragment extends BaseFragment {
                 if (position == 0 ){
                     VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
                 }
+
+                mListener.updateBackButton();
             }
         });
     }

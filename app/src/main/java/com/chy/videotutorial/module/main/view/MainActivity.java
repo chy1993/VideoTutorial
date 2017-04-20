@@ -15,7 +15,7 @@ import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseAppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity implements CourseTitleFragment.OnGridViewChangeListener {
     @BindView(R.id.ibBack)
     ImageButton mBack;
 
@@ -36,6 +36,8 @@ public class MainActivity extends BaseAppCompatActivity {
 
     private ViewTypeViewPagerAdapter mAdapter;
 
+    private boolean  isHome  = true;                  //判断按钮时home键还是back键   默认是home键
+
 
     @Override
     protected int getLayoutResID() {
@@ -51,7 +53,12 @@ public class MainActivity extends BaseAppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if (!isHome){
+
+                }else {
+                    finish();
+                }
+
             }
         });
     }
@@ -94,5 +101,15 @@ public class MainActivity extends BaseAppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void updateBackButton() {
+        if (isHome) {
+            mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
+        }else {
+            mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
+        }
+        isHome = !isHome;
     }
 }
