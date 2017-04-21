@@ -54,10 +54,14 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
             @Override
             public void onClick(View v) {
                 if (!isHome){
-
+                  if (mAdapter.currentFragment instanceof CourseTitleFragment){
+                      ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
+                  }
+                    updateBackButton();
                 }else {
                     finish();
                 }
+
 
             }
         });

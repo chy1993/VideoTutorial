@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
 /**
  * Created by chenyu on 2017/4/19.
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
     private Context mContext;
+    Fragment currentFragment;
 
     public ViewTypeViewPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -33,5 +35,17 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 4;
+    }
+
+
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        if (position != 3){
+            currentFragment = (CourseTitleFragment) object;
+        }else {
+            currentFragment = (OnlineTitleFragment)object;
+        }
+
+        super.setPrimaryItem(container,position,object);
     }
 }

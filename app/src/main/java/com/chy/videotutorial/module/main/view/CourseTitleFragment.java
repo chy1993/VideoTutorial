@@ -84,8 +84,6 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
                 if (position == 0 ){
                     VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
                 }
-
-                mListener.updateBackButton();
             }
         });
     }
@@ -94,7 +92,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     /**
      * 显示课程具体内容的gridview
      */
-    private void showCourseContentGridView(){
+    public void showCourseContentGridView(){
         mCourseTitleGridView.setVisibility(View.GONE);
         mCourseContentGridView.setVisibility(View.VISIBLE);
     }
@@ -102,7 +100,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     /**
      * 显示课程标题的gridview
      */
-    private void showCourseTitleGridView(){
+    public void showCourseTitleGridView(){
         mCourseTitleGridView.setVisibility(View.VISIBLE);
         mCourseContentGridView.setVisibility(View.GONE);
     }
