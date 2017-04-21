@@ -4,6 +4,7 @@ package com.chy.videotutorial.module.main.view;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
@@ -11,6 +12,7 @@ import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment.OnGridViewChangeListener> {
     @BindView(R.id.gvCourseTitle)
@@ -19,9 +21,14 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     @BindView(R.id.gvCourseContent)
     GridView mCourseContentGridView;
 
+    @BindView(R.id.ibBack)
+    ImageButton mBack;
+
     private CourseTitleGridViewAdapter mCourseTitleGridViewAdapter;
 
     private CourseContentGridViewAdapter mCourseContentGridViewAdapter;
+
+    private boolean  isHome  = true;                  //判断按钮是home键还是back键   默认是home键
 
     /**
      * 当GridView切换时为Activity提供的回调接口
@@ -66,7 +73,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
                     showCourseContentGridView();
                     initCourseContentGridView();
 
-                    mListener.updateBackButton();
+                    updateBackButton();
                 }
             }
         });
@@ -88,6 +95,16 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
         });
     }
 
+    @OnClick(R.id.ibBack)
+    public void onBackOrHome(){
+        if (!isHome){
+            showCourseTitleGridView();
+            updateBackButton();
+        }else {
+            getActivity().finish();
+        }
+    }
+
 
     /**
      * 显示课程具体内容的gridview
@@ -105,5 +122,14 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
         mCourseContentGridView.setVisibility(View.GONE);
     }
 
+
+    public void updateBackButton() {
+        if (isHome) {
+            mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
+        }else {
+            mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
+        }
+        isHome = !isHome;
+    }
 
 }

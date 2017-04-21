@@ -17,8 +17,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity implements CourseTitleFragment.OnGridViewChangeListener {
-    @BindView(R.id.ibBack)
-    ImageButton mBack;
+//    @BindView(R.id.ibBack)
+//    ImageButton mBack;
 
     @BindView(R.id.ibLeft)
     ImageButton mLeft;
@@ -37,7 +37,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
 
     private ViewTypeViewPagerAdapter mAdapter;
 
-    private boolean  isHome  = true;                  //判断按钮是home键还是back键   默认是home键
+
 
 
     @Override
@@ -97,17 +97,16 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
         });
     }
 
-    @OnClick(R.id.ibBack)
-    public void onBackOrHome(){
-        if (!isHome){
-            if (mAdapter.currentFragment instanceof CourseTitleFragment){
-                ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
-            }
-            updateBackButton();
-        }else {
-            finish();
-        }
-    }
+//    @OnClick(R.id.ibBack)
+//    public void onBackOrHome(){
+//        if (!isHome){
+//            if (mAdapter.currentFragment instanceof CourseTitleFragment){
+//                ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
+//            }
+//        }else {
+//            finish();
+//        }
+//    }
 
     @OnClick(R.id.ibLeft)
     public void onTabToLeft(){
@@ -155,11 +154,11 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
      */
     @Override
     public void updateBackButton() {
-        if (isHome) {
-            mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
-        }else {
-            mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
-        }
-        isHome = !isHome;
+//        if (isHome) {
+//            mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
+//        }else {
+//            mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
+//        }
+//        isHome = !isHome;
     }
 }
