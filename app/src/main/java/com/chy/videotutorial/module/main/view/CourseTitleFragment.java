@@ -122,7 +122,9 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
         mCourseContentGridView.setVisibility(View.GONE);
     }
 
-
+    /**
+     * 更新回退按钮的状态
+     */
     public void updateBackButton() {
         if (isHome) {
             mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
