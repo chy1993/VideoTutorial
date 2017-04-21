@@ -14,6 +14,7 @@ import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity implements CourseTitleFragment.OnGridViewChangeListener {
     @BindView(R.id.ibBack)
@@ -36,7 +37,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
 
     private ViewTypeViewPagerAdapter mAdapter;
 
-    private boolean  isHome  = true;                  //判断按钮时home键还是back键   默认是home键
+    private boolean  isHome  = true;                  //判断按钮是home键还是back键   默认是home键
 
 
     @Override
@@ -46,25 +47,8 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
 
     @Override
     protected void initView() {
-
         initViewPager();
         initRadioGroup();
-
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isHome){
-                  if (mAdapter.currentFragment instanceof CourseTitleFragment){
-                      ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
-                  }
-                    updateBackButton();
-                }else {
-                    finish();
-                }
-
-
-            }
-        });
     }
 
     @Override
@@ -73,6 +57,9 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
     }
 
 
+    /**
+     * 初始化视频类型切换的ViewPager
+     */
     private void initViewPager(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         mAdapter = new ViewTypeViewPagerAdapter(fragmentManager,this);
@@ -81,6 +68,9 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
         mVideoTypeViewPager.setCurrentItem(0);
     }
 
+    /**
+     * 初始化切换视频类型的RadioGroup
+     */
     private void initRadioGroup(){
         mVideoTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -107,6 +97,62 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
         });
     }
 
+    @OnClick(R.id.ibBack)
+    public void onBackOrHome(){
+        if (!isHome){
+            if (mAdapter.currentFragment instanceof CourseTitleFragment){
+                ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
+            }
+            updateBackButton();
+        }else {
+            finish();
+        }
+    }
+
+    @OnClick(R.id.ibLeft)
+    public void onTabToLeft(){
+        int currentItem = mVideoTypeViewPager.getCurrentItem();
+        if (currentItem == 0){
+            mVideoTypeViewPager.setCurrentItem(3);
+            mVideoTypeRadioGroup.check(R.id.rbOnline);
+        }else if (currentItem == 1){
+            mVideoTypeViewPager.setCurrentItem(0);
+            mVideoTypeRadioGroup.check(R.id.rbAbc);
+        }else if (currentItem == 2){
+            mVideoTypeViewPager.setCurrentItem(1);
+            mVideoTypeRadioGroup.check(R.id.rbGrading);
+        }else if (currentItem == 3){
+            mVideoTypeViewPager.setCurrentItem(2);
+            mVideoTypeRadioGroup.check(R.id.rbWorld);
+        }else {
+
+        }
+    }
+
+    @OnClick(R.id.ibRight)
+    public void onTabToRight(){
+        int currentItem = mVideoTypeViewPager.getCurrentItem();
+        if (currentItem == 0){
+            mVideoTypeViewPager.setCurrentItem(1);
+            mVideoTypeRadioGroup.check(R.id.rbGrading);
+        }else if (currentItem == 1){
+            mVideoTypeViewPager.setCurrentItem(2);
+            mVideoTypeRadioGroup.check(R.id.rbWorld);
+        }else if (currentItem == 2){
+            mVideoTypeViewPager.setCurrentItem(3);
+            mVideoTypeRadioGroup.check(R.id.rbOnline);
+        }else if (currentItem == 3){
+            mVideoTypeViewPager.setCurrentItem(0);
+            mVideoTypeRadioGroup.check(R.id.rbAbc);
+        }else {
+
+        }
+    }
+
+
+    /**
+     * 跟新返回按钮状态的回调方法
+     */
     @Override
     public void updateBackButton() {
         if (isHome) {
