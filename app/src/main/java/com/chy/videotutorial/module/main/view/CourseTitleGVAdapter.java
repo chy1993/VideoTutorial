@@ -18,9 +18,9 @@ import java.util.List;
 
 public class CourseTitleGVAdapter extends BaseAdapter {
     private Context mContext;
-    private List lists;//数据源
-    private int mIndex; // 页数下标，标示第几页，从0开始
-    private int mPargerSize;// 每页显示的最大的数量
+    private List lists;                                     //数据源
+    private int mIndex;                                     // 页数下标，标示第几页，从0开始
+    private int mPargerSize;                                // 每页显示的最大的数量
 
 
 
@@ -44,13 +44,13 @@ public class CourseTitleGVAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int arg0) {
-        return lists.get(arg0 + mIndex * mPargerSize);
+    public Object getItem(int position) {
+        return lists.get(position + mIndex * mPargerSize);
     }
 
     @Override
-    public long getItemId(int arg0) {
-        return arg0 + mIndex * mPargerSize;
+    public long getItemId(int position) {
+        return position + mIndex * mPargerSize;
     }
 
     @Override
@@ -68,14 +68,14 @@ public class CourseTitleGVAdapter extends BaseAdapter {
         }
 
         //重新确定position因为拿到的是总数据源，数据源是分页加载到每页的GridView上的
-        final int pos = position + mIndex * mPargerSize;//假设mPageSiez
+        final int pos = position + mIndex * mPargerSize;                            //假设mPageSiez
 
         viewHolder.mCourseTitle.setText("课程" + pos );
 
         return convertView;
     }
-    class ViewHolder
+    private static class ViewHolder
     {
-        public TextView mCourseTitle;
+        TextView mCourseTitle;
     }
 }

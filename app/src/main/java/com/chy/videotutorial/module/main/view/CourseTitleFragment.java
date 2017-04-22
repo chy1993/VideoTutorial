@@ -1,39 +1,39 @@
 package com.chy.videotutorial.module.main.view;
 
 
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
 import com.chy.videotutorial.R;
-import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
-import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment.OnGridViewChangeListener> {
-    @BindView(R.id.gvCourseTitle)
-    GridView mCourseTitleGridView;
-
-    @BindView(R.id.gvCourseContent)
-    GridView mCourseContentGridView;
 
     @BindView(R.id.ibBack)
     ImageButton mBack;
 
-    private CourseTitleGridViewAdapter mCourseTitleGridViewAdapter;
+    @BindView(R.id.vpCourseTitlePaging)
+    ViewPager mCourseTitlePagingViewPager;
 
-    private CourseContentGridViewAdapter mCourseContentGridViewAdapter;
+    private boolean isHome = true;                  //判断按钮是home键还是back键   默认是home键
 
-    private boolean  isHome  = true;                  //判断按钮是home键还是back键   默认是home键
+    private int mPageSize = 6;                        //每页显示的最大的数量
+    private int totalPage;                           //总的页数
+    private List listDatas;                           //总的数据源
+    private List<View> viewPagerList;                 //GridView作为一个View对象添加到ViewPager集合中
 
     /**
      * 当GridView切换时为Activity提供的回调接口
      */
-    interface OnGridViewChangeListener{
+    interface OnGridViewChangeListener {
         void updateBackButton();
     }
 
@@ -51,76 +51,48 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
 
     @Override
     protected void initView() {
-        initCourseTitleGridView();
+        listDatas = new ArrayList();
+        for (int i = 0; i < 15; i++) {
+            listDatas.add(i);
+        }
     }
 
     @Override
     protected void initDataAfterView() {
-
-    }
-
-
-    /**
-     * 初始化课程标题的GirdView
-     */
-    private void initCourseTitleGridView(){
-        mCourseTitleGridViewAdapter = new CourseTitleGridViewAdapter(getActivity());
-        mCourseTitleGridView.setAdapter(mCourseTitleGridViewAdapter);
-        mCourseTitleGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0 ){
-                    showCourseContentGridView();
-                    initCourseContentGridView();
-
-                    updateBackButton();
+        //总的页数向上取整
+        totalPage = (int) Math.ceil(listDatas.size() * 1.0 / mPageSize);
+        viewPagerList = new ArrayList<View>();
+        for (int i = 0; i < totalPage; i++) {
+            //每个页面都是inflate出一个新实例
+            final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_course_title, null);
+            gridView.setAdapter(new CourseTitleGVAdapter(getActivity(), listDatas, i, mPageSize));
+            //添加item点击监听
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1,
+                                        int position, long arg3) {
+//                                             Object obj = gridView.getItemAtPosition(position);
+//                                                if(obj != null ){
+//                                                      System.out.println(obj);
+//                                                    }
                 }
-            }
-        });
-    }
-
-    /**
-     * 初始化课程内容的GirdView
-     */
-    private void initCourseContentGridView(){
-        mCourseContentGridViewAdapter = new CourseContentGridViewAdapter(getActivity());
-        mCourseContentGridView.setAdapter(mCourseContentGridViewAdapter);
-        mCourseContentGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0 ){
-                    VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
-                }
-            }
-        });
-    }
-
-    @OnClick(R.id.ibBack)
-    public void onBackOrHome(){
-        if (!isHome){
-            showCourseTitleGridView();
-            updateBackButton();
-        }else {
-            getActivity().finish();
+            });
+            //每一个GridView作为一个View对象添加到ViewPager集合中
+            viewPagerList.add(gridView);
         }
-    }
+        //设置ViewPager适配器
+        mCourseTitlePagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(viewPagerList));
 
 
-    /**
-     * 显示课程具体内容的gridview
-     */
-    public void showCourseContentGridView(){
-        mCourseTitleGridView.setVisibility(View.GONE);
-        mCourseContentGridView.setVisibility(View.VISIBLE);
+        //设置ViewPager的滑动监听，主要是设置点点的背景颜色的改变
+        mCourseTitlePagingViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+            }
+        });
+
     }
 
-    /**
-     * 显示课程标题的gridview
-     */
-    public void showCourseTitleGridView(){
-        mCourseTitleGridView.setVisibility(View.VISIBLE);
-        mCourseContentGridView.setVisibility(View.GONE);
-    }
 
     /**
      * 更新回退按钮的状态
@@ -128,7 +100,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     public void updateBackButton() {
         if (isHome) {
             mBack.setBackground(getResources().getDrawable(R.mipmap.common_back_mid));
-        }else {
+        } else {
             mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
         }
         isHome = !isHome;

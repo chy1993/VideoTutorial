@@ -4,30 +4,43 @@
     android:layout_height="match_parent"
     tools:context="com.chy.videotutorial.module.main.view.CourseTitleFragment">
 
-    <GridView
-        android:id="@+id/gvCourseTitle"
+    <!--<GridView-->
+    <!--android:id="@+id/gvCourseTitle"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="30dp"-->
+    <!--android:layout_marginRight="30dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:columnWidth="80dp"-->
+    <!--android:numColumns="3"-->
+    <!--android:verticalSpacing="50dp" />-->
+
+
+    <!--<GridView-->
+    <!--android:id="@+id/gvCourseContent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="30dp"-->
+    <!--android:layout_marginRight="30dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:columnWidth="80dp"-->
+    <!--android:numColumns="3"-->
+    <!--android:verticalSpacing="50dp"-->
+    <!--android:visibility="gone" />-->
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:columnWidth="80dp"
-        android:numColumns="3"
-        android:verticalSpacing="50dp" />
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpCourseTitlePaging"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           />
 
 
-    <GridView
-        android:id="@+id/gvCourseContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:columnWidth="80dp"
-        android:numColumns="3"
-        android:verticalSpacing="50dp"
-        android:visibility="gone" />
-
+    </RelativeLayout>
 
 
     <ImageButton
