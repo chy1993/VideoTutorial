@@ -29,18 +29,25 @@
     <!--android:visibility="gone" />-->
 
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vpCourseTitlePaging"
             android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+
+        <com.chy.videotutorial.MyWiew.PageNumberView
+            android:id="@+id/pageNumberView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-           />
+            />
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <ImageButton

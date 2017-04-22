@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 
@@ -22,6 +23,9 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
 
     @BindView(R.id.vpCourseTitlePaging)
     ViewPager mCourseTitlePagingViewPager;
+
+    @BindView(R.id.pageNumberView)
+    PageNumberView mPageNumberView;
 
     private boolean isHome = true;                  //判断按钮是home键还是back键   默认是home键
 
@@ -91,7 +95,11 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
             }
         });
 
+        mPageNumberView.setmTotalPages(totalPage);
+        mPageNumberView.setViewPager(mCourseTitlePagingViewPager);
     }
+
+
 
 
     /**
