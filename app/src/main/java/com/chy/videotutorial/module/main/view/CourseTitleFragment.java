@@ -56,7 +56,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     @Override
     protected void initView() {
         listDatas = new ArrayList();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 100; i++) {
             listDatas.add(i);
         }
     }

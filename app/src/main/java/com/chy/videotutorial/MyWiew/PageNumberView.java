@@ -121,14 +121,12 @@ public class PageNumberView extends RelativeLayout{
 
     private void initRadioGruop(){
         //默认的RadioButton显示
-        mFirst.isChecked();                                      //默认第一页被选中
+        mFirst.setChecked(true);                                      //默认第一页被选中
         setRadioButtonText(1);
 
         mPageNumber.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
-
                 if (mViewPager != null){
                     if (mTotalPages <= 5){
                         switch (checkedId){
@@ -163,25 +161,28 @@ public class PageNumberView extends RelativeLayout{
                                     mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
                                     updatePadioButtonText(mCurrentPageNum);
                                     mViewPager.setCurrentItem(mCurrentPageNum-1,false);
+
                                 }
                                 break;
                             case R.id.rbSecond:
-                                mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
+                                mCurrentPageNum = Integer.parseInt(mSecond.getText().toString());
                                 updatePadioButtonText(mCurrentPageNum);
                                 mViewPager.setCurrentItem(mCurrentPageNum-1,false);
                                 break;
                             case R.id.rbThird:
-                                mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
-                                updatePadioButtonText(mCurrentPageNum);
-                                mViewPager.setCurrentItem(mCurrentPageNum-1,false);
+                                if (isHandCheck){
+                                    mCurrentPageNum = Integer.parseInt(mThird.getText().toString());
+                                    updatePadioButtonText(mCurrentPageNum);
+                                    mViewPager.setCurrentItem(mCurrentPageNum-1,false);
+                                }
                                 break;
                             case R.id.rbFourth:
-                                mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
+                                mCurrentPageNum = Integer.parseInt(mFourth.getText().toString());
                                 updatePadioButtonText(mCurrentPageNum);
                                 mViewPager.setCurrentItem(mCurrentPageNum-1,false);
                                 break;
                             case R.id.rbFifth:
-                                mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
+                                mCurrentPageNum = Integer.parseInt(mFifth.getText().toString());
                                 updatePadioButtonText(mCurrentPageNum);
                                 mViewPager.setCurrentItem(mCurrentPageNum-1,false);
                                 break;
@@ -282,6 +283,9 @@ public class PageNumberView extends RelativeLayout{
     private void updatePadioButtonText(int currentPageNum){
         if (mCurrentPageNum+2 <= mTotalPages && mCurrentPageNum-2 >= 1){
             setRadioButtonText(mCurrentPageNum-2);
+            isHandCheck = false;
+            mThird.setChecked(true);
+            isHandCheck = true;
         }else if (mCurrentPageNum == mTotalPages){
             setRadioButtonText(mCurrentPageNum-4);
         }else if (mCurrentPageNum+1 == mTotalPages){
