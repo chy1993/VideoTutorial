@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btPrevPage"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:background="@drawable/page_number_selector_btn"
+        android:text="上一页" />
+
+    <Button
+        android:id="@+id/btFirstPage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/page_number_selector_btn"
+        android:text="首页" />
+
+
+    <RadioGroup
+        android:id="@+id/rgPageNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbFirst"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/page_number_selector_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/rbSecond"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/page_number_selector_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="2" />
+
+        <RadioButton
+            android:id="@+id/rbThird"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/page_number_selector_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="3" />
+
+        <RadioButton
+            android:id="@+id/rbFourth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/page_number_selector_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="4" />
+
+        <RadioButton
+            android:id="@+id/rbFifth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/page_number_selector_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="5" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btLastPage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/page_number_selector_btn"
+        android:text="末页" />
+
+    <Button
+        android:id="@+id/btNextPage"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/page_number_selector_btn"
+        android:text="下一页" />
+
+
+</LinearLayout>
