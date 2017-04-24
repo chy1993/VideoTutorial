@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
@@ -21,11 +22,23 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     @BindView(R.id.ibBack)
     ImageButton mBack;
 
+    @BindView(R.id.llCourseTitle)
+    LinearLayout mCourseTitle;
+
     @BindView(R.id.vpCourseTitlePaging)
     NoSlideViewPager mCourseTitlePagingViewPager;
 
     @BindView(R.id.courseTitlePageNumberView)
-    PageNumberView mPageNumberView;
+    PageNumberView mCourseTitlePageNumberView;
+
+    @BindView(R.id.llCourseContent)
+    LinearLayout mCourseContent;
+
+    @BindView(R.id.vpCourseContentPaging)
+    NoSlideViewPager mCourseContentPagingViewPager;
+
+    @BindView(R.id.courseContentPageNumberView)
+    PageNumberView mCourseContentPageNumberView;
 
     private boolean isHome = true;                    //判断按钮是home键还是back键   默认是home键
 
@@ -105,8 +118,8 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
         //设置ViewPager适配器
         mCourseTitlePagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(viewPagerList));
 
-        mPageNumberView.setmTotalPages(totalPage);
-        mPageNumberView.setViewPager(mCourseTitlePagingViewPager);
+        mCourseTitlePageNumberView.setmTotalPages(totalPage);
+        mCourseTitlePageNumberView.setViewPager(mCourseTitlePagingViewPager);
     }
 
 

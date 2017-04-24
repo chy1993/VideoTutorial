@@ -26,6 +26,28 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llCourseContent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.chy.videotutorial.MyWiew.NoSlideViewPager
+            android:id="@+id/vpCourseContentPaging"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+
+        <com.chy.videotutorial.MyWiew.PageNumberView
+            android:id="@+id/courseContentPageNumberView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/ibBack"
