@@ -110,7 +110,7 @@ public class PageNumberView extends RelativeLayout{
             @Override
             public void onClick(View v) {
                 setRadioButtonText(1);
-                mViewPager.setCurrentItem(0);
+                mViewPager.setCurrentItem(0,false);
                 mFirst.setChecked(true);
             }
         });
@@ -136,7 +136,7 @@ public class PageNumberView extends RelativeLayout{
             @Override
             public void onClick(View v) {
                 setRadioButtonText(mTotalPages-4);
-                mViewPager.setCurrentItem(mTotalPages-1);
+                mViewPager.setCurrentItem(mTotalPages-1,false);
                 mFifth.setChecked(true);
             }
         });

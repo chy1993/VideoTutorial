@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
@@ -22,7 +23,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     ImageButton mBack;
 
     @BindView(R.id.vpCourseTitlePaging)
-    ViewPager mCourseTitlePagingViewPager;
+    NoSlideViewPager mCourseTitlePagingViewPager;
 
     @BindView(R.id.pageNumberView)
     PageNumberView mPageNumberView;
