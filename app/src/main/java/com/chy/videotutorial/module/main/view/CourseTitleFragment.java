@@ -10,12 +10,15 @@ import android.widget.LinearLayout;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
+import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment.OnGridViewChangeListener> {
 
@@ -45,7 +48,8 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     private int mPageSize = 6;                        //每页显示的最大的数量
     private int totalPage;                            //总的页数
     private List listDatas;                           //总的数据源
-    private List<View> viewPagerList;                 //GridView作为一个View对象添加到ViewPager集合中
+    private List<View> mCourseTitleGridViewList;                 //GridView作为一个View对象添加到ViewPager集合中
+    private List<View> mCourseContentGridViewList;                 //GridView作为一个View对象添加到ViewPager集合中
 
     /**
      * 当GridView切换时为Activity提供的回调接口
@@ -93,7 +97,7 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
      * 课程名的VeiwPager GridView PageNumberView等的初始化
      */
     private void initCourseTitle(){
-        viewPagerList = new ArrayList<View>();
+        mCourseTitleGridViewList = new ArrayList<View>();
         for (int i = 0; i < totalPage; i++) {
             //每个页面都是inflate出一个新实例
             final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_course_title, null);
@@ -108,20 +112,65 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
 //                                                      System.out.println(obj);
 //                                                    }
                     if (position == 0){
-
+                        initCourseContent();
+                        showCourseContentLayout();
+                        updateBackButton();
                     }
                 }
             });
             //每一个GridView作为一个View对象添加到ViewPager集合中
-            viewPagerList.add(gridView);
+            mCourseTitleGridViewList.add(gridView);
         }
         //设置ViewPager适配器
-        mCourseTitlePagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(viewPagerList));
+        mCourseTitlePagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(mCourseTitleGridViewList));
 
         mCourseTitlePageNumberView.setmTotalPages(totalPage);
         mCourseTitlePageNumberView.setViewPager(mCourseTitlePagingViewPager);
     }
 
+
+    /**
+     * 课程内容的VeiwPager GridView PageNumberView等的初始化
+     */
+    private void initCourseContent(){
+        mCourseContentGridViewList = new ArrayList<View>();
+        for (int i = 0; i < totalPage; i++) {
+            //每个页面都是inflate出一个新实例
+            final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_course_title, null);
+            gridView.setAdapter(new CourseContentGVAdapter(getActivity(), listDatas, i, mPageSize));
+            //添加item点击监听
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1,
+                                        int position, long arg3) {
+//                                             Object obj = gridView.getItemAtPosition(position);
+//                                                if(obj != null ){
+//                                                      System.out.println(obj);
+//                                                    }
+                    if (position == 0){
+                        VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
+                    }
+                }
+            });
+            //每一个GridView作为一个View对象添加到ViewPager集合中
+            mCourseContentGridViewList.add(gridView);
+        }
+        //设置ViewPager适配器
+        mCourseContentPagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(mCourseContentGridViewList));
+
+        mCourseContentPageNumberView.setmTotalPages(totalPage);
+        mCourseContentPageNumberView.setViewPager(mCourseContentPagingViewPager);
+    }
+
+    @OnClick(R.id.ibBack)
+    public void onBackOrHome(){
+        if (!isHome){
+                showCourseTitleLayout();
+                updateBackButton();
+        }else {
+            getActivity().finish();
+        }
+    }
 
     /**
      * 更新回退按钮的状态
@@ -133,6 +182,23 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
             mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
         }
         isHome = !isHome;
+    }
+
+
+    /**
+     * 显示标题的布局
+     */
+    private void showCourseTitleLayout(){
+        mCourseTitle.setVisibility(View.VISIBLE);
+        mCourseContent.setVisibility(View.GONE);
+    }
+
+    /**
+     * 显示内容的布局
+     */
+    private void showCourseContentLayout(){
+        mCourseTitle.setVisibility(View.GONE);
+        mCourseContent.setVisibility(View.VISIBLE);
     }
 
 }
