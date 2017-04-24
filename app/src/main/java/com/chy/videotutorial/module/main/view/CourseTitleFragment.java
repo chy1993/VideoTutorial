@@ -1,7 +1,6 @@
 package com.chy.videotutorial.module.main.view;
 
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -25,13 +24,13 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     @BindView(R.id.vpCourseTitlePaging)
     NoSlideViewPager mCourseTitlePagingViewPager;
 
-    @BindView(R.id.pageNumberView)
+    @BindView(R.id.courseTitlePageNumberView)
     PageNumberView mPageNumberView;
 
-    private boolean isHome = true;                  //判断按钮是home键还是back键   默认是home键
+    private boolean isHome = true;                    //判断按钮是home键还是back键   默认是home键
 
     private int mPageSize = 6;                        //每页显示的最大的数量
-    private int totalPage;                           //总的页数
+    private int totalPage;                            //总的页数
     private List listDatas;                           //总的数据源
     private List<View> viewPagerList;                 //GridView作为一个View对象添加到ViewPager集合中
 
@@ -55,17 +54,32 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     }
 
     @Override
-    protected void initView() {
+    protected void initDataBeforeView() {
+        super.initDataBeforeView();
+
         listDatas = new ArrayList();
         for (int i = 0; i < 100; i++) {
             listDatas.add(i);
         }
+
+        //总的页数向上取整
+        totalPage = (int) Math.ceil(listDatas.size() * 1.0 / mPageSize);
+    }
+
+    @Override
+    protected void initView() {
+        initCourseTitle();
     }
 
     @Override
     protected void initDataAfterView() {
-        //总的页数向上取整
-        totalPage = (int) Math.ceil(listDatas.size() * 1.0 / mPageSize);
+
+    }
+
+    /**
+     * 课程名的VeiwPager GridView PageNumberView等的初始化
+     */
+    private void initCourseTitle(){
         viewPagerList = new ArrayList<View>();
         for (int i = 0; i < totalPage; i++) {
             //每个页面都是inflate出一个新实例
@@ -80,6 +94,9 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
 //                                                if(obj != null ){
 //                                                      System.out.println(obj);
 //                                                    }
+                    if (position == 0){
+
+                    }
                 }
             });
             //每一个GridView作为一个View对象添加到ViewPager集合中
@@ -88,19 +105,9 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
         //设置ViewPager适配器
         mCourseTitlePagingViewPager.setAdapter(new CourseTitlePagingViewPagerAdapter(viewPagerList));
 
-
-        //设置ViewPager的滑动监听，主要是设置点点的背景颜色的改变
-        mCourseTitlePagingViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-            }
-        });
-
         mPageNumberView.setmTotalPages(totalPage);
         mPageNumberView.setViewPager(mCourseTitlePagingViewPager);
     }
-
-
 
 
     /**

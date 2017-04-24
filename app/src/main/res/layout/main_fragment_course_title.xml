@@ -4,32 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.chy.videotutorial.module.main.view.CourseTitleFragment">
 
-    <!--<GridView-->
-    <!--android:id="@+id/gvCourseTitle"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginLeft="30dp"-->
-    <!--android:layout_marginRight="30dp"-->
-    <!--android:layout_marginTop="30dp"-->
-    <!--android:columnWidth="80dp"-->
-    <!--android:numColumns="3"-->
-    <!--android:verticalSpacing="50dp" />-->
-
-
-    <!--<GridView-->
-    <!--android:id="@+id/gvCourseContent"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginLeft="30dp"-->
-    <!--android:layout_marginRight="30dp"-->
-    <!--android:layout_marginTop="30dp"-->
-    <!--android:columnWidth="80dp"-->
-    <!--android:numColumns="3"-->
-    <!--android:verticalSpacing="50dp"-->
-    <!--android:visibility="gone" />-->
-
 
     <LinearLayout
+        android:id="@+id/llCourseTitle"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -42,7 +19,7 @@
 
 
         <com.chy.videotutorial.MyWiew.PageNumberView
-            android:id="@+id/pageNumberView"
+            android:id="@+id/courseTitlePageNumberView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
