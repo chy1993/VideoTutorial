@@ -6,6 +6,7 @@ import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
+import com.chy.videotutorial.MyWiew.VideoSearchDialog;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 
@@ -13,8 +14,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity implements CourseFragment.OnGridViewChangeListener {
-//    @BindView(R.id.ibBack)
-//    ImageButton mBack;
 
     @BindView(R.id.ibLeft)
     ImageButton mLeft;
@@ -32,8 +31,6 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
     NoSlideViewPager mVideoTypeViewPager;
 
     private ViewTypeViewPagerAdapter mAdapter;
-
-
 
 
     @Override
@@ -93,16 +90,11 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         });
     }
 
-//    @OnClick(R.id.ibBack)
-//    public void onBackOrHome(){
-//        if (!isHome){
-//            if (mAdapter.currentFragment instanceof CourseFragment){
-//                ((CourseFragment) mAdapter.currentFragment).showCourseTitleGridView();
-//            }
-//        }else {
-//            finish();
-//        }
-//    }
+    @OnClick(R.id.ibSearch)
+    public void onShowSearchView(){
+        VideoSearchDialog dialog = new VideoSearchDialog(this);
+        dialog.show();
+    }
 
     @OnClick(R.id.ibLeft)
     public void onTabToLeft(){
