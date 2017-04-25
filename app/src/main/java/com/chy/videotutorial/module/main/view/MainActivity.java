@@ -2,21 +2,17 @@ package com.chy.videotutorial.module.main.view;
 
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
-import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseAppCompatActivity implements CourseTitleFragment.OnGridViewChangeListener {
+public class MainActivity extends BaseAppCompatActivity implements CourseFragment.OnGridViewChangeListener {
 //    @BindView(R.id.ibBack)
 //    ImageButton mBack;
 
@@ -100,8 +96,8 @@ public class MainActivity extends BaseAppCompatActivity implements CourseTitleFr
 //    @OnClick(R.id.ibBack)
 //    public void onBackOrHome(){
 //        if (!isHome){
-//            if (mAdapter.currentFragment instanceof CourseTitleFragment){
-//                ((CourseTitleFragment) mAdapter.currentFragment).showCourseTitleGridView();
+//            if (mAdapter.currentFragment instanceof CourseFragment){
+//                ((CourseFragment) mAdapter.currentFragment).showCourseTitleGridView();
 //            }
 //        }else {
 //            finish();

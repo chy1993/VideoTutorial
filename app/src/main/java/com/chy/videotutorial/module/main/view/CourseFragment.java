@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment.OnGridViewChangeListener> {
+public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridViewChangeListener> {
 
     @BindView(R.id.ibBack)
     ImageButton mBack;
@@ -43,13 +43,13 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     @BindView(R.id.courseContentPageNumberView)
     PageNumberView mCourseContentPageNumberView;
 
-    private boolean isHome = true;                    //判断按钮是home键还是back键   默认是home键
+    private boolean isHome = true;                                  //判断按钮是home键还是back键   默认是home键
 
-    private int mPageSize = 6;                        //每页显示的最大的数量
-    private int totalPage;                            //总的页数
-    private List listDatas;                           //总的数据源
-    private List<View> mCourseTitleGridViewList;                 //GridView作为一个View对象添加到ViewPager集合中
-    private List<View> mCourseContentGridViewList;                 //GridView作为一个View对象添加到ViewPager集合中
+    private int mPageSize = 6;                                      //每页显示的最大的数量
+    private int totalPage;                                          //总的页数
+    private List listDatas;                                         //总的数据源
+    private List<View> mCourseTitleGridViewList;                    //GridView作为一个View对象添加到ViewPager集合中
+    private List<View> mCourseContentGridViewList;                  //GridView作为一个View对象添加到ViewPager集合中
 
     /**
      * 当GridView切换时为Activity提供的回调接口
@@ -59,8 +59,8 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
     }
 
 
-    public static CourseTitleFragment newInstance() {
-        CourseTitleFragment fragment = new CourseTitleFragment();
+    public static CourseFragment newInstance() {
+        CourseFragment fragment = new CourseFragment();
 
         return fragment;
     }
@@ -107,10 +107,6 @@ public class CourseTitleFragment extends BaseCallBackFrg2Aty<CourseTitleFragment
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1,
                                         int position, long arg3) {
-//                                             Object obj = gridView.getItemAtPosition(position);
-//                                                if(obj != null ){
-//                                                      System.out.println(obj);
-//                                                    }
                     if (position == 0){
                         initCourseContent();
                         showCourseContentLayout();

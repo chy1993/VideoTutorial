@@ -23,13 +23,13 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position==0) {
-            return CourseTitleFragment.newInstance();
+            return CourseFragment.newInstance();
         }else if (position==3) {
             return OnlineTitleFragment.newInstance();
         } else {
-            return CourseTitleFragment.newInstance();
+            return CourseFragment.newInstance();
         }
-//        return CourseTitleFragment.newInstance();
+//        return CourseFragment.newInstance();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         if (position != 3){
-            currentFragment = (CourseTitleFragment) object;
+            currentFragment = (CourseFragment) object;
         }else {
             currentFragment = (OnlineTitleFragment)object;
         }
