@@ -6,65 +6,95 @@
 
     <RelativeLayout
         android:id="@+id/rlDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#ECECEE"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="#ECECEE">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:textColor="#595757"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
             android:text="视频搜索"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="#595757"
+            android:textSize="15sp" />
 
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@id/tvTitle"
-            android:layout_toRightOf="@id/tvTitle"
-            android:textColor="#a3a2a3"
-            android:textSize="15sp"
-            android:text="Video Search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tvTitle"
+            android:text="Video Search"
+            android:textColor="#a3a2a3"
+            android:textSize="15sp" />
 
         <View
             android:id="@+id/vLine"
-            android:background="#babbbf"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/tvTitle"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-
+            android:layout_height="1dp"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginTop="10dp"
+            android:background="#babbbf" />
 
 
         <EditText
+            android:id="@+id/etSearchContent"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vLine"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/vLine"
-            android:drawableLeft="@mipmap/common_home"
             android:background="@drawable/search_shape_theme_edittext"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:drawableLeft="@mipmap/common_home"
+            android:drawablePadding="10dp"
+            android:hint="搜索/search"
+            android:maxLines="1"
+            android:textColor="#333333"
+            android:textSize="13sp" />
 
+        <Button
+            android:id="@+id/btSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/etSearchContent"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/etSearchContent"
+            android:text="搜索" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/etSearchContent"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rlSearchContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:layout_marginRight="200dp"
+                android:background="#00ff00" />
+
+        </RelativeLayout>
 
 
     </RelativeLayout>
 
     <ImageView
-        android:layout_alignParentRight="true"
         android:id="@+id/ivCloseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:src="@mipmap/close" />
-
-
-
-
 
 
 </RelativeLayout>
