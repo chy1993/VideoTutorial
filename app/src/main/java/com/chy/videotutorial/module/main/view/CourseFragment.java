@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.Utils.Constants;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
@@ -45,7 +46,7 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
 
     private boolean isHome = true;                                  //判断按钮是home键还是back键   默认是home键
 
-    private int mPageSize = 6;                                      //每页显示的最大的数量
+    private int mPageSize = Constants.PAGE_SIZE;                                      //每页显示的最大的数量
     private int totalPage;                                          //总的页数
     private List listDatas;                                         //总的数据源
     private List<View> mCourseTitleGridViewList;                    //GridView作为一个View对象添加到ViewPager集合中
