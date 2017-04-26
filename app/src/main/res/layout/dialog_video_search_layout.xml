@@ -77,7 +77,7 @@
             android:background="#ffffff">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rlSearchContent"
+                android:id="@+id/rvSearchContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="50dp"
@@ -106,6 +106,7 @@
 
 
             <TextView
+                android:id="@+id/tvPageNum"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentBottom="true"
