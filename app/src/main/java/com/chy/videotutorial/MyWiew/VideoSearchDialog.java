@@ -3,15 +3,20 @@ package com.chy.videotutorial.MyWiew;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chy.videotutorial.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +53,8 @@ public class VideoSearchDialog extends Dialog {
 
     SearchContentRcyViewAdapter mAdapter;
 
+    List mData;
+
     public VideoSearchDialog(Context context) {
         super(context, R.style.MyDialog);
         mContext = context;
@@ -61,8 +68,8 @@ public class VideoSearchDialog extends Dialog {
         //按空白处不能取消动画
 //        setCanceledOnTouchOutside(false);
 
-//        //初始化界面控件
-//        initView();
+        //初始化界面控件
+        initView();
 //        //初始化界面数据
 //        initData();
 //        //初始化界面控件的事件
@@ -71,22 +78,54 @@ public class VideoSearchDialog extends Dialog {
     }
 
     private void initView(){
+        initRecycleView();
 
     }
 
     private void initRecycleView(){
+        mAdapter = new SearchContentRcyViewAdapter(mContext);
+        CustomLinearLayoutManager layoutManager = new CustomLinearLayoutManager(mContext);
+        mRecycleView.setLayoutManager(layoutManager);
+        mRecycleView.setAdapter(mAdapter);
     }
 
 
 
     @OnClick(R.id.btSearch)
     public void onSearch(){
-        Toast.makeText(mContext,"111",Toast.LENGTH_SHORT).show();
+        mData = new ArrayList();
+
+        for (int i=0;i<7;i++){
+            mData.add(i);
+        }
+
+        mAdapter.setData(mData);
     }
 
     @OnClick(R.id.ivCloseDialog)
     public void onCloseDialog(){
 
+    }
+
+
+    /**
+     * 禁止RecycleView滑动
+     */
+    public class CustomLinearLayoutManager extends LinearLayoutManager {
+        private boolean isScrollEnabled = false;
+
+        public CustomLinearLayoutManager(Context context) {
+            super(context);
+        }
+
+//        public void setScrollEnabled(boolean flag) {
+//            this.isScrollEnabled = flag;
+//        }
+
+        @Override
+        public boolean canScrollVertically() {
+            return isScrollEnabled && super.canScrollVertically();
+        }
     }
 
 
