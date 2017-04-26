@@ -89,7 +89,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
-                android:background="@mipmap/menu_up"
+                android:background="@drawable/video_search_selector_btn_up_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -100,7 +100,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:background="@mipmap/menu_down"
+                android:background="@drawable/video_search_selector_btn_down_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
