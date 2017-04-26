@@ -66,7 +66,7 @@ public class VideoSearchDialog extends Dialog {
         setContentView(R.layout.dialog_video_search_layout);
         ButterKnife.bind(this);
         //按空白处不能取消动画
-//        setCanceledOnTouchOutside(false);
+        setCanceledOnTouchOutside(false);
 
         //初始化界面控件
         initView();
@@ -104,7 +104,7 @@ public class VideoSearchDialog extends Dialog {
 
     @OnClick(R.id.ivCloseDialog)
     public void onCloseDialog(){
-
+        this.dismiss();
     }
 
 
