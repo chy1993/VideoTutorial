@@ -102,6 +102,7 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
         for (int i = 0; i < totalPage; i++) {
             //每个页面都是inflate出一个新实例
             final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_course_title, null);
+            gridView.setPadding(100,50,100,0);
             gridView.setAdapter(new CourseTitleGVAdapter(getActivity(), listDatas, i, mPageSize));
             //添加item点击监听
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -134,6 +135,7 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
         for (int i = 0; i < totalPage; i++) {
             //每个页面都是inflate出一个新实例
             final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_course_title, null);
+            gridView.setPadding(100,50,100,0);
             gridView.setAdapter(new CourseContentGVAdapter(getActivity(), listDatas, i, mPageSize));
             //添加item点击监听
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
