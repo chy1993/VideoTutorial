@@ -44,7 +44,7 @@
         <EditText
             android:id="@+id/etSearchContent"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@id/vLine"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
@@ -59,11 +59,12 @@
         <Button
             android:id="@+id/btSearch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/video_search_selector_btn_search"
             android:layout_alignBaseline="@id/etSearchContent"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/etSearchContent"
-            android:text="搜索" />
+         />
 
 
         <RelativeLayout
