@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#ECECEE">
+        android:background="@drawable/video_search_shape_theme_background">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -48,7 +48,7 @@
             android:layout_below="@id/vLine"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/search_shape_theme_edittext"
+            android:background="@drawable/video_search_shape_theme_edittext"
             android:drawableLeft="@mipmap/common_home"
             android:drawablePadding="10dp"
             android:hint="搜索/search"
@@ -74,7 +74,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="#ffffff">
+            android:background="@drawable/video_search_shape_theme_content_area">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvSearchContent"

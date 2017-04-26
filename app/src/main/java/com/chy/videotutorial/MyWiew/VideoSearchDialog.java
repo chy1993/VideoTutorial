@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chy.videotutorial.R;
 
@@ -70,10 +68,6 @@ public class VideoSearchDialog extends Dialog {
 
         //初始化界面控件
         initView();
-//        //初始化界面数据
-//        initData();
-//        //初始化界面控件的事件
-//        initEvent();
 
     }
 
