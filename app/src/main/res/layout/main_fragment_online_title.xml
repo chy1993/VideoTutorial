@@ -1,13 +1,52 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.chy.videotutorial.module.main.view.OnlineTitleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/llOnlineVideo"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="this is a blank fragment!" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+
+        <com.chy.videotutorial.MyWiew.NoSlideViewPager
+            android:id="@+id/vpOnlineVideoPaging"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+
+        <com.chy.videotutorial.MyWiew.PageNumberView
+            android:id="@+id/onLineVideoPageNumberView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+
+
+
+    <ImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@mipmap/common_home" />
+
+
+
+    <ImageButton
+        android:id="@+id/ibRefrsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@mipmap/online_video_update" />
+
+</RelativeLayout>

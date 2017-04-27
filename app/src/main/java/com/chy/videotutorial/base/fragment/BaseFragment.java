@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
  * Fragment基类
  */
 public abstract class BaseFragment extends Fragment {
-
+    Unbinder unbinder;
     /**
      * 获取界面布局资源ID
      *
@@ -55,7 +56,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mainView = inflater.inflate(getLayoutResID(), container, false);
-        ButterKnife.bind(this, mainView);
+        unbinder = ButterKnife.bind(this, mainView);
 
         initDataBeforeView();
         initView();
@@ -76,5 +77,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        unbinder.unbind();
     }
+
 }

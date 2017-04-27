@@ -1,19 +1,29 @@
 package com.chy.videotutorial.module.main.view;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.chy.videotutorial.MyWiew.NoSlideViewPager;
+import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.fragment.BaseFragment;
 
-public class OnlineTitleFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
+import butterknife.BindView;
+import butterknife.OnClick;
 
-    private String mParam1;
+public class OnlineTitleFragment extends BaseFragment {
 
-//    private OnFragmentInteractionListener mListener;
+    @BindView(R.id.vpOnlineVideoPaging)
+    NoSlideViewPager mViewPager;
+
+    @BindView(R.id.onLineVideoPageNumberView)
+    PageNumberView mPageNumberView;
+
+    @BindView(R.id.ibBack)
+    ImageButton mBackOrHome;
+
+    @BindView(R.id.ibRefrsh)
+    ImageButton mRefrsh;
 
     public static OnlineTitleFragment newInstance() {
         OnlineTitleFragment fragment = new OnlineTitleFragment();
@@ -24,37 +34,28 @@ public class OnlineTitleFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//        }
+    protected int getLayoutResID() {
+        return R.layout.main_fragment_online_title;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment_online_title, container, false);
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initDataAfterView() {
+
     }
 
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-//    public interface OnFragmentInteractionListener {
-//        void onFragmentInteraction(Uri uri);
-//    }
+    @OnClick({R.id.ibBack, R.id.ibRefrsh})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ibBack:
+                break;
+            case R.id.ibRefrsh:
+                break;
+        }
+    }
 }
