@@ -7,8 +7,8 @@ package com.chy.videotutorial.Utils;
 public class Constants {
 
 
-    public static final int PAGE_SIZE = 6;                      //每页展示的
-
+    public static final int PAGE_SIZE_COURSE = 6;                      //课程每页展示的最大数量
+    public static final int PAGE_SIZE_ONLINE = 8;                      //在线视频每页展示的最大数量
 
 //    /**
 //     * 收入交易记录类型

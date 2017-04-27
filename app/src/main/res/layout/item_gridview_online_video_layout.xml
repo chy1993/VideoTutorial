@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivOnlineVideo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="#00ff00"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:background="#ffffff"
+        android:id="@+id/tvVideoContent"
+        android:layout_width="150dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/ivOnlineVideo"
+        android:layout_centerVertical="true"
+        android:text="第11首"
+        android:textColor="#333333"
+        android:textSize="10sp" />
+
+    <TextView
+        android:textSize="10sp"
+        android:background="#ffffff"
+        android:id="@+id/tvVideoTitle"
+        android:layout_width="150dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/tvVideoContent"
+        android:text="小朋友们的拜厄初级钢琴"
+        android:textColor="#666666" />
+
+    <TextView
+        android:textSize="11sp"
+        android:background="#ffffff"
+        android:id="@+id/tvVideoTeacher"
+        android:layout_width="150dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/tvVideoTitle"
+        android:text="主讲人：李昕"
+        android:textColor="#666666" />
+
+</RelativeLayout>
