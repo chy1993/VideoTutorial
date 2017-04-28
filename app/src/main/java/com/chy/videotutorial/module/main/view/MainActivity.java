@@ -2,6 +2,7 @@ package com.chy.videotutorial.module.main.view;
 
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -184,5 +185,6 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
     public void setVideoInfoData(VideoInfo videoInfo) {
         int pageIndexe = videoInfo.getCurrentPageIndex();
         LogUtils.getInstance().d(pageIndexe);
+        Log.d("klsw",pageIndexe+"");
     }
 }

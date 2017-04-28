@@ -9,7 +9,7 @@ import android.util.Log;
  * 日志打印工具类
  */
 public class LogUtils {
-	private String tag = "KLSW";
+	private String tag = "klsw";
 	public static int logLevel = Log.VERBOSE;
 	public static boolean isDebug = BuildConfig.DEBUG;
 

@@ -28,16 +28,6 @@ public class MainModel {
                 LogUtils.getInstance().i("视频信息结果：" + response);
                 try
                 {
-//                    ApiResponse<VideoInfo> apiResponse = JsonUtils.deserialize(response, ApiResponse.class);
-//                    if ( apiResponse.isSuccess() ){
-//                        List<MessageEntity> beans = JsonUtils.deserialize(apiResponse.getData(), new TypeToken<List<MessageEntity>>() {}.getType());
-//                        for ( MessageEntity entity: beans ) {
-//                            entity.genHtmlText();
-//                        }
-//                        messageListener.onSuccess(beans);
-//                    } else {
-//                        messageListener.onFailure(apiResponse.getMessage(), null);
-//                    }
                     VideoInfo beans = JsonUtils.deserialize(response,new TypeToken<VideoInfo>(){}.getType());
                     videoListInfoListener.onLoadVideoListInfoSuccess(beans);
 
