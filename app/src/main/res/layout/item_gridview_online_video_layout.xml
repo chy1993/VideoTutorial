@@ -20,10 +20,10 @@
         android:layout_centerVertical="true"
         android:text="第11首"
         android:textColor="#333333"
-        android:textSize="10sp" />
+        android:textSize="8sp" />
 
     <TextView
-        android:textSize="10sp"
+        android:textSize="8sp"
         android:background="#ffffff"
         android:id="@+id/tvVideoTitle"
         android:layout_width="150dp"
@@ -33,7 +33,7 @@
         android:textColor="#666666" />
 
     <TextView
-        android:textSize="11sp"
+        android:textSize="8sp"
         android:background="#ffffff"
         android:id="@+id/tvVideoTeacher"
         android:layout_width="150dp"
