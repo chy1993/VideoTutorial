@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.VideoSearchDialog;
@@ -30,6 +31,9 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
     @BindView(R.id.vpVideoType)
     NoSlideViewPager mVideoTypeViewPager;
 
+    @BindView(R.id.tvCourseType1)
+    TextView mCourseType1;
+
     private ViewTypeViewPagerAdapter mAdapter;
 
 
@@ -40,6 +44,8 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     @Override
     protected void initView() {
+        mCourseType1.setSelected(true);
+
         initViewPager();
         initRadioGroup();
     }
