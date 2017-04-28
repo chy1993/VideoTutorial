@@ -5,8 +5,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
+import com.chy.videotutorial.MyWiew.CourseInfoDialog;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
+import com.chy.videotutorial.MyWiew.VideoSearchDialog;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.Utils.Constants;
 import com.chy.videotutorial.base.fragment.BaseFragment;
@@ -87,6 +89,8 @@ public class OnlineTitleFragment extends BaseFragment {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1,
                                         int position, long arg3) {
+                    showCourseInfoDialog();
+
                 }
             });
             //每一个GridView作为一个View对象添加到ViewPager集合中
@@ -108,5 +112,15 @@ public class OnlineTitleFragment extends BaseFragment {
             case R.id.ibRefrsh:
                 break;
         }
+    }
+
+    /**
+     * 展示课程详细信息的dialog
+     */
+    private void showCourseInfoDialog(){
+        CourseInfoDialog dialog = new CourseInfoDialog(getActivity());
+        dialog.show();
+//        VideoSearchDialog dialog = new VideoSearchDialog(getActivity());
+//        dialog.show();
     }
 }

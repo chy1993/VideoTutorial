@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="450dp">
+
+
+    <RelativeLayout
+        android:id="@+id/rlDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/video_search_shape_theme_background"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="课程名称"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/tvTitleEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/tvTitle"
+            android:text="Course Title:"
+            android:textColor="#999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvCourseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tvTitleEnglish"
+            android:text="第12、13首"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/vLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginTop="10dp"
+            android:background="#babbbf" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlCourseInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/vLine"
+            android:layout_marginBottom="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/video_search_shape_theme_content_area">
+
+            <TextView
+                android:id="@+id/tvCourseInfoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:text="课程简介:"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvCourseInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCourseInfoTitle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="    《小朋友们的拜厄：初级钢琴同步教材》 专为初学琴童量身打造：生动的全方位“课堂式”同步教学，融汇实用与趣味双重特点的初级儿童钢琴辅导教材！是学琴儿童之友，教师家长助手。" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btStartPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/video_info_selector_btn_start" />
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/ivCloseDialogInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/close" />
+
+
+</RelativeLayout>
