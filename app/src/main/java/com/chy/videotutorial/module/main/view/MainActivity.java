@@ -9,12 +9,16 @@ import android.widget.TextView;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.VideoSearchDialog;
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.Utils.LogUtils;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
+import com.chy.videotutorial.base.activity.BaseMvpAppCompatAty;
+import com.chy.videotutorial.entities.VideoInfo;
+import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseAppCompatActivity implements CourseFragment.OnGridViewChangeListener {
+public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements CourseFragment.OnGridViewChangeListener,IMainView {
 
     @BindView(R.id.ibLeft)
     ImageButton mLeft;
@@ -52,7 +56,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     @Override
     protected void initDataAfterView() {
-
+        mPresenter.loadVideoInfo(1,7);
     }
 
 
@@ -154,5 +158,31 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 //            mBack.setBackground(getResources().getDrawable(R.mipmap.common_home));
 //        }
 //        isHome = !isHome;
+    }
+
+    @Override
+    protected MainPresenter createPresenter() {
+        return new MainPresenter(this);
+    }
+
+    @Override
+    public void onShowErrorView(String msg) {
+
+    }
+
+    @Override
+    public void onShowLoadingView(String msg) {
+
+    }
+
+    @Override
+    public void onHideLoadingView() {
+
+    }
+
+    @Override
+    public void setVideoInfoData(VideoInfo videoInfo) {
+        int pageIndexe = videoInfo.getCurrentPageIndex();
+        LogUtils.getInstance().d(pageIndexe);
     }
 }
