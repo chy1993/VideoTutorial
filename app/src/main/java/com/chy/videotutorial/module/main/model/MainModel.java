@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 视频播放主界面的数据处理
  */
 public class MainModel {
     public interface OnLoadVideoListInfoListener{

@@ -8,13 +8,11 @@
 
 
     <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="230dp"
         android:id="@+id/llVideoTypeTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="77dp"
-        android:layout_marginTop="14dp"
         android:orientation="horizontal">
 
         <ImageButton
@@ -77,117 +75,69 @@
 
 
     <com.chy.videotutorial.MyWiew.NoSlideViewPager
+        android:layout_marginTop="90dp"
         android:id="@+id/vpVideoType"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="225dp"
-        android:layout_marginTop="105dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvCourseType1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
         <TextView
             android:id="@+id/tvCourseType10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
+            style="@style/VideoTypeTextView"
             android:text="小朋友们的拜厄初级钢琴—入门篇" />
 
 
