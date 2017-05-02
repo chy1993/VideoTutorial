@@ -8,10 +8,11 @@ import android.widget.ImageButton;
 import com.chy.videotutorial.MyWiew.CourseInfoDialog;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.PageNumberView;
-import com.chy.videotutorial.MyWiew.VideoSearchDialog;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.Utils.Constants;
+import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 import com.chy.videotutorial.base.fragment.BaseFragment;
+import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class OnlineTitleFragment extends BaseFragment {
+public class OnlineFragment extends BaseCallBackFrg2Aty<OnlineFragment.OnSetDataToFragment> {
 
     @BindView(R.id.vpOnlineVideoPaging)
     NoSlideViewPager mViewPager;
@@ -38,8 +39,16 @@ public class OnlineTitleFragment extends BaseFragment {
     private int mTotalPage;                                          //总的页数
     private List listDatas;                                          //总的数据源
 
-    public static OnlineTitleFragment newInstance() {
-        OnlineTitleFragment fragment = new OnlineTitleFragment();
+    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;
+
+    /**
+     * Activity通过此接口传递数据给此Fragment
+     */
+    interface OnSetDataToFragment {
+    }
+
+    public static OnlineFragment newInstance() {
+        OnlineFragment fragment = new OnlineFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        fragment.setArguments(args);
@@ -58,7 +67,6 @@ public class OnlineTitleFragment extends BaseFragment {
         for (int i = 0; i < 100; i++) {
             listDatas.add(i);
         }
-
         //总的页数向上取整
         mTotalPage = (int) Math.ceil(listDatas.size() * 1.0 / mPageSize);
     }
@@ -70,7 +78,8 @@ public class OnlineTitleFragment extends BaseFragment {
 
     @Override
     protected void initDataAfterView() {
-
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mVideoTypeDetailInfos = mainActivity.getVideoTypeDetailInfos();
     }
 
 
@@ -120,7 +129,13 @@ public class OnlineTitleFragment extends BaseFragment {
     private void showCourseInfoDialog(){
         CourseInfoDialog dialog = new CourseInfoDialog(getActivity());
         dialog.show();
-//        VideoSearchDialog dialog = new VideoSearchDialog(getActivity());
-//        dialog.show();
+    }
+
+    /**
+     * 将数据展示在界面上
+     */
+    private void setPageContent(List<VideoTypeDetailInfo> data){
+
+
     }
 }

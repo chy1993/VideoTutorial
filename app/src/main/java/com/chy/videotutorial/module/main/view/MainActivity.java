@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -14,7 +15,11 @@ import com.chy.videotutorial.Utils.LogUtils;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.base.activity.BaseMvpAppCompatAty;
 import com.chy.videotutorial.entities.VideoInfo;
+import com.chy.videotutorial.entities.VideoTypeDetailInfo;
+import com.chy.videotutorial.entities.VideoTypeInfo;
 import com.chy.videotutorial.module.main.presenter.MainPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,6 +72,15 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
     TextView mLeftList9;
 
     private ViewTypeViewPagerAdapter mAdapter;
+
+    List<VideoTypeInfo> mVideoTypeInfoList;                             //左侧视频类型列表的集合
+
+    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;                    //每页视频信息的集合
+
+    //mVideoTypeInfoList的get方法
+    public List<VideoTypeDetailInfo> getVideoTypeDetailInfos() {
+        return mVideoTypeDetailInfos;
+    }
 
 
     @Override
@@ -224,8 +238,21 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
 
     @Override
     public void setVideoInfoData(VideoInfo videoInfo) {
-        int pageIndexe = videoInfo.getCurrentPageIndex();
-        LogUtils.getInstance().d(pageIndexe);
-        Log.d("klsw",pageIndexe+"");
+        mVideoTypeInfoList = videoInfo.getListContent();
+        mVideoTypeDetailInfos = videoInfo.getPageContent();
+
+        setLeftVideoType(mVideoTypeInfoList);
+    }
+
+    private void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
+        mLeftList1.setText(videoTypeInfoList.get(0).getTypeName());
+        mLeftList2.setText(videoTypeInfoList.get(1).getTypeName());
+        mLeftList3.setText(videoTypeInfoList.get(2).getTypeName());
+        mLeftList4.setText(videoTypeInfoList.get(3).getTypeName());
+        mLeftList5.setText(videoTypeInfoList.get(4).getTypeName());
+        mLeftList6.setText(videoTypeInfoList.get(5).getTypeName());
+        mLeftList7.setText(videoTypeInfoList.get(6).getTypeName());
+        mLeftList8.setText(videoTypeInfoList.get(7).getTypeName());
+        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
     }
 }

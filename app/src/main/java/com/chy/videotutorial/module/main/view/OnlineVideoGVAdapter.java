@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
     private List lists;                                     //数据源
     private int mIndex;                                     // 页数下标，标示第几页，从0开始
     private int mPargerSize;                                // 每页显示的最大的数量
+    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;
 
 
 
@@ -30,6 +32,11 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
         this.mPargerSize = mPargerSize;
         this.lists = lists;
 
+    }
+
+    public void setData(List<VideoTypeDetailInfo> data){
+        mVideoTypeDetailInfos = data;
+        this.notifyDataSetChanged();
     }
 
     /**

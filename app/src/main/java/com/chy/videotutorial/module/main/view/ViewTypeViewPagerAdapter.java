@@ -25,7 +25,7 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
         if (position==0) {
             return CourseFragment.newInstance();
         }else if (position==3) {
-            return OnlineTitleFragment.newInstance();
+            return OnlineFragment.newInstance();
         } else {
             return CourseFragment.newInstance();
         }
@@ -43,7 +43,7 @@ public class ViewTypeViewPagerAdapter extends FragmentPagerAdapter {
         if (position != 3){
             currentFragment = (CourseFragment) object;
         }else {
-            currentFragment = (OnlineTitleFragment)object;
+            currentFragment = (OnlineFragment)object;
         }
 
         super.setPrimaryItem(container,position,object);
