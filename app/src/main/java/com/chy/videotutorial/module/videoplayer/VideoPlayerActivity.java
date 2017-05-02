@@ -45,10 +45,16 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     Button mStartButton;                                             //开始播放按钮
     View mVideoLayout;                                               //整个播放器与控制器的父布局
+    View mRlVideoLayout;                                             //播放器与控制器外层布局。 mVideoLayout为全屏时 外层布局也应该全屏
 
     private int mSeekPosition;                                       //视频播放到的位置
     private int cachedHeight;                                        //播放视频部分的高度
     private int cacheWidth;                                          //播放视频部分的宽度
+
+    private int rlcachedHeight;                                        //外层布局的高度
+    private int rlcacheWidth;                                          //外层布局的高度
+
+
     private boolean isFullscreen;                                    //是否全屏
 
     private String[]  files;                                         //文件名集合
@@ -238,6 +244,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      * 初始化视频播放器
      */
     private void initVideoView(){
+        mRlVideoLayout = findViewById(R.id.rlVideo);
         mVideoLayout = findViewById(R.id.video_layout);
         mVideoView = (UniversalVideoView) findViewById(R.id.videoView);
         mMediaController = (UniversalMediaController) findViewById(R.id.media_controller);
@@ -358,6 +365,18 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                 videoLayoutParams.width = cacheWidth;
                 videoLayoutParams.height = cachedHeight;
                 mVideoLayout.setLayoutParams(videoLayoutParams);
+            }
+        });
+
+        mRlVideoLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                rlcacheWidth = mRlVideoLayout.getWidth();
+                rlcachedHeight = mRlVideoLayout.getHeight();
+                ViewGroup.LayoutParams videoLayoutParams = mRlVideoLayout.getLayoutParams();
+                videoLayoutParams.width = rlcacheWidth;
+                videoLayoutParams.height = rlcacheWidth;
+                mRlVideoLayout.setLayoutParams(videoLayoutParams);
             }
         });
     }
@@ -496,6 +515,14 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
             layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
             mVideoLayout.setLayoutParams(layoutParams);
+            mVideoLayout.setPadding(0,0,0,0);
+
+            ViewGroup.LayoutParams rllayoutParams = mRlVideoLayout.getLayoutParams();
+            rllayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            rllayoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            mRlVideoLayout.setLayoutParams(rllayoutParams);
+
+
             mStartButton.setVisibility(View.GONE);
             mNoFullScreenTitle.setVisibility(View.GONE);
             mClosePlayer.setVisibility(View.GONE);
@@ -504,6 +531,13 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
             layoutParams.width = this.cacheWidth;
             layoutParams.height = this.cachedHeight;
             mVideoLayout.setLayoutParams(layoutParams);
+            mVideoLayout.setPadding(5,5,5,5);
+
+            ViewGroup.LayoutParams rllayoutParams = mRlVideoLayout.getLayoutParams();
+            rllayoutParams.width = this.rlcacheWidth;
+            rllayoutParams.height = this.rlcachedHeight;
+            mRlVideoLayout.setLayoutParams(rllayoutParams);
+
             mStartButton.setVisibility(View.VISIBLE);
             mNoFullScreenTitle.setVisibility(View.VISIBLE);
             mClosePlayer.setVisibility(View.VISIBLE);

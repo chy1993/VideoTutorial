@@ -11,15 +11,15 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="230dp"
         android:id="@+id/llVideoTypeTab"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageButton
 
             android:id="@+id/ibLeft"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/videotype_selector_btn_left" />
 
         <RadioGroup
@@ -30,30 +30,30 @@
 
             <RadioButton
                 android:id="@+id/rbAbc"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/videotype_selector_radiobutton_abc"
                 android:button="@null"
                 android:checked="true" />
 
             <RadioButton
                 android:id="@+id/rbGrading"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/videotype_selector_radiobutton_grading"
                 android:button="@null" />
 
             <RadioButton
                 android:id="@+id/rbWorld"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/videotype_selector_radiobutton_wrold"
                 android:button="@null" />
 
             <RadioButton
                 android:id="@+id/rbOnline"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/videotype_selector_radiobutton_online"
                 android:button="@null" />
 
@@ -61,14 +61,14 @@
 
         <ImageButton
             android:id="@+id/ibRight"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/videotype_selector_btn_right" />
 
         <ImageButton
             android:id="@+id/ibSearch"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/videotype_selector_btn_search" />
 
     </LinearLayout>
@@ -85,7 +85,7 @@
 
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="match_parent"
         android:layout_marginTop="90dp"
         android:orientation="vertical">
