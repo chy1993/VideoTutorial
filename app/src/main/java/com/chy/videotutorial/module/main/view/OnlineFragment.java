@@ -50,20 +50,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         return new MainPresenter(this);
     }
 
-    @Override
-    public void onShowErrorView(String msg) {
 
-    }
-
-    @Override
-    public void onShowLoadingView(String msg) {
-
-    }
-
-    @Override
-    public void onHideLoadingView() {
-
-    }
 
     @Override
     public void setVideoInfoData(VideoInfo videoInfo) {
@@ -166,6 +153,22 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
      */
     private void setPageContent(List<VideoTypeDetailInfo> data){
 
+
+    }
+
+
+    @Override
+    public void onShowErrorView(String msg) {
+
+    }
+
+    @Override
+    public void onShowLoadingView(String msg) {
+
+    }
+
+    @Override
+    public void onHideLoadingView() {
 
     }
 }
