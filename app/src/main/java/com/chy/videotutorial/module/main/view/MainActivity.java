@@ -36,8 +36,35 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
     @BindView(R.id.vpVideoType)
     NoSlideViewPager mVideoTypeViewPager;
 
-    @BindView(R.id.tvCourseType1)
-    TextView mCourseType1;
+    @BindView(R.id.tvLeftListTitle)
+    TextView mLeftListTitle;
+
+    @BindView(R.id.tvLeftList1)
+    TextView mLeftList1;
+
+    @BindView(R.id.tvLeftList2)
+    TextView mLeftList2;
+
+    @BindView(R.id.tvLeftList3)
+    TextView mLeftList3;
+
+    @BindView(R.id.tvLeftList4)
+    TextView mLeftList4;
+
+    @BindView(R.id.tvLeftList5)
+    TextView mLeftList5;
+
+    @BindView(R.id.tvLeftList6)
+    TextView mLeftList6;
+
+    @BindView(R.id.tvLeftList7)
+    TextView mLeftList7;
+
+    @BindView(R.id.tvLeftList8)
+    TextView mLeftList8;
+
+    @BindView(R.id.tvLeftList9)
+    TextView mLeftList9;
 
     private ViewTypeViewPagerAdapter mAdapter;
 
@@ -49,10 +76,9 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
 
     @Override
     protected void initView() {
-        mCourseType1.setSelected(true);
-
         initViewPager();
         initRadioGroup();
+        initLeftList();
     }
 
     @Override
@@ -99,6 +125,21 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
                 }
             }
         });
+    }
+
+    /**
+     * 左侧列表的初始化
+     */
+    private void initLeftList(){
+        mLeftList1.setSelected(true);
+        mLeftList2.setSelected(true);
+        mLeftList3.setSelected(true);
+        mLeftList4.setSelected(true);
+        mLeftList5.setSelected(true);
+        mLeftList6.setSelected(true);
+        mLeftList7.setSelected(true);
+        mLeftList8.setSelected(true);
+        mLeftList9.setSelected(true);
     }
 
     @OnClick(R.id.ibSearch)
