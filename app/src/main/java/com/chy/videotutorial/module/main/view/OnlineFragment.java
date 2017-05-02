@@ -12,7 +12,11 @@ import com.chy.videotutorial.R;
 import com.chy.videotutorial.Utils.Constants;
 import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
 import com.chy.videotutorial.base.fragment.BaseFragment;
+import com.chy.videotutorial.base.fragment.BaseMvpFragment;
+import com.chy.videotutorial.base.mvp.BasePresenter;
+import com.chy.videotutorial.entities.VideoInfo;
 import com.chy.videotutorial.entities.VideoTypeDetailInfo;
+import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class OnlineFragment extends BaseCallBackFrg2Aty<OnlineFragment.OnSetDataToFragment> {
+public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IMainView{
 
     @BindView(R.id.vpOnlineVideoPaging)
     NoSlideViewPager mViewPager;
@@ -37,9 +41,37 @@ public class OnlineFragment extends BaseCallBackFrg2Aty<OnlineFragment.OnSetData
     private List<View> mOnlineVideoGridViewList;                     //GridView作为一个View对象添加到ViewPager集合中
     private int mPageSize = Constants.PAGE_SIZE_ONLINE;              //每页显示的最大的数量
     private int mTotalPage;                                          //总的页数
-    private List listDatas;                                          //总的数据源
+//    private List listDatas;                                          //总的数据源
 
     List<VideoTypeDetailInfo> mVideoTypeDetailInfos;
+
+    @Override
+    protected MainPresenter createPresenter() {
+        return new MainPresenter(this);
+    }
+
+    @Override
+    public void onShowErrorView(String msg) {
+
+    }
+
+    @Override
+    public void onShowLoadingView(String msg) {
+
+    }
+
+    @Override
+    public void onHideLoadingView() {
+
+    }
+
+    @Override
+    public void setVideoInfoData(VideoInfo videoInfo) {
+        mVideoTypeDetailInfos = videoInfo.getPageContent();
+        mTotalPage = videoInfo.getTotalPageCount();
+
+        initOnlineVideo();
+    }
 
     /**
      * Activity通过此接口传递数据给此Fragment
@@ -63,23 +95,18 @@ public class OnlineFragment extends BaseCallBackFrg2Aty<OnlineFragment.OnSetData
     @Override
     protected void initDataBeforeView() {
         super.initDataBeforeView();
-        listDatas = new ArrayList();
-        for (int i = 0; i < 100; i++) {
-            listDatas.add(i);
-        }
-        //总的页数向上取整
-        mTotalPage = (int) Math.ceil(listDatas.size() * 1.0 / mPageSize);
+        mPresenter.loadVideoInfo(1,9);
+
     }
 
     @Override
     protected void initView() {
-        initOnlineVideo();
+//        initOnlineVideo();
     }
 
     @Override
     protected void initDataAfterView() {
-        MainActivity mainActivity = (MainActivity) getActivity();
-        mVideoTypeDetailInfos = mainActivity.getVideoTypeDetailInfos();
+
     }
 
 
@@ -92,7 +119,10 @@ public class OnlineFragment extends BaseCallBackFrg2Aty<OnlineFragment.OnSetData
             //每个页面都是inflate出一个新实例
             final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_online_video, null);
             gridView.setPadding(100,50,100,0);
-            gridView.setAdapter(new OnlineVideoGVAdapter(getActivity(), listDatas, i, mPageSize));
+            OnlineVideoGVAdapter adapter = new OnlineVideoGVAdapter(getActivity(), i, mPageSize);
+            adapter.setData(mVideoTypeDetailInfos);
+            gridView.setAdapter(adapter);
+
             //添加item点击监听
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

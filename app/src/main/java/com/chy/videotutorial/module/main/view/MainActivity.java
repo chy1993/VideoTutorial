@@ -24,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements CourseFragment.OnGridViewChangeListener,IMainView {
+public class MainActivity extends BaseAppCompatActivity implements CourseFragment.OnGridViewChangeListener{
 
     @BindView(R.id.ibLeft)
     ImageButton mLeft;
@@ -77,11 +77,11 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
 
     List<VideoTypeDetailInfo> mVideoTypeDetailInfos;                    //每页视频信息的集合
 
-    //mVideoTypeInfoList的get方法
-    public List<VideoTypeDetailInfo> getVideoTypeDetailInfos() {
-        return mVideoTypeDetailInfos;
+    public VideoInfo getVideoInfo() {
+        return mVideoInfo;
     }
 
+    VideoInfo mVideoInfo;                                                //接口返回的视频信息实体类
 
     @Override
     protected int getLayoutResID() {
@@ -97,7 +97,7 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
 
     @Override
     protected void initDataAfterView() {
-        mPresenter.loadVideoInfo(1,7);
+//        mPresenter.loadVideoInfo(1,7);
     }
 
 
@@ -216,34 +216,39 @@ public class MainActivity extends BaseMvpAppCompatAty<MainPresenter> implements 
 //        isHome = !isHome;
     }
 
-    @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
-    }
+//    @Override
+//    protected MainPresenter createPresenter() {
+//        return new MainPresenter(this);
+//    }
+//
+//    @Override
+//    public void onShowErrorView(String msg) {
+//
+//    }
+//
+//    @Override
+//    public void onShowLoadingView(String msg) {
+//
+//    }
+//
+//    @Override
+//    public void onHideLoadingView() {
+//
+//    }
+//
+//    @Override
+//    public void setVideoInfoData(VideoInfo videoInfo) {
+//        mVideoInfo = videoInfo;
+//        mVideoTypeInfoList = videoInfo.getListContent();
+//        mVideoTypeDetailInfos = videoInfo.getPageContent();
+//
+//        setLeftVideoType(mVideoTypeInfoList);
+//    }
 
-    @Override
-    public void onShowErrorView(String msg) {
-
-    }
-
-    @Override
-    public void onShowLoadingView(String msg) {
-
-    }
-
-    @Override
-    public void onHideLoadingView() {
-
-    }
-
-    @Override
-    public void setVideoInfoData(VideoInfo videoInfo) {
-        mVideoTypeInfoList = videoInfo.getListContent();
-        mVideoTypeDetailInfos = videoInfo.getPageContent();
-
-        setLeftVideoType(mVideoTypeInfoList);
-    }
-
+    /**
+     * 设置左边视频类型列表
+     * @param videoTypeInfoList
+     */
     private void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
         mLeftList1.setText(videoTypeInfoList.get(0).getTypeName());
         mLeftList2.setText(videoTypeInfoList.get(1).getTypeName());

@@ -19,45 +19,42 @@ import java.util.List;
 
 public class OnlineVideoGVAdapter extends BaseAdapter {
     private Context mContext;
-    private List lists;                                     //数据源
+//    private List lists;                                     //数据源
     private int mIndex;                                     // 页数下标，标示第几页，从0开始
     private int mPargerSize;                                // 每页显示的最大的数量
-    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;
+    List<VideoTypeDetailInfo> mData;
 
-
-
-    public OnlineVideoGVAdapter(Context context, List lists, int mIndex, int mPargerSize) {
+    public OnlineVideoGVAdapter(Context context,int mIndex, int mPargerSize) {
         this.mContext = context;
         this.mIndex = mIndex;
         this.mPargerSize = mPargerSize;
-        this.lists = lists;
+//        this.lists = lists;
 
     }
 
     public void setData(List<VideoTypeDetailInfo> data){
-        mVideoTypeDetailInfos = data;
+        mData = data;
         this.notifyDataSetChanged();
     }
 
-    /**
-     * 先判断数据集的大小是否显示满本页lists.size() > (mIndex + 1)*mPagerSize
-     * 如果满足，则此页就显示最大数量lists的个数
-     * 如果不够显示每页的最大数量，那么剩下几个就显示几个
-     */
     @Override
     public int getCount() {
-        return lists.size() > (mIndex + 1) * mPargerSize ?
-                mPargerSize : (lists.size() - mIndex*mPargerSize);
+//        return lists.size() > (mIndex + 1) * mPargerSize ?
+//                mPargerSize : (lists.size() - mIndex*mPargerSize);
+
+        return (mData == null)? 0 : mData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lists.get(position + mIndex * mPargerSize);
+//        return lists.get(position + mIndex * mPargerSize);
+        return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return position + mIndex * mPargerSize;
+//        return position + mIndex * mPargerSize;
+        return position;
     }
 
     @Override
@@ -69,15 +66,20 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
             viewHolder = new OnlineVideoGVAdapter.ViewHolder();
 
             viewHolder.mVideoContent = (TextView) convertView.findViewById(R.id.tvVideoContent);
+            viewHolder.mVideoTitle = (TextView) convertView.findViewById(R.id.tvVideoTitle);
+            viewHolder.mVideoTeacher = (TextView) convertView.findViewById(R.id.tvVideoTeacher);
+            viewHolder.mVideoImg = (ImageView) convertView.findViewById(R.id.ivOnlineVideo);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (OnlineVideoGVAdapter.ViewHolder) convertView.getTag();
         }
 
-        //重新确定position因为拿到的是总数据源，数据源是分页加载到每页的GridView上的
-        final int pos = position + mIndex * mPargerSize;                            //假设mPageSiez
+//        //重新确定position因为拿到的是总数据源，数据源是分页加载到每页的GridView上的
+//        final int pos = position + mIndex * mPargerSize;                            //假设mPageSiez
 
-        viewHolder.mVideoContent.setText("课程" + pos );
+        viewHolder.mVideoContent.setText( mData.get(position).getTitle());
+        viewHolder.mVideoTitle.setText(mData.get(position).getSerices());
+        viewHolder.mVideoTeacher.setText(mData.get(position).getKeynote());
 
         return convertView;
     }
