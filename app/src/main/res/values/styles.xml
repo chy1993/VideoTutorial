@@ -28,16 +28,16 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-
+    <!--视频类型的TextView风格 -->
     <style name="VideoTypeTextView">
-
-        <item name="android:layout_marginTop">17dp</item>
+        <item name="android:layout_marginTop">22dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">13sp</item>
 
     </style>
 
