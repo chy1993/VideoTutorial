@@ -129,25 +129,68 @@ public class OnlinePageNumberView extends RelativeLayout{
         mNextPage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mFirst.isChecked()){
-                    mSecond.setChecked(true);
-                }else if (mSecond.isChecked()){
-                    mThird.setChecked(true);
-                }else if (mThird.isChecked()){
-                    mFourth.setChecked(true);
-                }else if(mFourth.isChecked()){
-                    mFifth.setChecked(true);
-                }else if(mFifth.isChecked()){
-//                    mFirst.setChecked(true);
+
+                if (mTotalPages >=5){
+                    if (mFirst.isChecked()){
+                        mSecond.setChecked(true);
+                    }else if (mSecond.isChecked()){
+                        mThird.setChecked(true);
+                    }else if (mThird.isChecked()){
+                        mFourth.setChecked(true);
+                    }else if(mFourth.isChecked()){
+                        mFifth.setChecked(true);
+                    }else if(mFifth.isChecked()){
+
+                    }
+                }else if (mTotalPages == 4){
+                    if (mFirst.isChecked()){
+                        mSecond.setChecked(true);
+                    }else if (mSecond.isChecked()){
+                        mThird.setChecked(true);
+                    }else if (mThird.isChecked()){
+                        mFourth.setChecked(true);
+                    }else if(mFourth.isChecked()){
+                    }else if(mFifth.isChecked()){
+                    }
+                }else if (mTotalPages == 3){
+                    if (mFirst.isChecked()){
+                        mSecond.setChecked(true);
+                    }else if (mSecond.isChecked()){
+                        mThird.setChecked(true);
+                    }else if (mThird.isChecked()){
+                    }else if(mFourth.isChecked()){
+                    }else if(mFifth.isChecked()){
+                    }
+                }else if (mTotalPages == 2){
+                    if (mFirst.isChecked()){
+                        mSecond.setChecked(true);
+                    }else if (mSecond.isChecked()){
+                    }else if (mThird.isChecked()){
+                    }else if(mFourth.isChecked()){
+                    }else if(mFifth.isChecked()){
+                    }
                 }
+
             }
         });
 
         mLastPage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                setRadioButtonText(mTotalPages-4);
-                mFifth.setChecked(true);
+                if (mTotalPages >4){
+                    setRadioButtonText(mTotalPages-4);
+                    mFifth.setChecked(true);
+                }else if (mTotalPages == 4 ){
+                    setRadioButtonText(1);
+                    mFourth.setChecked(true);
+                }else if (mTotalPages == 3){
+                    setRadioButtonText(1);
+                    mThird.setChecked(true);
+                }else if (mTotalPages == 2){
+                    setRadioButtonText(1);
+                    mSecond.setChecked(true);
+                }
+
             }
         });
 

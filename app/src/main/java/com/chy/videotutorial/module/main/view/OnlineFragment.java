@@ -76,7 +76,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     @Override
     protected void initDataBeforeView() {
         super.initDataBeforeView();
-        mPresenter.loadVideoInfo(1,9);
+        mPresenter.loadVideoInfo(1,7);
 
     }
 
@@ -105,6 +105,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
                 mPresenter.loadVideoInfo(pageNum,7);
             }
         });
+
     }
 
 
