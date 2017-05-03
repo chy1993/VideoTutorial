@@ -207,6 +207,7 @@ public class OnlinePageNumberView extends RelativeLayout{
                     if (mTotalPages <= 5){
                         switch (checkedId){
                             case R.id.rbFirst:
+                                if (isHandCheck)
                                 mListener.onChanged(1);
                                 break;
                             case R.id.rbSecond:
@@ -229,9 +230,11 @@ public class OnlinePageNumberView extends RelativeLayout{
                     }else {
                         switch (checkedId){
                             case R.id.rbFirst:
+                                if (isHandCheck){
                                     mCurrentPageNum = Integer.parseInt(mFirst.getText().toString());
                                     updatePadioButtonText(mCurrentPageNum);
                                     mListener.onChanged(mCurrentPageNum);
+                                }
                                 break;
                             case R.id.rbSecond:
                                 mCurrentPageNum = Integer.parseInt(mSecond.getText().toString());
@@ -356,6 +359,16 @@ public class OnlinePageNumberView extends RelativeLayout{
         }else {
             setRadioButtonText(1);
         }
+    }
+
+    /**
+     * 还原页码，让页码显示在第一位
+     */
+    public void reStorePageNum(){
+        isHandCheck = false;
+        mFirst.setChecked(true);
+        isHandCheck = true;
+
     }
 
 }

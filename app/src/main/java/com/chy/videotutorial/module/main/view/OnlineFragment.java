@@ -51,6 +51,8 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     MainActivity activity;
 
+    boolean isRestorePageNum = false;                                //是否需要重置页码
+
 //    OnActivityLeftListClicked mListener;
 //
 //    public interface OnActivityLeftListClicked{
@@ -69,6 +71,12 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     @Override
     public void setVideoInfoData(VideoInfo videoInfo) {
+        if (isRestorePageNum){
+            mPageNumberView.reStorePageNum();
+        }
+
+
+
         mVideoTypeDetailInfos = videoInfo.getPageContent();
         List<VideoTypeInfo> videoTypeInfoList = videoInfo.getListContent();
 
@@ -108,6 +116,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         activity = (MainActivity) getActivity();
 
         mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
+        isRestorePageNum = false;
     }
 
     @Override
@@ -132,6 +141,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
             @Override
             public void onChanged(int pageNum) {
                 mPresenter.loadVideoInfo(pageNum,mCurrentListID);
+                isRestorePageNum = false;
             }
         });
 
@@ -166,8 +176,10 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
             @Override
             public void onClick(View v) {
                 mPresenter.loadVideoInfo(1,currentListID);
+                isRestorePageNum = true;
             }
         });
+
     }
 
 
