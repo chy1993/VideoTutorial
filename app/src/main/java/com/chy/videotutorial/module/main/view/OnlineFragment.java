@@ -42,6 +42,8 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     private int mPageSize = Constants.PAGE_SIZE_ONLINE;              //每页显示的最大的数量
     private int mTotalPage;                                          //总的页数
+    private int mCurrentPageIndex = Constants.PAGE_CURRENT_ONLINE;     //默认展示第一页
+    private int mCurrentListID = Constants.VIDEO_TYPE_ONLINE;
 
     List<VideoTypeDetailInfo> mVideoTypeDetailInfos;                 //页面信息的集合
 
@@ -77,6 +79,8 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         activity.setLeftVideoType(videoInfo.getListContent());
 //        activity.setVideoTypeInfoList(videoInfo.getListContent());
 
+        mCurrentListID = videoInfo.getCurrentListID();
+
         setClickListener(activity.mLeftList1,videoTypeInfoList.get(0).getID());
         setClickListener(activity.mLeftList2,videoTypeInfoList.get(1).getID());
         setClickListener(activity.mLeftList3,videoTypeInfoList.get(2).getID());
@@ -103,7 +107,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         super.initDataBeforeView();
         activity = (MainActivity) getActivity();
 
-        mPresenter.loadVideoInfo(1,7);
+        mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
     }
 
     @Override
@@ -127,7 +131,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         mPageNumberView.setPageChangeListener(new OnlinePageNumberView.OnPageChangeListener() {
             @Override
             public void onChanged(int pageNum) {
-                mPresenter.loadVideoInfo(pageNum,7);
+                mPresenter.loadVideoInfo(pageNum,mCurrentListID);
             }
         });
 
