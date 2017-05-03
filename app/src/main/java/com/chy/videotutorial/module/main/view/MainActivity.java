@@ -1,27 +1,20 @@
 package com.chy.videotutorial.module.main.view;
 
-import android.os.AsyncTask;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.VideoSearchDialog;
 import com.chy.videotutorial.R;
-import com.chy.videotutorial.Utils.LogUtils;
 import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
-import com.chy.videotutorial.base.activity.BaseMvpAppCompatAty;
-import com.chy.videotutorial.entities.VideoInfo;
-import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 import com.chy.videotutorial.entities.VideoTypeInfo;
-import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
 import java.util.List;
 
@@ -100,6 +93,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         initViewPager();
         initRadioGroup();
         initLeftList();
+        Glide.with(this).load(R.drawable.common_wait_end).into(mRefreshImg);
     }
 
     @Override

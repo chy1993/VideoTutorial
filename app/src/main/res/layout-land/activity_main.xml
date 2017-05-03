@@ -149,9 +149,8 @@
         android:visibility="gone"
         android:id="@+id/ivRefresh"
         android:layout_centerInParent="true"
-        android:background="@mipmap/common_wait_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
 
 </RelativeLayout>
