@@ -3,6 +3,7 @@ package com.chy.videotutorial.module.main.view;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -73,15 +74,12 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     private ViewTypeViewPagerAdapter mAdapter;
 
-    List<VideoTypeInfo> mVideoTypeInfoList;                             //左侧视频类型列表的集合
 
-    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;                    //每页视频信息的集合
+//    List<VideoTypeInfo> mVideoTypeInfoList;                             //左侧视频类型列表的集合
 
-    public VideoInfo getVideoInfo() {
-        return mVideoInfo;
-    }
-
-    VideoInfo mVideoInfo;                                                //接口返回的视频信息实体类
+//    public void setVideoTypeInfoList(List<VideoTypeInfo> videoTypeInfoList) {
+//        this.mVideoTypeInfoList = videoTypeInfoList;
+//    }
 
     @Override
     protected int getLayoutResID() {
@@ -97,7 +95,6 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     @Override
     protected void initDataAfterView() {
-//        mPresenter.loadVideoInfo(1,7);
     }
 
 
@@ -143,6 +140,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     /**
      * 左侧列表的初始化
+     * 为实现跑马灯效果 需设置setSelected(true);
      */
     private void initLeftList(){
         mLeftList1.setSelected(true);
@@ -216,40 +214,12 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 //        isHome = !isHome;
     }
 
-//    @Override
-//    protected MainPresenter createPresenter() {
-//        return new MainPresenter(this);
-//    }
-//
-//    @Override
-//    public void onShowErrorView(String msg) {
-//
-//    }
-//
-//    @Override
-//    public void onShowLoadingView(String msg) {
-//
-//    }
-//
-//    @Override
-//    public void onHideLoadingView() {
-//
-//    }
-//
-//    @Override
-//    public void setVideoInfoData(VideoInfo videoInfo) {
-//        mVideoInfo = videoInfo;
-//        mVideoTypeInfoList = videoInfo.getListContent();
-//        mVideoTypeDetailInfos = videoInfo.getPageContent();
-//
-//        setLeftVideoType(mVideoTypeInfoList);
-//    }
 
     /**
      * 设置左边视频类型列表
      * @param videoTypeInfoList
      */
-    private void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
+    public void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
         mLeftList1.setText(videoTypeInfoList.get(0).getTypeName());
         mLeftList2.setText(videoTypeInfoList.get(1).getTypeName());
         mLeftList3.setText(videoTypeInfoList.get(2).getTypeName());
@@ -258,6 +228,8 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         mLeftList6.setText(videoTypeInfoList.get(5).getTypeName());
         mLeftList7.setText(videoTypeInfoList.get(6).getTypeName());
         mLeftList8.setText(videoTypeInfoList.get(7).getTypeName());
-        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
+//        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
     }
+
+
 }

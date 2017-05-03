@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.chy.videotutorial.MyWiew.CourseInfoDialog;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
@@ -17,6 +18,7 @@ import com.chy.videotutorial.base.fragment.BaseMvpFragment;
 import com.chy.videotutorial.base.mvp.BasePresenter;
 import com.chy.videotutorial.entities.VideoInfo;
 import com.chy.videotutorial.entities.VideoTypeDetailInfo;
+import com.chy.videotutorial.entities.VideoTypeInfo;
 import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
 import java.util.ArrayList;
@@ -45,6 +47,18 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     OnlineVideoGVAdapter mAdapter;
 
+    MainActivity activity;
+
+//    OnActivityLeftListClicked mListener;
+//
+//    public interface OnActivityLeftListClicked{
+//        void  onClicked();
+//    }
+//
+//    public void setActivityLeftListClicked(OnActivityLeftListClicked listener){
+//        this.mListener = listener;
+//    }
+
     @Override
     protected MainPresenter createPresenter() {
         return new MainPresenter(this);
@@ -54,17 +68,28 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     @Override
     public void setVideoInfoData(VideoInfo videoInfo) {
         mVideoTypeDetailInfos = videoInfo.getPageContent();
+        List<VideoTypeInfo> videoTypeInfoList = videoInfo.getListContent();
+
         mTotalPage = videoInfo.getTotalPageCount();
         mPageNumberView.setmTotalPages(mTotalPage);
         mAdapter.setData(mVideoTypeDetailInfos);
+
+        activity.setLeftVideoType(videoInfo.getListContent());
+//        activity.setVideoTypeInfoList(videoInfo.getListContent());
+
+        setClickListener(activity.mLeftList1,videoTypeInfoList.get(0).getID());
+        setClickListener(activity.mLeftList2,videoTypeInfoList.get(1).getID());
+        setClickListener(activity.mLeftList3,videoTypeInfoList.get(2).getID());
+        setClickListener(activity.mLeftList4,videoTypeInfoList.get(3).getID());
+        setClickListener(activity.mLeftList5,videoTypeInfoList.get(4).getID());
+        setClickListener(activity.mLeftList6,videoTypeInfoList.get(5).getID());
+        setClickListener(activity.mLeftList7,videoTypeInfoList.get(6).getID());
+        setClickListener(activity.mLeftList8,videoTypeInfoList.get(7).getID());
     }
 
 
     public static OnlineFragment newInstance() {
         OnlineFragment fragment = new OnlineFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        fragment.setArguments(args);
         return fragment;
     }
 
@@ -76,8 +101,9 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     @Override
     protected void initDataBeforeView() {
         super.initDataBeforeView();
-        mPresenter.loadVideoInfo(1,7);
+        activity = (MainActivity) getActivity();
 
+        mPresenter.loadVideoInfo(1,7);
     }
 
     @Override
@@ -98,7 +124,6 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         mAdapter  = new OnlineVideoGVAdapter(getActivity(), mPageSize);
         mGridView.setPadding(100,50,100,0);
         mGridView.setAdapter(mAdapter);
-//        mPageNumberView.setmTotalPages(mTotalPage);
         mPageNumberView.setPageChangeListener(new OnlinePageNumberView.OnPageChangeListener() {
             @Override
             public void onChanged(int pageNum) {
@@ -126,6 +151,23 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         CourseInfoDialog dialog = new CourseInfoDialog(getActivity());
         dialog.show();
     }
+
+    /**
+     * 一组TextView点击事件 写在一起
+     * @param textView
+     * @param currentListID
+     */
+    private void setClickListener(TextView textView, final int currentListID){
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.loadVideoInfo(1,currentListID);
+            }
+        });
+    }
+
+
+
 
     /**
      * 将数据展示在界面上

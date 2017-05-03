@@ -98,47 +98,47 @@
         <TextView
             android:id="@+id/tvLeftList1"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList2"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList3"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList4"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList5"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList6"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList7"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList8"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tvLeftList9"
             style="@style/VideoTypeTextView"
-            android:text="小朋友们的拜厄初级钢琴—入门篇" />
+            android:text="" />
 
 
     </LinearLayout>

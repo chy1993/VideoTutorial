@@ -7,7 +7,7 @@
         android:id="@+id/ivOnlineVideo"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:background="#00ff00"
+        android:background="#345643"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
