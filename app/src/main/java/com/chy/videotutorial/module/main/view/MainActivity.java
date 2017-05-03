@@ -1,12 +1,15 @@
 package com.chy.videotutorial.module.main.view;
 
+import android.os.AsyncTask;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
@@ -71,6 +74,12 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
     @BindView(R.id.tvLeftList9)
     TextView mLeftList9;
+
+    @BindView(R.id.ivRefresh)
+    ImageView mRefreshImg;
+
+    @BindView(R.id.rlMainBG)
+    RelativeLayout mBG;
 
     private ViewTypeViewPagerAdapter mAdapter;
 
@@ -229,6 +238,25 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         mLeftList7.setText(videoTypeInfoList.get(6).getTypeName());
         mLeftList8.setText(videoTypeInfoList.get(7).getTypeName());
 //        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
+    }
+
+    /**
+     * 展示加载
+     */
+    public void showLoadingView(){
+        mRefreshImg.setVisibility(View.VISIBLE);
+        mBG.setAlpha(0.5f);
+        mBG.setEnabled(false);
+    }
+
+
+    /**
+     *隐藏加载
+     */
+    public void hideLoadingView(){
+        mRefreshImg.setVisibility(View.GONE);
+        mBG.setAlpha(1);
+        mBG.setEnabled(true);
     }
 
 

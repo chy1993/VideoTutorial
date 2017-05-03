@@ -21,17 +21,18 @@ public class MainPresenter extends BasePresenter<IMainView> implements MainModel
 
 
     public void loadVideoInfo(int currentPageIndex,int currentListID){
-//            mView.onShowLoadingView("");
+            mView.onShowLoadingView("");
             mModel.requestVideoInfo(currentPageIndex, currentListID,this);
     }
 
     @Override
     public void onLoadVideoListInfoSuccess(VideoInfo videoInfo) {
         mView.setVideoInfoData(videoInfo);
+        mView.onHideLoadingView();
     }
 
     @Override
     public void onLoadVideoListInfoFailure(String msg, Exception e) {
-
+        mView.onHideLoadingView();
     }
 }

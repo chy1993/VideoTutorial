@@ -1,21 +1,15 @@
 package com.chy.videotutorial.module.main.view;
 
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.chy.videotutorial.MyWiew.CourseInfoDialog;
-import com.chy.videotutorial.MyWiew.NoSlideViewPager;
 import com.chy.videotutorial.MyWiew.OnlinePageNumberView;
-import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.Utils.Constants;
-import com.chy.videotutorial.base.fragment.BaseCallBackFrg2Aty;
-import com.chy.videotutorial.base.fragment.BaseFragment;
 import com.chy.videotutorial.base.fragment.BaseMvpFragment;
-import com.chy.videotutorial.base.mvp.BasePresenter;
 import com.chy.videotutorial.entities.VideoInfo;
 import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 import com.chy.videotutorial.entities.VideoTypeInfo;
@@ -201,11 +195,11 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     @Override
     public void onShowLoadingView(String msg) {
-
+        activity.showLoadingView();
     }
 
     @Override
     public void onHideLoadingView() {
-
+        activity.hideLoadingView();
     }
 }
