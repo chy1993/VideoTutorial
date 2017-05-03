@@ -6,25 +6,25 @@
 
     <LinearLayout
         android:id="@+id/llOnlineVideo"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-        <com.chy.videotutorial.MyWiew.NoSlideViewPager
-            android:id="@+id/vpOnlineVideoPaging"
+        <GridView
+            android:id="@+id/gvOnlineVideo"
             android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_height="400dp"
+            android:numColumns="4"
+            android:verticalSpacing="50dp" />
 
 
-        <com.chy.videotutorial.MyWiew.PageNumberView
+        <com.chy.videotutorial.MyWiew.OnlinePageNumberView
             android:id="@+id/onLineVideoPageNumberView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-
 
 
     <ImageButton
@@ -36,7 +36,6 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
         android:background="@mipmap/common_home" />
-
 
 
     <ImageButton

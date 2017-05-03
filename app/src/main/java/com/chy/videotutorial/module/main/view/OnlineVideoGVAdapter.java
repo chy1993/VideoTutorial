@@ -19,17 +19,12 @@ import java.util.List;
 
 public class OnlineVideoGVAdapter extends BaseAdapter {
     private Context mContext;
-//    private List lists;                                     //数据源
-    private int mIndex;                                     // 页数下标，标示第几页，从0开始
     private int mPargerSize;                                // 每页显示的最大的数量
-    List<VideoTypeDetailInfo> mData;
+    List<VideoTypeDetailInfo> mData;                        //数据源
 
-    public OnlineVideoGVAdapter(Context context,int mIndex, int mPargerSize) {
+    public OnlineVideoGVAdapter(Context context, int mPargerSize) {
         this.mContext = context;
-        this.mIndex = mIndex;
         this.mPargerSize = mPargerSize;
-//        this.lists = lists;
-
     }
 
     public void setData(List<VideoTypeDetailInfo> data){
@@ -39,21 +34,17 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-//        return lists.size() > (mIndex + 1) * mPargerSize ?
-//                mPargerSize : (lists.size() - mIndex*mPargerSize);
 
         return (mData == null)? 0 : mData.size();
     }
 
     @Override
     public Object getItem(int position) {
-//        return lists.get(position + mIndex * mPargerSize);
         return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-//        return position + mIndex * mPargerSize;
         return position;
     }
 
@@ -74,8 +65,6 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
             viewHolder = (OnlineVideoGVAdapter.ViewHolder) convertView.getTag();
         }
 
-//        //重新确定position因为拿到的是总数据源，数据源是分页加载到每页的GridView上的
-//        final int pos = position + mIndex * mPargerSize;                            //假设mPageSiez
 
         viewHolder.mVideoContent.setText( mData.get(position).getTitle());
         viewHolder.mVideoTitle.setText(mData.get(position).getSerices());

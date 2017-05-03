@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 
 import com.chy.videotutorial.MyWiew.CourseInfoDialog;
 import com.chy.videotutorial.MyWiew.NoSlideViewPager;
+import com.chy.videotutorial.MyWiew.OnlinePageNumberView;
 import com.chy.videotutorial.MyWiew.PageNumberView;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.Utils.Constants;
@@ -25,12 +26,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IMainView{
-
-    @BindView(R.id.vpOnlineVideoPaging)
-    NoSlideViewPager mViewPager;
+    @BindView(R.id.gvOnlineVideo)
+    GridView mGridView;
 
     @BindView(R.id.onLineVideoPageNumberView)
-    PageNumberView mPageNumberView;
+    OnlinePageNumberView mPageNumberView;
 
     @BindView(R.id.ibBack)
     ImageButton mBackOrHome;
@@ -38,12 +38,12 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     @BindView(R.id.ibRefrsh)
     ImageButton mRefrsh;
 
-    private List<View> mOnlineVideoGridViewList;                     //GridView作为一个View对象添加到ViewPager集合中
     private int mPageSize = Constants.PAGE_SIZE_ONLINE;              //每页显示的最大的数量
     private int mTotalPage;                                          //总的页数
-//    private List listDatas;                                          //总的数据源
 
-    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;
+    List<VideoTypeDetailInfo> mVideoTypeDetailInfos;                 //页面信息的集合
+
+    OnlineVideoGVAdapter mAdapter;
 
     @Override
     protected MainPresenter createPresenter() {
@@ -51,20 +51,14 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     }
 
 
-
     @Override
     public void setVideoInfoData(VideoInfo videoInfo) {
         mVideoTypeDetailInfos = videoInfo.getPageContent();
         mTotalPage = videoInfo.getTotalPageCount();
-
-        initOnlineVideo();
+        mPageNumberView.setmTotalPages(mTotalPage);
+        mAdapter.setData(mVideoTypeDetailInfos);
     }
 
-    /**
-     * Activity通过此接口传递数据给此Fragment
-     */
-    interface OnSetDataToFragment {
-    }
 
     public static OnlineFragment newInstance() {
         OnlineFragment fragment = new OnlineFragment();
@@ -88,7 +82,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     @Override
     protected void initView() {
-//        initOnlineVideo();
+        initOnlineVideo();
     }
 
     @Override
@@ -101,32 +95,16 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
      * 课程名的VeiwPager GridView PageNumberView等的初始化
      */
     private void initOnlineVideo(){
-        mOnlineVideoGridViewList = new ArrayList<View>();
-        for (int i = 0; i < mTotalPage; i++) {
-            //每个页面都是inflate出一个新实例
-            final GridView gridView = (GridView) View.inflate(getActivity(), R.layout.item_viewpager_gridview_online_video, null);
-            gridView.setPadding(100,50,100,0);
-            OnlineVideoGVAdapter adapter = new OnlineVideoGVAdapter(getActivity(), i, mPageSize);
-            adapter.setData(mVideoTypeDetailInfos);
-            gridView.setAdapter(adapter);
-
-            //添加item点击监听
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> arg0, View arg1,
-                                        int position, long arg3) {
-                    showCourseInfoDialog();
-
-                }
-            });
-            //每一个GridView作为一个View对象添加到ViewPager集合中
-            mOnlineVideoGridViewList.add(gridView);
-        }
-        //设置ViewPager适配器
-        mViewPager.setAdapter(new OnlineVideoPagingViewPagerAdapter(mOnlineVideoGridViewList));
-
-        mPageNumberView.setmTotalPages(mTotalPage);
-        mPageNumberView.setViewPager(mViewPager);
+        mAdapter  = new OnlineVideoGVAdapter(getActivity(), mPageSize);
+        mGridView.setPadding(100,50,100,0);
+        mGridView.setAdapter(mAdapter);
+//        mPageNumberView.setmTotalPages(mTotalPage);
+        mPageNumberView.setPageChangeListener(new OnlinePageNumberView.OnPageChangeListener() {
+            @Override
+            public void onChanged(int pageNum) {
+                mPresenter.loadVideoInfo(pageNum,7);
+            }
+        });
     }
 
 
