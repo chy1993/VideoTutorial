@@ -141,6 +141,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
             public void onChanged(int pageNum) {
                 mPresenter.loadVideoInfo(pageNum,mCurrentListID);
                 isRestorePageNum = false;
+                mCurrentPageIndex = pageNum;
             }
         });
 
@@ -151,8 +152,10 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ibBack:
+                getActivity().finish();
                 break;
             case R.id.ibRefrsh:
+                mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
                 break;
         }
     }
@@ -171,7 +174,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         if (isVisibleToUser) {
             if (isFirstShow == true){
 //                LogUtils.getInstance().i("!isResume");
-                mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
+                mPresenter.loadVideoInfo(Constants.PAGE_CURRENT_ONLINE,mCurrentListID);
 
                 isFirstShow = false;
             }
@@ -198,7 +201,7 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.loadVideoInfo(1,currentListID);
+                mPresenter.loadVideoInfo(Constants.PAGE_CURRENT_ONLINE,currentListID);
                 isRestorePageNum = true;
             }
         });
