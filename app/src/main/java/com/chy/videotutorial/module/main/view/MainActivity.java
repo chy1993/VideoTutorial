@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,40 +40,76 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
     NoSlideViewPager mVideoTypeViewPager;
 
     @BindView(R.id.tvLeftTVListTitle)
-    TextView mLeftListTitle;
+    TextView mLeftTVListTitle;
 
     @BindView(R.id.tvLeftTVList1)
-    TextView mLeftList1;
+    TextView mLeftTVList1;
 
     @BindView(R.id.tvLeftTVList2)
-    TextView mLeftList2;
+    TextView mLeftTVList2;
 
     @BindView(R.id.tvLeftTVList3)
-    TextView mLeftList3;
+    TextView mLeftTVList3;
 
     @BindView(R.id.tvLeftTVList4)
-    TextView mLeftList4;
+    TextView mLeftTVList4;
 
-    @BindView(R.id.tvLeftList5)
-    TextView mLeftList5;
+    @BindView(R.id.tvLeftTVList5)
+    TextView mLeftTVList5;
 
     @BindView(R.id.tvLeftTVList6)
-    TextView mLeftList6;
+    TextView mLeftTVList6;
 
     @BindView(R.id.tvLeftTVList7)
-    TextView mLeftList7;
+    TextView mLeftTVList7;
 
     @BindView(R.id.tvLeftTVList8)
-    TextView mLeftList8;
+    TextView mLeftTVList8;
 
     @BindView(R.id.tvLeftTVList9)
-    TextView mLeftList9;
+    TextView mLeftTVList9;
+
+    @BindView(R.id.tvLeftCVListTitle)
+    TextView mLeftCVListTitle;
+
+    @BindView(R.id.tvLeftCVList1)
+    TextView mLeftCVList1;
+
+    @BindView(R.id.tvLeftCVList2)
+    TextView mLeftCVList2;
+
+    @BindView(R.id.tvLeftCVList3)
+    TextView mLeftCVList3;
+
+    @BindView(R.id.tvLeftCVList4)
+    TextView mLeftCVList4;
+
+    @BindView(R.id.tvLeftCVList5)
+    TextView mLeftCVList5;
+
+    @BindView(R.id.tvLeftCVList6)
+    TextView mLeftCVList6;
+
+    @BindView(R.id.tvLeftCVList7)
+    TextView mLeftCVList7;
+
+    @BindView(R.id.tvLeftCVList8)
+    TextView mLeftCVList8;
+
+    @BindView(R.id.tvLeftCVList9)
+    TextView mLeftCVList9;
 
     @BindView(R.id.ivRefresh)
     ImageView mRefreshImg;
 
     @BindView(R.id.rlMainBG)
     RelativeLayout mBG;
+
+    @BindView(R.id.llCommonVideo)
+    LinearLayout mCV;
+
+    @BindView(R.id.llTeachingVideo)
+    LinearLayout mTV;
 
     private ViewTypeViewPagerAdapter mAdapter;
 
@@ -122,18 +159,23 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
                 switch (checkedId){
                     case R.id.rbAbc:
                         mVideoTypeViewPager.setCurrentItem(0,false);
+                        showCVList();
                         break;
                     case R.id.rbGrading:
                         mVideoTypeViewPager.setCurrentItem(1,false);
+                        showCVList();
                         break;
                     case R.id.rbWorld:
                         mVideoTypeViewPager.setCurrentItem(2,false);
+                        showCVList();
                         break;
                     case R.id.rbOnline:
                         mVideoTypeViewPager.setCurrentItem(3,false);
+                        showTVList();
                         break;
                     default:
                         mVideoTypeViewPager.setCurrentItem(0,false);
+                        showCVList();
                         break;
 
                 }
@@ -146,15 +188,15 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
      * 为实现跑马灯效果 需设置setSelected(true);
      */
     private void initLeftList(){
-        mLeftList1.setSelected(true);
-        mLeftList2.setSelected(true);
-        mLeftList3.setSelected(true);
-        mLeftList4.setSelected(true);
-        mLeftList5.setSelected(true);
-        mLeftList6.setSelected(true);
-        mLeftList7.setSelected(true);
-        mLeftList8.setSelected(true);
-        mLeftList9.setSelected(true);
+        mLeftTVList1.setSelected(true);
+        mLeftTVList2.setSelected(true);
+        mLeftTVList3.setSelected(true);
+        mLeftTVList4.setSelected(true);
+        mLeftTVList5.setSelected(true);
+        mLeftTVList6.setSelected(true);
+        mLeftTVList7.setSelected(true);
+        mLeftTVList8.setSelected(true);
+        mLeftTVList9.setSelected(true);
     }
 
     @OnClick(R.id.ibSearch)
@@ -223,32 +265,32 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
      * @param videoTypeInfoList
      */
     public void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
-        mLeftListTitle.setText(R.string.TeachingVideo);
-        mLeftList1.setText(videoTypeInfoList.get(0).getTypeName());
-        mLeftList2.setText(videoTypeInfoList.get(1).getTypeName());
-        mLeftList3.setText(videoTypeInfoList.get(2).getTypeName());
-        mLeftList4.setText(videoTypeInfoList.get(3).getTypeName());
-        mLeftList5.setText(videoTypeInfoList.get(4).getTypeName());
-        mLeftList6.setText(videoTypeInfoList.get(5).getTypeName());
-        mLeftList7.setText(videoTypeInfoList.get(6).getTypeName());
-        mLeftList8.setText(videoTypeInfoList.get(7).getTypeName());
-//        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
+        mLeftTVListTitle.setText(R.string.TeachingVideo);
+        mLeftTVList1.setText(videoTypeInfoList.get(0).getTypeName());
+        mLeftTVList2.setText(videoTypeInfoList.get(1).getTypeName());
+        mLeftTVList3.setText(videoTypeInfoList.get(2).getTypeName());
+        mLeftTVList4.setText(videoTypeInfoList.get(3).getTypeName());
+        mLeftTVList5.setText(videoTypeInfoList.get(4).getTypeName());
+        mLeftTVList6.setText(videoTypeInfoList.get(5).getTypeName());
+        mLeftTVList7.setText(videoTypeInfoList.get(6).getTypeName());
+        mLeftTVList8.setText(videoTypeInfoList.get(7).getTypeName());
+//        mLeftTVList9.setText(videoTypeInfoList.get(8).getTypeName());
     }
 
     /**
      * 设置左边常用视频列表
      */
     public void setLeftCommonVideo(){
-        mLeftListTitle.setText(R.string.CommonVideo);
-        mLeftList1.setText("");
-        mLeftList2.setText("");
-        mLeftList3.setText("");
-        mLeftList4.setText("");
-        mLeftList5.setText("");
-        mLeftList6.setText("");
-        mLeftList7.setText("");
-        mLeftList8.setText("");
-//        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
+        mLeftTVListTitle.setText(R.string.CommonVideo);
+        mLeftTVList1.setText("");
+        mLeftTVList2.setText("");
+        mLeftTVList3.setText("");
+        mLeftTVList4.setText("");
+        mLeftTVList5.setText("");
+        mLeftTVList6.setText("");
+        mLeftTVList7.setText("");
+        mLeftTVList8.setText("");
+//        mLeftTVList9.setText(videoTypeInfoList.get(8).getTypeName());
     }
 
     /**
@@ -268,6 +310,23 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         mRefreshImg.setVisibility(View.GONE);
         mBG.setAlpha(1);
         mBG.setEnabled(true);
+    }
+
+
+    /**
+     * 展示教学视频列表
+     */
+    public void showTVList(){
+        mTV.setVisibility(View.VISIBLE);
+        mCV.setVisibility(View.GONE);
+    }
+
+    /**
+     * 展示常用视频列表
+     */
+    public void showCVList(){
+        mCV.setVisibility(View.VISIBLE);
+        mTV.setVisibility(View.GONE);
     }
 
 

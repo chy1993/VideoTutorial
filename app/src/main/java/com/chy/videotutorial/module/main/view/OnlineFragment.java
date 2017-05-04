@@ -15,7 +15,6 @@ import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 import com.chy.videotutorial.entities.VideoTypeInfo;
 import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -86,14 +85,14 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
         mCurrentListID = videoInfo.getCurrentListID();
 
-        setClickListener(activity.mLeftList1,videoTypeInfoList.get(0).getID());
-        setClickListener(activity.mLeftList2,videoTypeInfoList.get(1).getID());
-        setClickListener(activity.mLeftList3,videoTypeInfoList.get(2).getID());
-        setClickListener(activity.mLeftList4,videoTypeInfoList.get(3).getID());
-        setClickListener(activity.mLeftList5,videoTypeInfoList.get(4).getID());
-        setClickListener(activity.mLeftList6,videoTypeInfoList.get(5).getID());
-        setClickListener(activity.mLeftList7,videoTypeInfoList.get(6).getID());
-        setClickListener(activity.mLeftList8,videoTypeInfoList.get(7).getID());
+        setClickListener(activity.mLeftTVList1,videoTypeInfoList.get(0).getID());
+        setClickListener(activity.mLeftTVList2,videoTypeInfoList.get(1).getID());
+        setClickListener(activity.mLeftTVList3,videoTypeInfoList.get(2).getID());
+        setClickListener(activity.mLeftTVList4,videoTypeInfoList.get(3).getID());
+        setClickListener(activity.mLeftTVList5,videoTypeInfoList.get(4).getID());
+        setClickListener(activity.mLeftTVList6,videoTypeInfoList.get(5).getID());
+        setClickListener(activity.mLeftTVList7,videoTypeInfoList.get(6).getID());
+        setClickListener(activity.mLeftTVList8,videoTypeInfoList.get(7).getID());
     }
 
 

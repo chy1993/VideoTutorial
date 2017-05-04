@@ -95,7 +95,7 @@
         <TextView
             android:id="@+id/tvLeftTVListTitle"
             style="@style/VideoTypeTextView"
-            android:text="@string/VideoTutorial" />
+            android:text="@string/TeachingVideo" />
 
         <TextView
             android:id="@+id/tvLeftTVList1"
@@ -144,6 +144,68 @@
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llCommonVideo"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvLeftCVListTitle"
+            style="@style/VideoTypeTextView"
+            android:text="@string/CommonVideo" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList1"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList2"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList3"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList4"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList5"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList6"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList7"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList8"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLeftCVList9"
+            style="@style/VideoTypeTextView"
+            android:text="" />
+
+
+    </LinearLayout>
+
 
 
     <ImageView
