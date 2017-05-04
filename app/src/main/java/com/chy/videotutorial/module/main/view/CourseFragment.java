@@ -52,6 +52,8 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
     private List<View> mCourseTitleGridViewList;                    //GridView作为一个View对象添加到ViewPager集合中
     private List<View> mCourseContentGridViewList;                  //GridView作为一个View对象添加到ViewPager集合中
 
+    MainActivity activity;
+
     /**
      * 当GridView切换时为Activity提供的回调接口
      */
@@ -75,6 +77,8 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
     protected void initDataBeforeView() {
         super.initDataBeforeView();
 
+        activity = (MainActivity) getActivity();
+
         listDatas = new ArrayList();
         for (int i = 0; i < 100; i++) {
             listDatas.add(i);
@@ -91,7 +95,7 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
 
     @Override
     protected void initDataAfterView() {
-
+        activity.setLeftCommonVideo();
     }
 
     /**

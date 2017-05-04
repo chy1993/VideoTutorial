@@ -5,4 +5,6 @@
     <string name="first_page">首页</string>
     <string name="last_page">末页</string>
     <string name="VideoTutorial">教学视频</string>
+    <string name="TeachingVideo">教学视频</string>
+    <string name="CommonVideo">常用视频</string>
 </resources>

@@ -38,34 +38,34 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
     @BindView(R.id.vpVideoType)
     NoSlideViewPager mVideoTypeViewPager;
 
-    @BindView(R.id.tvLeftListTitle)
+    @BindView(R.id.tvLeftTVListTitle)
     TextView mLeftListTitle;
 
-    @BindView(R.id.tvLeftList1)
+    @BindView(R.id.tvLeftTVList1)
     TextView mLeftList1;
 
-    @BindView(R.id.tvLeftList2)
+    @BindView(R.id.tvLeftTVList2)
     TextView mLeftList2;
 
-    @BindView(R.id.tvLeftList3)
+    @BindView(R.id.tvLeftTVList3)
     TextView mLeftList3;
 
-    @BindView(R.id.tvLeftList4)
+    @BindView(R.id.tvLeftTVList4)
     TextView mLeftList4;
 
     @BindView(R.id.tvLeftList5)
     TextView mLeftList5;
 
-    @BindView(R.id.tvLeftList6)
+    @BindView(R.id.tvLeftTVList6)
     TextView mLeftList6;
 
-    @BindView(R.id.tvLeftList7)
+    @BindView(R.id.tvLeftTVList7)
     TextView mLeftList7;
 
-    @BindView(R.id.tvLeftList8)
+    @BindView(R.id.tvLeftTVList8)
     TextView mLeftList8;
 
-    @BindView(R.id.tvLeftList9)
+    @BindView(R.id.tvLeftTVList9)
     TextView mLeftList9;
 
     @BindView(R.id.ivRefresh)
@@ -223,6 +223,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
      * @param videoTypeInfoList
      */
     public void setLeftVideoType(List<VideoTypeInfo> videoTypeInfoList){
+        mLeftListTitle.setText(R.string.TeachingVideo);
         mLeftList1.setText(videoTypeInfoList.get(0).getTypeName());
         mLeftList2.setText(videoTypeInfoList.get(1).getTypeName());
         mLeftList3.setText(videoTypeInfoList.get(2).getTypeName());
@@ -231,6 +232,22 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         mLeftList6.setText(videoTypeInfoList.get(5).getTypeName());
         mLeftList7.setText(videoTypeInfoList.get(6).getTypeName());
         mLeftList8.setText(videoTypeInfoList.get(7).getTypeName());
+//        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
+    }
+
+    /**
+     * 设置左边常用视频列表
+     */
+    public void setLeftCommonVideo(){
+        mLeftListTitle.setText(R.string.CommonVideo);
+        mLeftList1.setText("");
+        mLeftList2.setText("");
+        mLeftList3.setText("");
+        mLeftList4.setText("");
+        mLeftList5.setText("");
+        mLeftList6.setText("");
+        mLeftList7.setText("");
+        mLeftList8.setText("");
 //        mLeftList9.setText(videoTypeInfoList.get(8).getTypeName());
     }
 

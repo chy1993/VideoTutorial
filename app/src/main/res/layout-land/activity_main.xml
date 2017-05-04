@@ -86,58 +86,59 @@
 
 
     <LinearLayout
+        android:id="@+id/llTeachingVideo"
         android:layout_width="180dp"
         android:layout_height="match_parent"
         android:layout_marginTop="90dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvLeftListTitle"
+            android:id="@+id/tvLeftTVListTitle"
             style="@style/VideoTypeTextView"
             android:text="@string/VideoTutorial" />
 
         <TextView
-            android:id="@+id/tvLeftList1"
+            android:id="@+id/tvLeftTVList1"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList2"
+            android:id="@+id/tvLeftTVList2"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList3"
+            android:id="@+id/tvLeftTVList3"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList4"
+            android:id="@+id/tvLeftTVList4"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList5"
+            android:id="@+id/tvLeftTVList5"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList6"
+            android:id="@+id/tvLeftTVList6"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList7"
+            android:id="@+id/tvLeftTVList7"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList8"
+            android:id="@+id/tvLeftTVList8"
             style="@style/VideoTypeTextView"
             android:text="" />
 
         <TextView
-            android:id="@+id/tvLeftList9"
+            android:id="@+id/tvLeftTVList9"
             style="@style/VideoTypeTextView"
             android:text="" />
 
