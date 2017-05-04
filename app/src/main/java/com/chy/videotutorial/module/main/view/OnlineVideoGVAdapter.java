@@ -67,7 +67,7 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
         }
 
 
-        viewHolder.mVideoContent.setText( mData.get(position).getTitle());
+        viewHolder.mVideoContent.setText(mData.get(position).getTitle());
         viewHolder.mVideoTitle.setText(mData.get(position).getSerices());
         viewHolder.mVideoTeacher.setText(mData.get(position).getKeynote());
         Glide.with(mContext).load(mData.get(position).getImgPath()).into(viewHolder.mVideoImg);
