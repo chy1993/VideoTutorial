@@ -1,6 +1,7 @@
 package com.chy.videotutorial.module.main.view;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.chy.videotutorial.Utils.Constants;
 import com.chy.videotutorial.base.fragment.BaseMvpFragment;
 import com.chy.videotutorial.entities.VideoInfo;
 import com.chy.videotutorial.entities.VideoTypeDetailInfo;
+import com.chy.videotutorial.entities.VideoTypeDetailPlusInfo;
 import com.chy.videotutorial.entities.VideoTypeInfo;
 import com.chy.videotutorial.module.main.presenter.MainPresenter;
 
@@ -70,20 +72,19 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         if (isRestorePageNum){
             mPageNumberView.reStorePageNum();
         }
-
-
-
+        mCurrentListID = videoInfo.getCurrentListID();
         mVideoTypeDetailInfos = videoInfo.getPageContent();
+        mTotalPage = videoInfo.getTotalPageCount();
+
         List<VideoTypeInfo> videoTypeInfoList = videoInfo.getListContent();
 
-        mTotalPage = videoInfo.getTotalPageCount();
+
         mPageNumberView.setmTotalPages(mTotalPage);
         mAdapter.setData(mVideoTypeDetailInfos);
 
         activity.setLeftVideoType(videoInfo.getListContent());
-//        activity.setVideoTypeInfoList(videoInfo.getListContent());
 
-        mCurrentListID = videoInfo.getCurrentListID();
+
 
         setClickListener(activity.mLeftTVList1,videoTypeInfoList.get(0).getID());
         setClickListener(activity.mLeftTVList2,videoTypeInfoList.get(1).getID());
@@ -93,6 +94,11 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         setClickListener(activity.mLeftTVList6,videoTypeInfoList.get(5).getID());
         setClickListener(activity.mLeftTVList7,videoTypeInfoList.get(6).getID());
         setClickListener(activity.mLeftTVList8,videoTypeInfoList.get(7).getID());
+    }
+
+    @Override
+    public void setVideoDetailData(VideoTypeDetailPlusInfo videoTypeDetailPlusInfo) {
+        showCourseInfoDialog(videoTypeDetailPlusInfo);
     }
 
 
@@ -111,7 +117,6 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         super.initDataBeforeView();
         activity = (MainActivity) getActivity();
 
-//        mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
         isRestorePageNum = false;
     }
 
@@ -136,6 +141,15 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         mAdapter  = new OnlineVideoGVAdapter(getActivity(), mPageSize);
         mGridView.setPadding(100,50,100,0);
         mGridView.setAdapter(mAdapter);
+
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int classId =  mVideoTypeDetailInfos.get(position).getClassID();
+                mPresenter.loadVideoDetailInfo(classId);
+            }
+        });
+
         mPageNumberView.setPageChangeListener(new OnlinePageNumberView.OnPageChangeListener() {
             @Override
             public void onChanged(int pageNum) {
@@ -166,20 +180,14 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-//        LogUtils.getInstance().i("setUserVisibleHint");
         if (!isCreated){
-//            LogUtils.getInstance().i("!isCreated");
             return;
         }
         if (isVisibleToUser) {
             if (isFirstShow == true){
-//                LogUtils.getInstance().i("!isResume");
                 mPresenter.loadVideoInfo(Constants.PAGE_CURRENT_ONLINE,mCurrentListID);
-
                 isFirstShow = false;
             }
-        } else {
-//            LogUtils.getInstance().i("!onPause");
         }
     }
 
@@ -187,8 +195,8 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
     /**
      * 展示课程详细信息的dialog
      */
-    private void showCourseInfoDialog(){
-        CourseInfoDialog dialog = new CourseInfoDialog(getActivity());
+    private void showCourseInfoDialog(VideoTypeDetailPlusInfo detailPlusInfo){
+        CourseInfoDialog dialog = new CourseInfoDialog(getActivity(),detailPlusInfo);
         dialog.show();
     }
 

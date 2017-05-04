@@ -15,7 +15,7 @@ import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/4/19.
+ * Created by chenyu on 2017/4/19.
  */
 
 public class OnlineVideoGVAdapter extends BaseAdapter {

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.entities.VideoTypeDetailPlusInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.OnClick;
 
 
 /**
- * Created by 陈宇 on 2017/4/25.
+ * Created by chenyu on 2017/4/25.
  */
 
 public class CourseInfoDialog extends Dialog {
@@ -35,9 +36,11 @@ public class CourseInfoDialog extends Dialog {
 
     private Context mContext;
     private String uri;
+    private VideoTypeDetailPlusInfo mData;
 
-    public CourseInfoDialog(Context context) {
+    public CourseInfoDialog(Context context, VideoTypeDetailPlusInfo data) {
         super(context, R.style.MyDialog);
+        mData = data;
         mContext = context;
     }
 
@@ -55,7 +58,9 @@ public class CourseInfoDialog extends Dialog {
     }
 
     private void initView(){
-
+        mCourseName.setText(mData.getContent().get(0).getTitle());
+        mCourseInfo.setText(mData.getContent().get(0).getCharacteristic());
+        uri = mData.getContent().get(0).getVideoPath();
     }
 
 
