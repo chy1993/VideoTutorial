@@ -47,6 +47,9 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
 
     boolean isRestorePageNum = false;                                //是否需要重置页码
 
+    protected boolean isCreated = false;       //onCreatView()是否执行了
+    protected boolean isFirstShow = true;      //界面是否是第一次展示
+
 //    OnActivityLeftListClicked mListener;
 //
 //    public interface OnActivityLeftListClicked{
@@ -109,12 +112,15 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
         super.initDataBeforeView();
         activity = (MainActivity) getActivity();
 
-        mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
+//        mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
         isRestorePageNum = false;
     }
 
     @Override
     protected void initView() {
+        isCreated = true;
+        isFirstShow = true;
+
         initOnlineVideo();
     }
 
@@ -151,6 +157,30 @@ public class OnlineFragment extends BaseMvpFragment<MainPresenter> implements IM
                 break;
         }
     }
+
+
+
+    //确保fragment显示时才加载数据  此方法在onCreate()之前执行
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+//        LogUtils.getInstance().i("setUserVisibleHint");
+        if (!isCreated){
+//            LogUtils.getInstance().i("!isCreated");
+            return;
+        }
+        if (isVisibleToUser) {
+            if (isFirstShow == true){
+//                LogUtils.getInstance().i("!isResume");
+                mPresenter.loadVideoInfo(mCurrentPageIndex,mCurrentListID);
+
+                isFirstShow = false;
+            }
+        } else {
+//            LogUtils.getInstance().i("!onPause");
+        }
+    }
+
 
     /**
      * 展示课程详细信息的dialog

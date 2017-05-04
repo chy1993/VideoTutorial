@@ -235,7 +235,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
     }
 
     /**
-     * 展示加载
+     * 展示加载动画
      */
     public void showLoadingView(){
         mRefreshImg.setVisibility(View.VISIBLE);
@@ -245,7 +245,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
 
 
     /**
-     *隐藏加载
+     *隐藏加载动画
      */
     public void hideLoadingView(){
         mRefreshImg.setVisibility(View.GONE);
