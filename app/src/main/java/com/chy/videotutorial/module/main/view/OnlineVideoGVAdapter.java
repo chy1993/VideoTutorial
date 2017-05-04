@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chy.videotutorial.R;
 import com.chy.videotutorial.entities.VideoTypeDetailInfo;
 
@@ -69,6 +70,7 @@ public class OnlineVideoGVAdapter extends BaseAdapter {
         viewHolder.mVideoContent.setText( mData.get(position).getTitle());
         viewHolder.mVideoTitle.setText(mData.get(position).getSerices());
         viewHolder.mVideoTeacher.setText(mData.get(position).getKeynote());
+        Glide.with(mContext).load(mData.get(position).getImgPath()).into(viewHolder.mVideoImg);
 
         return convertView;
     }
