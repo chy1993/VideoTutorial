@@ -42,6 +42,43 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     private static final String VIDEO_PATH = "video_path";
 
 
+    @BindView(R.id.ahas_played)
+    TextView mCurrentTiem;
+
+    @BindView(R.id.aduration)
+    TextView mEndTime;
+
+    @BindView(R.id.tvTitle)
+    TextView mNoFullScreenTitle;
+
+    @BindView(R.id.ivClosePlayer)
+    ImageView mClosePlayer;
+
+    @BindView(R.id.aprev)
+    ImageButton mAPrevButton;
+
+    @BindView(R.id.aturn_button)
+    ImageButton mATurnButton;
+
+    @BindView(R.id.anext)
+    ImageButton mANextButton;
+
+    @BindView(R.id.aseekbar)
+    SeekBar     mAPlaySeekBar;
+
+    @BindView(R.id.areplay)
+    ImageButton mAPeplayButton;
+
+    @BindView(R.id.astop)
+    ImageButton mAStopButton;
+
+    @BindView(R.id.asbVolumeSlider)
+    SeekBar     mAVolumeSeekBar;
+
+    @BindView(R.id.ascale_button)
+    ImageButton mAScaleButton;
+
+
     UniversalVideoView mVideoView;                                   //播放器
     UniversalMediaController mMediaController;                       //控制器
 
@@ -53,8 +90,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     private int cachedHeight;                                        //播放视频部分的高度
     private int cacheWidth;                                          //播放视频部分的宽度
 
-    private int rlcachedHeight;                                        //外层布局的高度
-    private int rlcacheWidth;                                          //外层布局的高度
+    private int rlcachedHeight;                                      //外层布局的高度
+    private int rlcacheWidth;                                        //外层布局的高度
 
 
     private boolean isFullscreen;                                    //是否全屏
@@ -68,27 +105,6 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     private int maxVolume, currentVolume;                             //音量最大值与当前值
 
     String mUri;                                                      //在线视频的URI
-
-    ImageButton mAPrevButton;
-    ImageButton mATurnButton;
-    ImageButton mANextButton;
-    SeekBar     mAPlaySeekBar;
-    ImageButton mAPeplayButton;
-    ImageButton mAStopButton;
-    SeekBar     mAVolumeSeekBar;
-    ImageButton mAScaleButton;
-
-    @BindView(R.id.ahas_played)
-    TextView mCurrentTiem;
-
-    @BindView(R.id.aduration)
-    TextView mEndTime;
-
-    @BindView(R.id.tvTitle)
-    TextView mNoFullScreenTitle;
-
-    @BindView(R.id.ivClosePlayer)
-    ImageView mClosePlayer;
 
 
     MyVolumeReceiver mVolumeReceiver;
@@ -132,14 +148,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
      * 初始化非全屏状态的控制器
      */
     private void initController(){
-        mAPrevButton = (ImageButton) findViewById(R.id.aprev);
-        mATurnButton = (ImageButton) findViewById(R.id.aturn_button);
-        mANextButton = (ImageButton) findViewById(R.id.anext);
-        mAPlaySeekBar = (SeekBar) findViewById(R.id.aseekbar);
-        mAPeplayButton = (ImageButton) findViewById(R.id.areplay);
-        mAStopButton = (ImageButton) findViewById(R.id.astop);
-        mAVolumeSeekBar = (SeekBar) findViewById(R.id.asbVolumeSlider);
-        mAScaleButton = (ImageButton) findViewById(R.id.ascale_button);
+
 
         //停止播放
         mAStopButton.setOnClickListener(new View.OnClickListener() {
