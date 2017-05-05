@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +39,7 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;            //运行时权限
     private static final String VIDEO_LOCAL_URL = "/sdcard/Download/1.mp4";        //默认播放的视频路径
     private static final String SEEK_POSITION_KEY = "SEEK_POSITION_KEY";
+    private static final String VIDEO_PATH = "video_path";
 
 
     UniversalVideoView mVideoView;                                   //播放器
@@ -63,8 +65,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     boolean mDragging = false;                                       //进度条是否拖动
 
-    private int maxVolume, currentVolume;           //音量最大值与当前值
+    private int maxVolume, currentVolume;                             //音量最大值与当前值
 
+    String mUri;                                                      //在线视频的URI
 
     ImageButton mAPrevButton;
     ImageButton mATurnButton;
@@ -90,8 +93,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     MyVolumeReceiver mVolumeReceiver;
 
-    public static void navigationToActivity(BaseAppCompatActivity fromAty) {
+    public static void navigationToActivity(BaseAppCompatActivity fromAty,String uri) {
         Intent intent = new Intent(fromAty, VideoPlayerActivity.class);
+        intent.putExtra(VIDEO_PATH,uri);
         fromAty.startActivitySlide(intent);
     }
 
@@ -103,6 +107,10 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @Override
     protected void initView() {
+        if (getIntent() != null){
+            mUri = getIntent().getStringExtra(VIDEO_PATH);
+        }
+
         //获取该目录下所有文件名集合
         files = getFiles("/sdcard/Download");
         initVideoView();
@@ -112,7 +120,12 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 
     @Override
     protected void initDataAfterView() {
+        mVideoView.start();
+        mMediaController.setTitle(mUri);
+        mNoFullScreenTitle.setText(mUri);
+        mHandler.sendEmptyMessage(UniversalMediaController.SHOW_PROGRESS);
 
+        updatePausePlay();
     }
 
     /**
@@ -254,7 +267,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         mVideoView.setVideoViewCallback(this);
 
         mVideoView.setMediaController(mMediaController);
-        setVideoPath(VIDEO_LOCAL_URL);
+//        setVideoPath(VIDEO_LOCAL_URL);
+        setVideoPath(mUri);
 
         //播放默认视频的按钮点击事件
         mStartButton.setOnClickListener(new View.OnClickListener() {
@@ -394,7 +408,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
         } else {
-            mVideoView.setVideoPath(path);
+//            mVideoView.setVideoPath(path);
+            mVideoView.setVideoURI(Uri.parse(path));
             mCurrentFilePosition = getFilePosition(files, getNameFormPath(path));
             mVideoView.requestFocus();
         }

@@ -151,7 +151,7 @@ public class CourseFragment extends BaseCallBackFrg2Aty<CourseFragment.OnGridVie
 //                                                      System.out.println(obj);
 //                                                    }
                     if (position == 0){
-                        VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity());
+                        VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) getActivity(),"");
                     }
                 }
             });

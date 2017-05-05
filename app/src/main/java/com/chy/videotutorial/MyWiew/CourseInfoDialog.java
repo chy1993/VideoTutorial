@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chy.videotutorial.R;
+import com.chy.videotutorial.base.activity.BaseAppCompatActivity;
 import com.chy.videotutorial.entities.VideoTypeDetailPlusInfo;
+import com.chy.videotutorial.module.videoplayer.VideoPlayerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +75,7 @@ public class CourseInfoDialog extends Dialog {
 
     @OnClick(R.id.btStartPlayer)
     public void onStartPlayer(){
-        Toast.makeText(mContext,"3222",Toast.LENGTH_SHORT).show();
+        VideoPlayerActivity.navigationToActivity((BaseAppCompatActivity) mContext,uri);
     }
 
 }
