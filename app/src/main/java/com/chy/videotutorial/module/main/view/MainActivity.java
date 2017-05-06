@@ -130,7 +130,6 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
         initViewPager();
         initRadioGroup();
         initLeftList();
-        Glide.with(this).load(R.drawable.common_wait_end).into(mRefreshImg);
     }
 
     @Override
@@ -298,6 +297,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
      */
     public void showLoadingView(){
         mRefreshImg.setVisibility(View.VISIBLE);
+        Glide.with(this).load(R.drawable.common_wait_end).into(mRefreshImg).onStart();
         mBG.setAlpha(0.5f);
         mBG.setEnabled(false);
     }
@@ -307,6 +307,7 @@ public class MainActivity extends BaseAppCompatActivity implements CourseFragmen
      *隐藏加载动画
      */
     public void hideLoadingView(){
+        Glide.with(this).load(R.drawable.common_wait_end).into(mRefreshImg).onStop();
         mRefreshImg.setVisibility(View.GONE);
         mBG.setAlpha(1);
         mBG.setEnabled(true);

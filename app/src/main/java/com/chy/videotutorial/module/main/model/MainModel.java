@@ -39,6 +39,7 @@ public class MainModel {
                 try
                 {
                     VideoInfo beans = JsonUtils.deserialize(response,new TypeToken<VideoInfo>(){}.getType());
+//                    Thread.sleep(3000);
                     videoListInfoListener.onLoadVideoListInfoSuccess(beans);
 
                 } catch (Exception e) {

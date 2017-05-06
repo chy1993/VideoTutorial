@@ -139,8 +139,10 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
         super.initDataBeforeView();
         if (getIntent() != null) {
             mUri = getIntent().getStringExtra(VIDEO_PATH);
-//            mUri = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-            mUri = "http://piano-static.klsw.com/static/video/`小朋友们的拜厄初级钢琴同步教材-入门篇/小朋友们的拜厄初级钢琴同步教材-入门篇·第11首.mp4?v=1.0";
+
+            // TODO: 2017/5/6 模拟器无法播放钢琴教程的视频 现写死一个可以播放的在线视频
+            mUri = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+//            mUri = "http://piano-static.klsw.com/static/video/`小朋友们的拜厄初级钢琴同步教材-入门篇/小朋友们的拜厄初级钢琴同步教材-入门篇·第11首.mp4?v=1.0";
 
 //            mUri = Uri.decode("http://piano-static.klsw.com/static/video/`小朋友们的拜厄初级钢琴同步教材-入门篇/小朋友们的拜厄初级钢琴同步教材-入门篇·第11首.mp4?v=1.0");
             mSrcVideo = getIntent().getStringExtra(VIDEO_SRC);
@@ -161,8 +163,9 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
     protected void initDataAfterView() {
         setVideoPath(mUri);              //设置播放路径
 
-//        setVideoPath("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
-
+        if (mSeekPosition > 0) {
+                    mVideoView.seekTo(mSeekPosition);
+                }
 
         mVideoView.start();
         mMediaController.setTitle(mUri);
@@ -771,8 +774,8 @@ public class VideoPlayerActivity extends BaseAppCompatActivity implements Univer
 //                    boolean a = !mDragging;
 //                    boolean b  =   mMediaController.mPlayer != null ;
 //                    boolean c = mMediaController.mPlayer.isPlaying();
-                    // TODO: 2017/4/14  删除  && mMediaController.mPlayer.isPlaying()
-                    if (!mDragging && mMediaController.mPlayer != null) {
+                    // TODO: 2017/4/14  删除  && mMediaController.mPlayer.isPlaying()    && mMediaController.mPlayer != null
+                    if (!mDragging ) {
                         msg = obtainMessage(UniversalMediaController.SHOW_PROGRESS);
                         sendMessageDelayed(msg, 1000 - (pos % 1000));
                     }
