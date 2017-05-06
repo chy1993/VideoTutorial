@@ -13,7 +13,7 @@ public class Constants {
     public static final int VIDEO_TYPE_ONLINE = 9;                     //在线视频默认展示的视频类型 9为初级钢琴—入门篇
 
     public static final String ONLINE_VIDEO = "online_video";          //播放器播放在线视频
-    public static final String LOCAL_PLAY = "local_play";              //播放器播放本地视频
+    public static final String LOCAL_VIDEO = "local_video";              //播放器播放本地视频
 
 //    /**
 //     * 收入交易记录类型
