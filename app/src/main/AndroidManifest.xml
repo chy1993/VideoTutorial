@@ -19,23 +19,23 @@
         <activity
             android:name=".module.main.view.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
 
-                <!-- <data android:host="AuthActivity" android:scheme="com.chy.videotutorial" /> -->
-            </intent-filter>
+                <!--&lt;!&ndash; <data android:host="AuthActivity" android:scheme="com.chy.videotutorial" /> &ndash;&gt;-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".module.videoplayer.VideoPlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name=".module.main.view.Main2Activity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

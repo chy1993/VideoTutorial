@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.chy.videotutorial.module.main.view.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:text="1111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <View
+        app:layout_marginTopPercent="10%"
+        app:layout_marginLeftPercent="10%"
+        android:id="@+id/top_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:background="#ff44aacc"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="70%" />
 
-    <com.chy.videotutorial.MyWiew.PageNumberView
-        android:layout_below="@id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="10%"
+        android:layout_below="@id/top_left"
+        android:background="#00ff00"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="70%"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
 
-</RelativeLayout>
+        <TextView
+            android:text="111111111111111"
+            android:background="#ff00ff"
+            app:layout_heightPercent="80%h"
+            app:layout_widthPercent="80%h"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout >
+
+</com.zhy.android.percent.support.PercentRelativeLayout>
